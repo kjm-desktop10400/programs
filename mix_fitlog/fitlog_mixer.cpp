@@ -14,7 +14,7 @@ int main(int argc, char* argv[]){
         return 0;
     }
     sprintf(comand, "cd %s", argv[1]);
-//    printf("cd %s\n", argv[1]);
+    printf("cd %s\n", argv[1]);
     system(comand);
 
     pipe = _popen("dir *.fitlog", "r");
@@ -39,7 +39,11 @@ int main(int argc, char* argv[]){
     printf("\"%s\" includes %d .fitlog files.", argv[1], file_count);
 
     // set fp output file and pipe
-    out_file = fopen("fit_param.dat", "w");
+    for(int i = 0; i < 256; i++){
+        comand[i] = '\0';
+    }
+    sprintf(comand, "%s\\..\\fit_param.dat", argv[1]);
+    out_file = fopen(comand, "w");
     char file_name[256];
 
     for(int i = 0; i < 256; i++){
@@ -49,15 +53,9 @@ int main(int argc, char* argv[]){
 
     // write output file
     int char_count = 0;
-    char colum[14][256];
-    for(int i = 0; i < 14; i++){
-        for(int j = 0; j < 256; j++){
-            colum[i][j] = '\0';
-        }
-    }
     for(int i = 0; i < file_count; i++){
 
-        getc(stdin);
+//        getc(stdin);
 
         sprintf(file_name, "%d.fitlog\0", i + 1);
         log_file = fopen(file_name, "r");
@@ -75,14 +73,53 @@ int main(int argc, char* argv[]){
             buf[j] = '\0';
         }
 
-        //ignor lines start with '#'
-        int count = 0;
+        while(1){
+
+            fgets(buf, sizeof(buf), log_file);
+
+            if(feof(log_file)){
+                break;
+            }
+
+            //ignore lines starat with '#'
+            if(buf[0] == '#'){
+                printf("detect \'#\',\n");
+                continue;
+            }
+
+            //seek number init
+            char_count = 0;
+            while(buf[char_count] != '='){
+                char_count++;
+            }
+            char_count += 2;
+
+            // write numbers
+            while(1){
+
+                if(buf[char_count] == '\n'){
+                    fputc('\t', out_file);
+                    fprintf(stdout, "\tline feed\n");
+                    break;
+                }
+                else{
+                    fputc(buf[char_count], out_file);
+                    fputc(buf[char_count], stdout);
+                    char_count++;
+                }
+
+            }
+
+            for(int j = 0; j < 256; j++){
+                buf[j] = '\0';
+            }
+
+        }
+
+        fputc('\n', out_file);
         
     }
     fclose(out_file);
-
-    system("timeout /t 1000 /nobreak");
-
 
     return 0;
 }
