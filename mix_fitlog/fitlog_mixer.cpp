@@ -8,6 +8,11 @@ FILE *log_file;
 int main(int argc, char* argv[]){
 
     char comand[256];
+
+    if(argc == 1){
+        printf("nofile input");
+        return 0;
+    }
     sprintf(comand, "cd %s", argv[1]);
     system(comand);
 
@@ -38,6 +43,33 @@ int main(int argc, char* argv[]){
 
     // write output file
     for(int i = 0; i < file_count; i++){
+
+        getc(stdin);
+
+        sprintf(file_name, "%d.fitlog\0", i + 1);
+        log_file = fopen(file_name, "w");
+
+        if(log_file == NULL){
+            printf("failed open logfile : %s", file_name);
+            return 0;
+        }
+        else {
+            printf("open log file : %s", file_name);
+        }
+
+        char buf;
+
+        while(!feof(log_file)){
+            buf = getc(log_file);
+            fprintf(out_file, "%d", (int)buf);
+            fprintf(stdout, "%d", (int)buf);
+            getc(stdin);
+
+        }
+
+        printf("finish log file : %s", file_name);
+
+/*
 
         // set fitlog file name
         sprintf(file_name, "%d.fitlog", i + 1);
@@ -83,6 +115,8 @@ int main(int argc, char* argv[]){
 
         fputc('\n', out_file);
         fclose(log_file);
+
+    */
 
     }
     fclose(out_file);
