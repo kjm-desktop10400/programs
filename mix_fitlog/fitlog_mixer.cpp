@@ -7,43 +7,44 @@ FILE *log_file;
 
 int main(int argc, char* argv[]){
 
-    char comand[256];
+    char command[256];
 
     if(argc == 1){
         printf("nofile input");
         return 0;
     }
-    sprintf(comand, "cd %s", argv[1]);
-    printf("cd %s\n", argv[1]);
-    system(comand);
-
-    pipe = _popen("dir *.fitlog", "r");
 
     char buf[256];
     int file_count = 0;
 
+    fprintf(stdout, "%s\n", argv[1]);
+
+    //open pipe
+    //
+    //  in .exe file, couldn't change directry "cd"
+    //  so command whth path
+    //
+    sprintf(command, "dir %s /b\n", argv[1]);
+    pipe = _popen(command, "r");
 
     //counting .fitlog files. it starts '2'. shortly, countig files start with '2'
     while (!feof(pipe)) {
     		fgets(buf, sizeof(buf), pipe);
-
-            if(*(buf) != '2'){
-                continue;
-            }
-
             file_count++;
-
     	}
     _pclose(pipe);
 
-    printf("\"%s\" includes %d .fitlog files.", argv[1], file_count);
+    //.fitlog file include empty line in the end.
+    file_count--;
+
+    printf("\"%s\" includes %d .fitlog files.\n", argv[1], file_count);
 
     // set fp output file and pipe
     for(int i = 0; i < 256; i++){
-        comand[i] = '\0';
+        command[i] = '\0';
     }
-    sprintf(comand, "%s\\..\\fit_param.dat", argv[1]);
-    out_file = fopen(comand, "w");
+    sprintf(command, "%s\\..\\fit_param.dat", argv[1]);
+    out_file = fopen(command, "w");
     char file_name[256];
 
     for(int i = 0; i < 256; i++){
@@ -57,9 +58,10 @@ int main(int argc, char* argv[]){
 
 //        getc(stdin);
 
-        sprintf(file_name, "%d.fitlog\0", i + 1);
+        sprintf(file_name, "%s\\%d.fitlog\0", argv[1],  i + 1);
         log_file = fopen(file_name, "r");
 
+        fprintf(stdout, "input file : %s\n", file_name);
 
         if(log_file == NULL){
             printf("failed open logfile : %s\n", file_name);
@@ -120,6 +122,8 @@ int main(int argc, char* argv[]){
         
     }
     fclose(out_file);
+
+    fgetc(stdin);
 
     return 0;
 }
