@@ -1,0 +1,10 @@
+C:\Desktop\programs\bitmap_test\Project1\bin\Debug\Project1.exe.config
+C:\Desktop\programs\bitmap_test\Project1\bin\Debug\Project1.exe
+C:\Desktop\programs\bitmap_test\Project1\bin\Debug\Project1.pdb
+C:\Desktop\programs\bitmap_test\Project1\obj\Debug\Project1.csproj.AssemblyReference.cache
+C:\Desktop\programs\bitmap_test\Project1\obj\Debug\Project1.csproj.SuggestedBindingRedirects.cache
+C:\Desktop\programs\bitmap_test\Project1\obj\Debug\Project1.Properties.Resources.resources
+C:\Desktop\programs\bitmap_test\Project1\obj\Debug\Project1.csproj.GenerateResource.cache
+C:\Desktop\programs\bitmap_test\Project1\obj\Debug\Project1.csproj.CoreCompileInputs.cache
+C:\Desktop\programs\bitmap_test\Project1\obj\Debug\Project1.exe
+C:\Desktop\programs\bitmap_test\Project1\obj\Debug\Project1.pdb
