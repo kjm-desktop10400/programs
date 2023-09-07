@@ -20,7 +20,7 @@ namespace Project1
             Application.EnableVisualStyles();
 
             //Formの表示
-            Application.Run(new Form4());
+            Application.Run(new Form3_1());
             
         }
     }
@@ -52,6 +52,20 @@ namespace Project1
             // 背景画像にbitmapオブジェクトを使用
             this.BackgroundImage = bitmap;
             //背景画像の並べ方の設定、ImageLayoutのフィールドはenumで定義
+            this.BackgroundImageLayout = ImageLayout.Tile;
+        }
+    }
+
+    class Form3_1 : Form
+    {
+
+        Bitmap bitmapImage;
+        public Form3_1()
+        {
+            //resoursesから背景画像を読み込み
+            bitmapImage = Project1.Properties.Resources.test_image;
+
+            this.BackgroundImage = bitmapImage;
             this.BackgroundImageLayout = ImageLayout.Tile;
         }
     }
