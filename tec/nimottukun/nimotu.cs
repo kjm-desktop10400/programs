@@ -1,5 +1,8 @@
 using System;
 
+#define MAP_X 10
+#define MAP_Y 10
+
 namespace nimotu
 {
     class Test
@@ -8,8 +11,11 @@ namespace nimotu
 
             while(1)
             {
-                Map.show();
 
+                Map* map = Map.Instance();
+                map.show();
+
+                break;
 
             }
 
@@ -96,22 +102,63 @@ namespace nimotu
         }
     }
 
-    //各シグネチャの列挙
+    //各シグネチャの列挙、asciiコードで書いてある。文字はそれぞれのコメント
     enum Aspect
     {
-        Wall = 0,
-        Player = 1,
-        Goal = 2,
-        Point = 4,
-        Obj = 5,
-        Space = 6,
+        Wall = 3,   //'#'
+        Player = 80,    //'P'
+        Goal = 71,      //'G'
+        Point = 79,     //'O'
+        Obj = 46,       //'.'
+        Space = 32,     //' '
     }
 
     //マップクラス
     class Map
     {
-        private Pos pos;
-        private Aspect sapect;
+
+        //シングルトン　プライベートなマップの初期化
+        private Map()
+        {
+            aspect = new Aspect[MAP_Y][MAP_X];
+
+            for(int i = 0; i < MAP_Y; i++)
+            {
+                for(int j = 0; j < MAP_X; j++)
+                {
+                    aspect[i][j] = Aspect.Wall;
+                }
+            }
+        }
+
+        //シングルトン　自己のインスタンス
+        private static void Map* _Instance = 0;
+
+        private Aspect[MAP_X][MAP_Y] aspect;
+
+        //シングルトン　インスタンスを返す関数
+        public Map* Instance()
+        {
+            if(_Instance == 0)
+            {
+                _Instance = new Mapp();
+            }
+
+            return _Instance;
+        }
+
+        //マップの表示用
+        public void show()
+        {
+            for(int i = 0; i < MAP_Y; i++)
+            {
+                for(int j = 0; j < MAP_X; j++)
+                {
+                    System.Console.Write((char)aspect[i][j]);
+                }
+                System.Console.Write("\n");
+            }
+        }
     }
 
 }
