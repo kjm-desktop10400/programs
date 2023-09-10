@@ -1,8 +1,5 @@
 using System;
 
-#define MAP_X 10
-#define MAP_Y 10
-
 namespace nimotu
 {
     class Test
@@ -117,10 +114,13 @@ namespace nimotu
     class Map
     {
 
+        private int MAP_X = 10;
+        private int MAP_Y = 10;
+
         //シングルトン　プライベートなマップの初期化
         private Map()
         {
-            aspect = new Aspect[MAP_Y][MAP_X];
+            aspect = new Aspect[MAP_Y, MAP_X];
 
             for(int i = 0; i < MAP_Y; i++)
             {
@@ -132,9 +132,9 @@ namespace nimotu
         }
 
         //シングルトン　自己のインスタンス
-        private static void Map* _Instance = 0;
+        private static Map* _Instance = 0;
 
-        private Aspect[MAP_X][MAP_Y] aspect;
+        private Aspect[,] aspect;
 
         //シングルトン　インスタンスを返す関数
         public Map* Instance()
@@ -154,7 +154,7 @@ namespace nimotu
             {
                 for(int j = 0; j < MAP_X; j++)
                 {
-                    System.Console.Write((char)aspect[i][j]);
+                    System.Console.Write(aspect[i][j]);
                 }
                 System.Console.Write("\n");
             }
