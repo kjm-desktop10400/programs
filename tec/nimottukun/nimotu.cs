@@ -6,13 +6,37 @@ namespace nimotu
     {
         public static void Run(){
 
-            while(1)
+            //シングルトンのインスタンス取得
+            Map map = Map.Instance();
+
+            //入力保存用バッファ
+            char input;
+
+            while(true)
             {
 
-                Map* map = Map.Instance();
                 map.show();
 
-                break;
+                if(map.check())
+                {
+                    System.Console.WriteLine("congratulations!!");
+                    break;
+                }
+
+                input = char.Parse(System.Console.ReadLine());
+
+                if(input == 'q')
+                {
+                    break;
+                }
+                
+                if(input == 'r')
+                {
+                    map.reset();
+                    continue;
+                }
+
+                map.Move(input);
 
             }
 
@@ -37,9 +61,15 @@ namespace nimotu
         }
         public Pos(Pos source)
         {
-            
+            this.x = source.X;
+            this.y = source.Y;
         }
-        
+        public Pos()
+        {
+            this.x = 0;
+            this.y = 0;
+        }
+
         //プロパティ
         public int X
         {
@@ -72,6 +102,17 @@ namespace nimotu
                 return true;
             }
             else 
+            {
+                return false;
+            }
+        }
+        public static bool operator != (Pos lhs, Pos rhs)
+        {
+            if(lhs.x != rhs.x || lhs.y != rhs.y)
+            {
+                return true;
+            }
+            else
             {
                 return false;
             }
@@ -114,8 +155,33 @@ namespace nimotu
     class Map
     {
 
+        //マップサイズ
         private int MAP_X = 10;
         private int MAP_Y = 10;
+
+        //プレイヤーの座標
+        Pos player = new Pos(7, 5);
+
+        //ゴールの座標
+        Pos Goal = new Pos(4, 5);
+
+        //荷物の座標
+        Pos obj = new Pos(6, 5);
+
+        //char型で与えるマップ情報
+        private char[,] state = 
+        {
+            {'#', '#', '#', '#', '#', '#', '#', '#', '#', '#'},
+            {'#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#'},
+            {'#', ' ', ' ', 'O', ' ', ' ', ' ', ' ', ' ', '#'},
+            {'#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#'},
+            {'#', ' ', ' ', ' ', ' ', '.', ' ', ' ', ' ', '#'},
+            {'#', ' ', ' ', 'O', ' ', '.', ' ', 'P', ' ', '#'},
+            {'#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#'},
+            {'#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#'},
+            {'#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#'},
+            {'#', '#', '#', '#', '#', '#', '#', '#', '#', '#'}
+        };
 
         //シングルトン　プライベートなマップの初期化
         private Map()
@@ -126,22 +192,23 @@ namespace nimotu
             {
                 for(int j = 0; j < MAP_X; j++)
                 {
-                    aspect[i][j] = Aspect.Wall;
+                    aspect[i, j] = CtoA(state[i, j]);
                 }
             }
         }
 
         //シングルトン　自己のインスタンス
-        private static Map* _Instance = 0;
+        private static Map _Instance = null;
 
+        //列挙型でのマップ
         private Aspect[,] aspect;
 
         //シングルトン　インスタンスを返す関数
-        public Map* Instance()
+        public static Map Instance()
         {
-            if(_Instance == 0)
+            if(_Instance == null)
             {
-                _Instance = new Mapp();
+                _Instance = new Map();
             }
 
             return _Instance;
@@ -154,11 +221,223 @@ namespace nimotu
             {
                 for(int j = 0; j < MAP_X; j++)
                 {
-                    System.Console.Write(aspect[i][j]);
+                    System.Console.Write(string.Format("{0} ", AtoC(aspect[i, j])));
                 }
                 System.Console.Write("\n");
             }
         }
+
+        //文字と列挙の変換  
+        public static Aspect CtoA(char input)
+        {
+            Aspect buf;
+
+            switch(input)
+            {
+                case '#' : 
+                    buf = Aspect.Wall;
+                    break;
+                case 'P' :
+                    buf = Aspect.Player;
+                    break;
+                case 'O' :
+                    buf = Aspect.Point;
+                    break;
+                case 'G' :
+                    buf = Aspect.Goal;
+                    break;
+                case '.' :
+                    buf = Aspect.Obj;
+                    break;
+                case ' ' :
+                    buf = Aspect.Space;
+                    break;
+
+                default :
+                    buf = Aspect.Wall;
+                    break;
+            }
+            return buf;
+        }
+        public static char AtoC(Aspect input)
+        {
+            char buf;
+
+            switch(input)
+            {
+                case Aspect.Wall : 
+                    buf = '#';
+                    break;
+                case Aspect.Player :
+                    buf = 'P';
+                    break;
+                case Aspect.Point :
+                    buf = 'O';
+                    break;
+                case Aspect.Goal :
+                    buf = 'G';
+                    break;
+                case Aspect.Obj :
+                    buf = '.';
+                    break;
+                case Aspect.Space :
+                    buf = ' ';
+                    break;
+
+                default :
+                    buf = '#';
+                    break;
+            }
+            return buf;
+        }
+
+        //移動用関数
+        public void Move(char input)
+        {
+            Pos target = new Pos(player);
+
+            //入力が適切であるかのチェックと移動先の計算
+            bool invalid_input = false;
+            switch(input)
+            {
+                case 'w' :
+                    target.Y -= 1;
+                    break;
+                case 'a' :
+                    target.X -= 1;
+                    break;
+                case 's' :
+                    target.Y += 1;
+                    break;
+                case 'd' :
+                    target.X += 1;
+                    break;
+
+                default :
+                    invalid_input = false;
+                    break;
+            }
+            if(invalid_input)
+            {
+                System.Console.WriteLine("input is invalid.");
+                return;
+            }
+
+            //移動先が壁かゴールならば何もしない
+            if(aspect[target.Y, target.X] == Aspect.Wall || aspect[target.Y, target.X] == Aspect.Goal)
+            {
+                System.Console.WriteLine("cant move that direction.");
+                return;
+            }
+
+            //移動先に何もなければ位置を更新、移動前の座標に空白を挿入
+            if(aspect[target.Y, target.X] == Aspect.Space)
+            {
+                aspect[player.Y, player.X] = Aspect.Space;
+                player.copy(target);
+                aspect[player.Y, player.X] = Aspect.Player;
+                return;
+            }
+
+            //移動先が荷物である時の処理
+            if(aspect[target.Y, target.X] == Aspect.Obj)
+            {
+
+                //荷物の座標をコピー、このメソッド内ではtargetが荷物の移動先
+                Pos nimotu = new Pos();
+                nimotu.copy(target);
+
+                //荷物の移動先を計算
+                switch(input)
+                {
+                    case 'w' :
+                        target.Y -= 1;
+                        break;
+                    case 'a' :
+                        target.X -= 1;
+                        break;
+                    case 's' :
+                        target.Y += 1;
+                        break;
+                    case 'd' :
+                        target.X += 1;
+                        break;
+                }
+
+                //荷物の移動先に何もない場合
+                if(aspect[target.Y, target.X] == Aspect.Space)
+                {
+                    aspect[target.Y, target.X] = Aspect.Obj;
+                    aspect[nimotu.Y, nimotu.X] = Aspect.Player;
+                    aspect[player.Y, player.X] = Aspect.Space;
+
+                    player.copy(nimotu);
+                    
+                    return;
+                }
+
+                //荷物の移動先が荷物の場合
+                if(aspect[target.Y, target.X] == Aspect.Obj)
+                {
+                    System.Console.WriteLine("cant move that direction.");
+                    return;
+                }
+
+                //荷物の移動先が壁の場合
+                if(aspect[target.Y, target.X] == Aspect.Wall)
+                {
+                    System.Console.WriteLine("cant move that direction.");
+                    return;
+                }
+
+                //荷物の移動先がゴールの場合
+                if(aspect[target.Y, target.X] == Aspect.Point)
+                {
+                    aspect[target.Y, target.X] = Aspect.Goal;
+                    aspect[nimotu.Y, nimotu.X] = Aspect.Player;
+                    aspect[player.Y, player.X] = Aspect.Space;
+
+                    player.copy(nimotu);
+                    return;
+                }
+
+            }
+
+        }
+
+        //初期位置に戻す
+        public void reset()
+        {
+            aspect = new Aspect[MAP_Y, MAP_X];
+
+            for(int i = 0; i < MAP_Y; i++)
+            {
+                for(int j = 0; j < MAP_X; j++)
+                {
+                    aspect[i, j] = CtoA(state[i, j]);
+                }
+            }
+
+            player.X = 7;
+            player.Y = 5;
+        }
+
+        //終了判定。ゴールが全てなくなっていればtrueを返す
+        public bool check()
+        {
+            for(int i = 0; i < MAP_Y; i++)
+            {
+                for(int j = 0; j < MAP_X; j++)
+                {
+                    if(aspect[i, j] == Aspect.Point)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
     }
 
 }
