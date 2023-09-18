@@ -17,18 +17,27 @@ namespace Visual_nimotsh
         //リソースの読み込み
         Bitmap Wall_Image = Visual_nimotsh.Properties.Resources.wall;
 
+        Map map = Map.Instance();
+
+        FlameRate flamerate = new FlameRate();
+
+        Label label = new Label();
+
         public Form1()
         {
             InitializeComponent();
 
-            Map map = Map.Instance();
-
             this.ClientSize = new Size((map.MAP_X + 2) * 50, (map.MAP_Y + 2) * 50);
+
+            label.Location = new Point(10, 10);
+            label.AutoSize = true;
 
             while(true)
             {
+                label.Text = flamerate.fps().ToString();
+                this.Controls.Add(label);
 
-
+                this.Invalidate();
 
             }
             
@@ -64,21 +73,24 @@ namespace Visual_nimotsh
     class FlameRate
     {
         //記録時間の保存
-        private int[] time_array;
+        private long[] time_array;
 
-        private int time;
+        private long time;
 
         private int index;
 
         private int index_size = 50;
 
-        var sw =new Stopwatch();
+        private long ave;
+
+        Stopwatch sw = new Stopwatch();
 
         public FlameRate()
         {
             time = 0;
             index = 0;
-            time_array = new int[index_size];
+            time_array = new long[index_size];
+            ave = 0;
             foreach(int i in time_array)
             {
                 time_array[i] = 0;
@@ -97,11 +109,23 @@ namespace Visual_nimotsh
                 index++;
                 return 0;
             }
-            
+
+            ave = 0;
             for(int i = 0; i < index_size; i++)
             {
-
+                ave += time_array[i];
             }
+
+            if(index == index_size - 1)
+            {
+                index = 0;
+            }
+            else
+            {
+                index++;
+            }
+               
+            return (int)ave / index_size;
 
         }
 

@@ -9,3 +9,13 @@ C:\Desktop\programs\tec\Visual_nimotsh\obj\Debug\Visual_nimotsh.csproj.GenerateR
 C:\Desktop\programs\tec\Visual_nimotsh\obj\Debug\Visual_nimotsh.csproj.CoreCompileInputs.cache
 C:\Desktop\programs\tec\Visual_nimotsh\obj\Debug\Visual_nimotsh.exe
 C:\Desktop\programs\tec\Visual_nimotsh\obj\Debug\Visual_nimotsh.pdb
+E:\Desktop\programs\tec\Visual_nimotsh\bin\Debug\Visual_nimotsh.exe.config
+E:\Desktop\programs\tec\Visual_nimotsh\bin\Debug\Visual_nimotsh.exe
+E:\Desktop\programs\tec\Visual_nimotsh\bin\Debug\Visual_nimotsh.pdb
+E:\Desktop\programs\tec\Visual_nimotsh\obj\Debug\Visual_nimotsh.csproj.AssemblyReference.cache
+E:\Desktop\programs\tec\Visual_nimotsh\obj\Debug\Visual_nimotsh.Form1.resources
+E:\Desktop\programs\tec\Visual_nimotsh\obj\Debug\Visual_nimotsh.Properties.Resources.resources
+E:\Desktop\programs\tec\Visual_nimotsh\obj\Debug\Visual_nimotsh.csproj.GenerateResource.cache
+E:\Desktop\programs\tec\Visual_nimotsh\obj\Debug\Visual_nimotsh.csproj.CoreCompileInputs.cache
+E:\Desktop\programs\tec\Visual_nimotsh\obj\Debug\Visual_nimotsh.exe
+E:\Desktop\programs\tec\Visual_nimotsh\obj\Debug\Visual_nimotsh.pdb
