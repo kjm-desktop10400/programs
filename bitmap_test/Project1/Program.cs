@@ -20,7 +20,7 @@ namespace Project1
             Application.EnableVisualStyles();
 
             //Formの表示
-            Application.Run(new Form3_1());
+            Application.Run(new Form3());
             
         }
     }
@@ -56,6 +56,7 @@ namespace Project1
         }
     }
 
+/*
     class Form3_1 : Form
     {
 
@@ -69,6 +70,8 @@ namespace Project1
             this.BackgroundImageLayout = ImageLayout.Tile;
         }
     }
+
+    */
 
     class Form4 : Form
     {
