@@ -13,34 +13,46 @@ namespace Visual_nimotsh
 {
     public partial class Form1 : Form
     {
+        //リソースの読み込み用の変数
+        private Bitmap Wall_Image;
+        private Bitmap Player_Image;
+        private Bitmap Goal_Image;
+        private Bitmap Point_Image;
+        private Bitmap Obj_Image;
 
-        //リソースの読み込み
-        Bitmap Wall_Image = Visual_nimotsh.Properties.Resources.wall;
-
-        Map map = Map.Instance();
-
-        FlameRate flamerate = new FlameRate();
-
-        Label label = new Label();
+        private Map map;                //マップのインスタンス
+        private FlameRate flamerate;    //フレームレート計算用クラスのインスタンス
+        private Label dispray_fps;      //fpsインジケーターのラベルコントロール
 
         public Form1()
         {
             InitializeComponent();
 
+            //クライアント領域の設定
             this.ClientSize = new Size((map.MAP_X + 2) * 50, (map.MAP_Y + 2) * 50);
 
-            label.Location = new Point(10, 10);
-            label.AutoSize = true;
+            //リソースの読み込み
+            Wall_Image = Visual_nimotsh.Properties.Resources.wall;
+            Player_Image = Visual_nimotsh.Properties.Resources.player;
+            Goal_Image = Visual_nimotsh.Properties.Resources.goal;
+            Point_Image = Visual_nimotsh.Properties.Resources.target;
+            Obj_Image = Visual_nimotsh.Properties.Resources._object;
 
-            while(true)
-            {
-                label.Text = flamerate.fps().ToString();
-                this.Controls.Add(label);
+            //インスタンスの代入
+            map = Map.Instance();
+            flamerate = new FlameRate();
+            dispray_fps = new Label();
 
-                this.Invalidate();
+ 
+            //ラベルの追加
+            dispray_fps.Location = new Point(10, 10);
+            dispray_fps.Text = "fps : ";
+            dispray_fps.AutoSize = true;
+            this.Controls.Add(dispray_fps);
 
-            }
-            
+            //Loadイベントに描画開始イベント発出を追加
+
+           
         }
 
         //描画用のイベントハンドラ
@@ -69,8 +81,48 @@ namespace Visual_nimotsh
 
     }
 
+    //描画用クラス。ピクセル単位でマップ上のシグネチャを管理。staticなシングルトン
+    public class Draw
+    {
 
-    class FlameRate
+        static private Map map;
+        static private Draw _Instance;
+
+
+        //コンストラクタ
+        public Draw()
+        {
+            map = Map.Instance();
+            _Instance = null;
+        }
+
+        //シングルトン用。インスタンスを返す
+        public Draw Instance()
+        {
+            if(_Instance == null)
+            {
+                return _Instance = new Draw();
+            }
+            
+            return _Instance;
+        }
+
+
+
+    }
+
+    //フレームレート計算用eventArgs
+    public class FpsEventArgs : EventArgs
+    { 
+        public FpsEventArgs(FlameRate obj) 
+        {
+            flamerate = obj;
+        }
+        public FlameRate flamerate;
+    }
+        
+
+    public class FlameRate
     {
         //記録時間の保存
         private long[] time_array;
@@ -129,10 +181,12 @@ namespace Visual_nimotsh
 
         }
 
+        public delegate void CalcFlameHandler(object FlameRate, FpsEventArgs f);
+
     }
 
 
-    class Pos       //座標クラス
+    public class Pos       //座標クラス
     {
         private int x;
         private int y;
@@ -236,7 +290,7 @@ namespace Visual_nimotsh
     }
 
     //マップクラス
-    class Map
+    public class Map
     {
 
         //マップサイズ

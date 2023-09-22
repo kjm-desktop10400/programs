@@ -53,6 +53,14 @@
 		"FortranFreeForm": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
 		"fortran-modern": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
 		"fortran_fixed-form": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
-		"fortran": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt"
+		"fortran": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
 	},
+
+	"code-runner.executorMapByFileExtension":
+	{
+		".tex" : "platex $fullFileName && dvipdfmx $dir$fileNameWithoutExt",
+		".plt" : "plt $fullFileName",
+	},
+
+	"git.openRepositoryInParentFolders": "never",
 }
