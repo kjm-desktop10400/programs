@@ -3,16 +3,14 @@
         {
             "name": "Win32",
             "includePath": [
-                "${workspaceFolder}/**",
-                "C:\\BCC102\\include\\dinkumware64",
-                "C:\\BCC102\\include\\windows\\crtl"
+                "C:\\BCC102\\include\\windows\\crtl",
+                "C:\\BCC102\\include\\dinkumware64"
             ],
             "defines": [
                 "_DEBUG",
                 "UNICODE",
                 "_UNICODE"
-            ],
-            "intelliSenseMode": "windows-msvc-x64"
+            ]
         }
     ],
     "version": 4
