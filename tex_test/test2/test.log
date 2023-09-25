@@ -1,0 +1,681 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.5.26)  25 SEP 2023 11:57
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**c:/Users/LarcH/Desktop/programs/tex_test/test2/test.tex
+(c:/Users/LarcH/Desktop/programs/tex_test/test2/test.tex
+LaTeX2e <2022-11-01> patch level 1
+L3 programming layer <2023-05-15> (c:/texlive/2023/texmf-dist/tex/platex/jsclasses/jsarticle.cls
+
+c:/texlive/2023/texmf-dist/tex/platex/jsclasses/jsarticle.cls:14: LaTeX Error: This file needs format `pLaTeX2e'
+               but this is `LaTeX2e'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.14 \NeedsTeXFormat{pLaTeX2e}
+                              
+The current input file will not be processed further,
+because it was written for some other flavor of TeX.
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+) (c:/texlive/2023/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+ (c:/texlive/2023/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks16
+) (c:/texlive/2023/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
+ (c:/texlive/2023/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
+) (c:/texlive/2023/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: dvipdfmx.def on input line 107.
+ (c:/texlive/2023/texmf-dist/tex/latex/graphics-def/dvipdfmx.def
+File: dvipdfmx.def 2022/09/22 v5.0m Graphics/color driver for dvipdfmx
+))
+\Gin@req@height=\dimen140
+\Gin@req@width=\dimen141
+) (./kenzemi.sty
+kenzemi.sty; Version 1.11 [April 12 2004]
+./kenzemi.sty:44: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   z
+l.44 \parindent=1z
+                  w
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+
+./kenzemi.sty:44: LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.44 \parindent=1z
+                  w
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no z in font nullfont!
+Missing character: There is no w in font nullfont!
+
+Overfull \hbox (1.0pt too wide) in paragraph at lines 44--52
+[] 
+ []
+
+\JQ=\dimen142
+\@Q=\dimen143
+\@bs=\dimen144
+./kenzemi.sty:197: Undefined control sequence.
+\@normalsize ...{14pt}{\ixpt }{\@ixpt }\kanjiskip 
+                                                  =0zw plus .1zw minus .05zw...
+l.197 \normalsize
+                 
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+./kenzemi.sty:197: LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.197 \normalsize
+                 
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (23.61096pt too wide) in paragraph at lines 197--198
+[]\OT1/cmr/m/n/9 =0zw
+ []
+
+
+Overfull \hbox (16.49573pt too wide) in paragraph at lines 197--198
+\OT1/cmr/m/n/9 plus
+ []
+
+
+Overfull \hbox (17.986pt too wide) in paragraph at lines 197--198
+\OT1/cmr/m/n/9 .1zw
+ []
+
+
+Overfull \hbox (13.36102pt too wide) in paragraph at lines 197--198
+\OT1/cmr/m/n/9 mi-
+ []
+
+
+Overfull \hbox (13.66936pt too wide) in paragraph at lines 197--198
+\OT1/cmr/m/n/9 nus
+ []
+
+
+Overfull \hbox (22.61096pt too wide) in paragraph at lines 197--198
+\OT1/cmr/m/n/9 .05zw 
+ []
+
+./kenzemi.sty:219: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   z
+l.219 \leftmargini=2z
+                     w
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+
+./kenzemi.sty:219: LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.219 \leftmargini=2z
+                     w
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+./kenzemi.sty:220: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   z
+l.220 \leftmarginii=2z
+                      w
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+./kenzemi.sty:221: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   z
+l.221 \leftmarginiii=2z
+                       w
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+./kenzemi.sty:222: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   z
+l.222 \leftmarginiv=2z
+                      w
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+./kenzemi.sty:223: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   z
+l.223 \leftmarginv=1z
+                     w
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+./kenzemi.sty:224: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   z
+l.224 \leftmarginvi=1z
+                      w
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+./kenzemi.sty:226: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   z
+l.226 \labelsep=1z
+                  w
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+
+Overfull \hbox (11.7916pt too wide) in paragraph at lines 219--229
+[]\OT1/cmr/m/n/9 zw
+ []
+
+
+Overfull \hbox (10.7916pt too wide) in paragraph at lines 219--229
+\OT1/cmr/m/n/9 zw
+ []
+
+
+Overfull \hbox (10.7916pt too wide) in paragraph at lines 219--229
+\OT1/cmr/m/n/9 zw
+ []
+
+
+Overfull \hbox (10.7916pt too wide) in paragraph at lines 219--229
+\OT1/cmr/m/n/9 zw
+ []
+
+
+Overfull \hbox (10.7916pt too wide) in paragraph at lines 219--229
+\OT1/cmr/m/n/9 zw
+ []
+
+
+Overfull \hbox (10.7916pt too wide) in paragraph at lines 219--229
+\OT1/cmr/m/n/9 zw
+ []
+
+
+Overfull \hbox (10.7916pt too wide) in paragraph at lines 219--229
+\OT1/cmr/m/n/9 zw 
+ []
+
+./kenzemi.sty:381: Illegal parameter number in definition of \@maketitle.
+<to be read again> 
+                   1
+l.381 \def\FRAC#1
+                 #2{\leavevmode\kern-.1em
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+./kenzemi.sty:381: Illegal parameter number in definition of \@maketitle.
+<to be read again> 
+                   2
+l.381 \def\FRAC#1#2
+                   {\leavevmode\kern-.1em
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+./kenzemi.sty:382: Illegal parameter number in definition of \@maketitle.
+<to be read again> 
+                   1
+l.382   \raise.5ex\hbox{\the\scriptfont0 #1
+                                           }\kern-.1em
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+./kenzemi.sty:383: Illegal parameter number in definition of \@maketitle.
+<to be read again> 
+                   2
+l.383 ....15em\lower.25ex\hbox{\the\scriptfont0 #2
+                                                  }}
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+./kenzemi.sty:384: Illegal parameter number in definition of \@maketitle.
+<to be read again> 
+                   1
+l.384 \def\RN#1
+               {\uppercase\expandafter{\romannumeral#1}}
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+./kenzemi.sty:384: Illegal parameter number in definition of \@maketitle.
+<to be read again> 
+                   1
+l.384 ...#1{\uppercase\expandafter{\romannumeral#1
+                                                  }}
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+./kenzemi.sty:386: Illegal parameter number in definition of \@maketitle.
+<to be read again> 
+                   1
+l.386 \def\MARU#1
+                 {\raisebox{0.1zh}{{%
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+./kenzemi.sty:387: Illegal parameter number in definition of \@maketitle.
+<to be read again> 
+                   1
+l.387 ...vevmode\ooalign{\hfil\lower.168ex\hbox{#1
+                                                  }\hfil\crcr\mathhexbox20D}}}}
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+./kenzemi.sty:389: Illegal parameter number in definition of \@maketitle.
+<to be read again> 
+                   1
+l.389 \def\kintou#1
+                   #2{\@ifundefined{jintercharskip}%
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+./kenzemi.sty:389: Illegal parameter number in definition of \@maketitle.
+<to be read again> 
+                   2
+l.389 \def\kintou#1#2
+                     {\@ifundefined{jintercharskip}%
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+./kenzemi.sty:390: Illegal parameter number in definition of \@maketitle.
+<to be read again> 
+                   1
+l.390  {\makebox[#1
+                   ]{\kanjiskip\z@ plus 1fill minus 1fill\xkanjiskip=\kanjis...
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+./kenzemi.sty:390: Illegal parameter number in definition of \@maketitle.
+<to be read again> 
+                   2
+l.390 ...fill minus 1fill\xkanjiskip=\kanjiskip #2
+                                                  }}%
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+./kenzemi.sty:391: Illegal parameter number in definition of \@maketitle.
+<to be read again> 
+                   1
+l.391  {\makebox[#1
+                   ]{\jintercharskip=0pt plus 1fill minus 1fill
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+./kenzemi.sty:392: Illegal parameter number in definition of \@maketitle.
+<to be read again> 
+                   2
+l.392  \jasciikanjiskip=\jintercharskip #2
+                                          }}}
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+./kenzemi.sty:394: Illegal parameter number in definition of \@maketitle.
+<to be read again> 
+                   1
+l.394 \def\ruby#1
+                 #2{\leavevmode \setbox0=\hbox{#1}\setbox1=\hbox{\tiny#2}%% <
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+./kenzemi.sty:394: Illegal parameter number in definition of \@maketitle.
+<to be read again> 
+                   2
+l.394 \def\ruby#1#2
+                   {\leavevmode \setbox0=\hbox{#1}\setbox1=\hbox{\tiny#2}%% <
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+./kenzemi.sty:394: Illegal parameter number in definition of \@maketitle.
+<to be read again> 
+                   1
+l.394 \def\ruby#1#2{\leavevmode \setbox0=\hbox{#1
+                                                 }\setbox1=\hbox{\tiny#2}%% <
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+./kenzemi.sty:394: Illegal parameter number in definition of \@maketitle.
+<to be read again> 
+                   2
+l.394 ... \setbox0=\hbox{#1}\setbox1=\hbox{\tiny#2
+                                                  }%% <
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+./kenzemi.sty:397: Illegal parameter number in definition of \@maketitle.
+<to be read again> 
+                   2
+l.397  \vbox{\hbox to \dimen0{\tiny \hfil#2
+                                           \hfil}%
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+./kenzemi.sty:398: Illegal parameter number in definition of \@maketitle.
+<to be read again> 
+                   1
+l.398   \nointerlineskip \hbox to \dimen0{\hfil#1
+                                                 \hfil}}}}
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+./kenzemi.sty:409: Illegal parameter number in definition of \@maketitle.
+<to be read again> 
+                   1
+l.409 \def\gl@align#1
+                     #2{\lower.6ex\vbox{\baselineskip\z@skip\lineskip\z@
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+./kenzemi.sty:409: Illegal parameter number in definition of \@maketitle.
+<to be read again> 
+                   2
+l.409 \def\gl@align#1#2
+                       {\lower.6ex\vbox{\baselineskip\z@skip\lineskip\z@
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+./kenzemi.sty:410: Illegal parameter number in definition of \@maketitle.
+<to be read again> 
+                   1
+l.410  \ialign{$\m@th#1
+                       \hfil##\hfil$\crcr#2\crcr=\crcr}}}
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+./kenzemi.sty:410: Illegal parameter number in definition of \@maketitle.
+<to be read again> 
+                   2
+l.410  \ialign{$\m@th#1\hfil##\hfil$\crcr#2
+                                           \crcr=\crcr}}}
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+./kenzemi.sty:414: Illegal parameter number in definition of \@maketitle.
+<to be read again> 
+                   1
+l.414 \def\c@ncelass#1
+                      #2{\ooalign{$\hfil#1\mkern-.4mu|\hfil$\crcr$#1#2$}}
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+./kenzemi.sty:414: Illegal parameter number in definition of \@maketitle.
+<to be read again> 
+                   2
+l.414 \def\c@ncelass#1#2
+                        {\ooalign{$\hfil#1\mkern-.4mu|\hfil$\crcr$#1#2$}}
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+./kenzemi.sty:414: Illegal parameter number in definition of \@maketitle.
+<to be read again> 
+                   1
+l.414 \def\c@ncelass#1#2{\ooalign{$\hfil#1
+                                          \mkern-.4mu|\hfil$\crcr$#1#2$}}
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+./kenzemi.sty:414: Illegal parameter number in definition of \@maketitle.
+<to be read again> 
+                   1
+l.414 ...oalign{$\hfil#1\mkern-.4mu|\hfil$\crcr$#1
+                                                  #2$}}
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+./kenzemi.sty:414: Illegal parameter number in definition of \@maketitle.
+<to be read again> 
+                   2
+l.414 ...lign{$\hfil#1\mkern-.4mu|\hfil$\crcr$#1#2
+                                                  $}}
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+./kenzemi.sty:426: Illegal parameter number in definition of \@maketitle.
+<to be read again> 
+                   1
+l.426 \def\thebibliography#1
+                            {%
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+./kenzemi.sty:452: Illegal parameter number in definition of \@maketitle.
+<to be read again> 
+                   1
+l.452 \def\@citex[#1
+                    ]#2{%
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+./kenzemi.sty:452: Illegal parameter number in definition of \@maketitle.
+<to be read again> 
+                   2
+l.452 \def\@citex[#1]#2
+                       {%
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+./kenzemi.sty:453: Illegal parameter number in definition of \@maketitle.
+<to be read again> 
+                   2
+l.453 ...te \write \@auxout {\string \citation {#2
+                                                  }}\fi
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+./kenzemi.sty:457: Illegal parameter number in definition of \@maketitle.
+<to be read again> 
+                   2
+l.457   \@for \@citeb:=#2
+                         \do {\@ifundefined {b@\@citeb}%
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+./kenzemi.sty:460: Illegal parameter number in definition of \@maketitle.
+<to be read again> 
+                   2
+l.460 {\@minsofar\z@ \@for \@scan@cites:=#2
+                                           \do {%
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+./kenzemi.sty:484: Illegal parameter number in definition of \@maketitle.
+<to be read again> 
+                   1
+l.484 ...ea{],\penalty\@highpenalty\,[}}\@h@ld}{#1
+                                                  }}
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+./kenzemi.sty:490: Illegal parameter number in definition of \@maketitle.
+<to be read again> 
+                   1
+l.490 \long\def\@makecaption#1
+                              #2{
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+./kenzemi.sty:490: Illegal parameter number in definition of \@maketitle.
+<to be read again> 
+                   2
+l.490 \long\def\@makecaption#1#2
+                                {
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+./kenzemi.sty:492: Illegal parameter number in definition of \@maketitle.
+<to be read again> 
+                   1
+l.492  \setbox\@tempboxa\hbox{#1
+                                ~#2}
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+./kenzemi.sty:492: Illegal parameter number in definition of \@maketitle.
+<to be read again> 
+                   2
+l.492  \setbox\@tempboxa\hbox{#1~#2
+                                   }
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+./kenzemi.sty:504: Illegal parameter number in definition of \@maketitle.
+<to be read again> 
+                   1
+l.504 \def\bi#1
+               {\mbox{\boldmath$#1$}}
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+./kenzemi.sty:504: Illegal parameter number in definition of \@maketitle.
+<to be read again> 
+                   1
+l.504 \def\bi#1{\mbox{\boldmath$#1
+                                  $}}
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+)
+Runaway definition?
+->\newpage \null \vskip 0em \hfill \hbox {\normalsize ^^[$B\begin {ce\ETC.
+c:/Users/LarcH/Desktop/programs/tex_test/test2/test.tex:4: File ended while scanning definition of \@maketitle.
+<inserted text> 
+                }
+l.4 \usepackage
+               {amsmath}
+I suspect you have forgotten a `}', causing me
+to read past where you wanted me to stop.
+I'll try to recover; but if the error is serious,
+you'd better type `E' or `X' now and fix your file.
+
+)
+Runaway definition?
+->\newpage \null \vskip 0em \hfill \hbox {\normalsize ^^[$B\begin {ce\ETC.
+! File ended while scanning definition of \@maketitle.
+<inserted text> 
+                }
+<*> ...cH/Desktop/programs/tex_test/test2/test.tex
+                                                  
+I suspect you have forgotten a `}', causing me
+to read past where you wanted me to stop.
+I'll try to recover; but if the error is serious,
+you'd better type `E' or `X' now and fix your file.
+
+! Emergency stop.
+<*> ...cH/Desktop/programs/tex_test/test2/test.tex
+                                                  
+*** (job aborted, no legal \end found)
+
+ 
+Here is how much of TeX's memory you used:
+ 640 strings out of 476096
+ 9468 string characters out of 5795114
+ 1850845 words of memory out of 5000000
+ 21086 multiletter control sequences out of 15000+600000
+ 514153 words of font info for 38 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 57i,0n,62p,248b,36s stack positions out of 10000i,1000n,20000p,200000b,200000s
+!  ==> Fatal error occurred, no output PDF file produced!
