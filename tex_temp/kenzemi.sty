@@ -1,0 +1,506 @@
+%------------------------------------------------------------
+% File:	kenzemi.sty (LaTeX Document style option "kenzemi")
+%
+% Usage: \documentstyle[...,kenzemi,...]{jarticle}
+%
+% PLEASE REPORT ANY BUGS
+%
+% Author: Michiru Yamaguchi -- myama@signal.tutics.tut.ac.jp
+%
+% Date:	 2 April 2003
+% Last modified: 12 April 2004
+%------------------------------------------------------------
+
+%\typeout{kenzemi.sty; Version 1.0 [April 1 2003]}
+%\typeout{kenzemi.sty; Version 1.1 [November 24 2003]}
+\typeout{kenzemi.sty; Version 1.11 [April 12 2004]}
+
+
+\setlength{\unitlength}{1mm}
+\setlength{\topmargin}{0mm}
+\setlength{\evensidemargin}{-8.0mm}
+\setlength{\oddsidemargin}{-8.0mm}
+\setlength{\textwidth}{176mm}
+\setlength{\textheight}{237mm}
+\setlength{\columnsep}{9mm}
+\setlength{\headheight}{0mm}
+\setlength{\headsep}{0mm}
+\setlength{\footskip}{10mm}
+%\setlength{\footheight}{5mm}
+\setlength{\footnotesep}{6mm}
+\pagestyle{plain}
+
+\setcounter{topnumber}{3}
+\def\topfraction{.9}
+\setcounter{bottomnumber}{3}
+\def\bottomfraction{.9}
+\setcounter{totalnumber}{5}
+\def\textfraction{.1}
+
+\renewcommand{\baselinestretch}{0.92}
+
+
+\parskip=0pt
+\parindent=1zw
+\partopsep=0pt
+\@lowpenalty=51
+\@medpenalty=151
+\@highpenalty=301
+\@beginparpenalty=-\@lowpenalty
+\@endparpenalty=-\@lowpenalty
+\@itempenalty=-\@lowpenalty
+
+
+\newdimen\JQ
+\JQ=.259817mm
+\newdimen\@Q
+  \@Q=0.71144pt
+\newdimen\@bs
+ \@bs=20.5\@Q
+
+%\def\@mbiix{cmmib9}
+ \def\@mbiix{cmmib10 at 9pt}
+%\def\@mbiviii{cmmib8}
+ \def\@mbiviii{cmmib10 at 8pt}
+%\def\@mbivii{cmmib7}
+ \def\@mbivii{cmmib10 at 7pt}
+%\def\@mbivi{cmmib6}
+ \def\@mbivi{cmmib10 at 6pt}
+%\def\@mbiv{cmmib5}
+
+%\def\@mbsyix{cmbsy9}
+ \def\@mbsyix{cmbsy10 at 9pt}
+%\def\@mbsyviii{cmbsy8}
+ \def\@mbsyviii{cmbsy10 at 8pt}
+%\def\@mbsyvii{cmbsy7}
+ \def\@mbsyvii{cmbsy10 at 7pt}
+%\def\@mbsyvi{cmbsy6}
+ \def\@mbsyvi{cmbsy10 at 6pt}
+%\def\@mbsyv{cmbsy5}
+
+%\font\fivmib = cmmib5 % bold math italic
+ \font\fivmib = cmmib10 at 5pt % bold math italic
+%\font\fivsyb = cmbsy5 % bold math symbols
+ \font\fivsyb = cmbsy10 at 5pt % bold math symbols
+% \font\fivlyb = lasyb10 \@ptscale5 % LaTeX symbols
+
+
+\let\original@vipt=\vipt
+\def\vipt{\original@vipt
+ \def\unboldmath{\everymath{}\everydisplay{}\@nomath\unboldmath
+         \textfont\@ne\sixmi 
+         \textfont\tw@\sixsy \textfont\lyfam\sixly
+         \@boldfalse}\@boldfalse
+ \def\boldmath{\@ifundefined{sixmib}{\global\font\sixmib\@mbivi 
+  \global\font\sixsyb\@mbsyvi
+  \global\font\sixlyb\@lasyb\@ptscale6\relax\@addfontinfo\@vipt
+  {\def\boldmath{\everymath{\mit}\everydisplay{\mit}\@prtct\@nomathbold
+       \textfont\@ne\sixmib 
+       \textfont\tw@\sixsyb 
+       \textfont\lyfam\sixlyb \@prtct\@boldtrue}}}{}\@vipt\boldmath}%
+ \def\ptt{\@getfont\ptt\ttfam\@vipt{cmtt10 \@ptscale6}\@nohyphens\ptt\@vipt}%
+ \def\pit{\fam\itfam\sixit}\textfont\itfam\sixit 
+   \scriptfont\itfam\sixit \scriptscriptfont\itfam\sixit 
+ \def\pgt{\@getfont\pgt\gtfam\@vipt{goth10 at 9\@JQ}}%
+}
+
+\font\sixit=cmti10 at 6pt
+\let\original@viipt=\viipt
+\def\viipt{\original@viipt
+ \def\unboldmath{\everymath{}\everydisplay{}\@nomath\unboldmath
+         \textfont\@ne\sevmi 
+         \textfont\tw@\sevsy \textfont\lyfam\sevly
+         \@boldfalse}\@boldfalse
+ \def\boldmath{\@ifundefined{sevmib}{\global\font\sevmib\@mbivii 
+  \global\font\sevsyb\@mbsyvii
+  \global\font\sevlyb\@lasyb\@ptscale7\relax\@addfontinfo\@viipt
+  {\def\boldmath{\everymath{\mit}\everydisplay{\mit}\@prtct\@nomathbold
+       \textfont\@ne\sevmib %% 
+       \textfont\tw@\sevsyb %% 
+       \textfont\lyfam\sevlyb \@prtct\@boldtrue}}}{}\@viipt\boldmath}%
+ \def\ptt{\@getfont\ptt\ttfam\@viipt{cmtt10 \@ptscale7}\@nohyphens\ptt\@viipt}%
+ \def\pgt{\@getfont\pgt\gtfam\@viipt{goth10 at 10\@JQ}}%
+}
+
+\let\original@viiipt=\viiipt
+\def\viiipt{\original@viiipt
+ \def\unboldmath{\everymath{}\everydisplay{}\@nomath\unboldmath
+         \textfont\@ne\egtmi 
+         \textfont\tw@\egtsy \textfont\lyfam\egtly
+         \@boldfalse}\@boldfalse
+ \def\boldmath{\@ifundefined{egtmib}{\global\font\egtmib\@mbiviii 
+  \global\font\egtsyb\@mbsyviii 
+  \global\font\egtlyb\@lasyb\@ptscale8\relax\@addfontinfo\@viiipt
+  {\def\boldmath{\everymath{\mit}\everydisplay{\mit}\@prtct\@nomathbold
+       \textfont\@ne\egtmib %% 
+       \textfont\tw@\egtsyb %% 
+       \textfont\lyfam\egtlyb \@prtct\@boldtrue}}}{}\@viiipt\boldmath}%
+ \def\ptt{\@getfont\ptt\ttfam\@viiipt{cmtt8}\@nohyphens\ptt\@viiipt}%
+ \def\pgt{\@getfont\pgt\gtfam\@viiipt{goth10 at 11\@JQ}}%
+}
+
+\let\original@ixpt=\ixpt
+\def\ixpt{\original@ixpt
+ \def\unboldmath{\everymath{}\everydisplay{}\@nomath\unboldmath
+         \textfont\@ne\ninmi 
+         \textfont\tw@\ninsy \textfont\lyfam\ninly
+         \@boldfalse}\@boldfalse
+ \def\boldmath{\@ifundefined{ninmib}{\global\font\ninmib\@mbiix
+  \global\font\ninsyb\@mbsyix 
+  \global\font\ninlyb\@lasyb\@ptscale9\relax\@addfontinfo\@ixpt
+  {\def\boldmath{\everymath{\mit}\everydisplay{\mit}\@prtct\@nomathbold
+       \textfont\@ne\ninmib %% 
+       \textfont\tw@\ninsyb %% 
+       \textfont\lyfam\ninlyb \@prtct\@boldtrue}}}{}\@ixpt\boldmath}%
+}
+
+\let\dg\gt
+\let\dm\mc
+\let\pdg\pgt
+\let\pdm\pmc
+\font\EFnombre=cmss8
+\font\EFfoot=cmss8
+%\font\KFsec=goth10 at 14\@JQ
+\font\EFsec=cmbx10
+
+
+
+\def\@normalsize{%
+ \@setsize{\normalsize}{14pt}{\ixpt}{\@ixpt}%
+ \kanjiskip=0zw plus .1zw minus .05zw
+ \abovedisplayskip=10pt plus 2pt minus 5pt
+ \belowdisplayskip=\abovedisplayskip
+ \abovedisplayshortskip=\z@ plus 3pt
+ \belowdisplayshortskip=6pt plus 3pt minus 3pt
+ \let\@listi=\@listI}
+\def\normalsize{\ifx\@currsize\normalsize\rm\else \@normalsize\fi}
+
+\def\@large{%
+ \@setsize{\large}{14pt}{\xpt}{\@xpt}%
+ \kanjiskip=0zw plus .1zw minus .05zw
+ \abovedisplayskip=10pt plus 2pt minus 5pt
+ \belowdisplayskip=\abovedisplayskip
+ \abovedisplayshortskip=\z@ plus 3pt
+ \belowdisplayshortskip=6pt plus 3pt minus 3pt}
+\def\large{\ifx\@currsize\large\rm\else \@large\fi}
+
+
+\def\@small{%
+ \@setsize{\small}{12pt}{\viiipt}{\@viiipt}%
+ \kanjiskip=0zw plus .1zw minus .05zw
+ \abovedisplayskip=10pt plus 2pt minus 5pt
+ \belowdisplayskip=\abovedisplayskip
+ \abovedisplayshortskip=\z@ plus 3pt
+ \belowdisplayshortskip=6pt plus 3pt minus 3pt}
+\def\small{\ifx\@currsize\small\rm\else \@small\fi}
+
+\normalsize
+
+
+
+\def\section{%
+ \@startsection{section}{1}{\z@}%
+ {2.0ex plus 1ex minus .2ex}%
+ {0.5ex plus .2ex}%
+ {\large\bf}}%
+\def\subsection{%
+ \@startsection{subsection}{2}{\z@}%
+ {2.25ex plus 1ex minus .2ex}%
+ {0.1ex plus .2ex}%
+ {\normalsize\bf}}%
+\def\subsubsection{%
+ \@startsection{subsubsection}{2}{\z@}%
+ {2.25ex plus 1ex minus .2ex}%
+ {0.1ex plus .2ex}%
+ {\normalsize\bf}}%
+
+
+
+\leftmargini=2zw
+\leftmarginii=2zw
+\leftmarginiii=2zw
+\leftmarginiv=2zw
+\leftmarginv=1zw
+\leftmarginvi=1zw
+\leftmargin=\leftmargini
+\labelsep=1zw
+\labelwidth=\leftmargini
+\advance \labelwidth by -\labelsep
+
+\def\@listI{%
+ \leftmargin=\leftmargini
+ \parsep=\z@
+ \topsep=6pt plus 2pt minus 2pt
+ \itemsep=0pt plus 2pt\relax}
+\let \@listi=\@listI
+\@listi
+
+\def\@listii{%
+ \leftmargin=\leftmarginii
+ \labelwidth=\leftmarginii
+ \advance \labelwidth by -\labelsep
+ \topsep=2pt plus 1pt minus 1pt
+ \parsep=\z@
+ \itemsep=0pt plus 1pt\relax}
+
+
+\def\@listiii{%
+ \leftmargin=\leftmarginiii
+ \labelwidth=\leftmarginiii
+ \advance \labelwidth by -\labelsep
+ \topsep=2pt plus 1pt minus 1pt
+ \parsep=\z@
+ \partopsep=1pt minus 1pt
+ \itemsep=0pt plus 1pt\relax}
+
+\def\@listiv{%
+ \leftmargin=\leftmarginiv
+ \labelwidth=\leftmarginiv
+ \advance \labelwidth by -\labelsep}
+
+\def\@listv{%
+ \leftmargin=\leftmarginv
+ \labelwidth=\leftmarginv
+ \advance \labelwidth by -\labelsep}
+
+\def\@listvi{%
+ \leftmargin=\leftmarginvi
+ \labelwidth=\leftmarginvi
+ \advance \labelwidth by -\labelsep}
+
+
+
+
+\def\keyword#1{\gdef\@keyword{#1}}
+\def\@keyword{}
+
+\def\abstract#1{\gdef\@abstract{#1}}
+\def\@abstract{}
+
+\def\maketitle{%
+ \par
+ \begingroup
+  \def\thefootnote{\fnsymbol{footnote}}%
+  \def\@makefnmark{\hbox to 0pt{$^{\@thefnmark}$\hss}}%
+  \if@twocolumn \twocolumn[\@maketitle]%
+  \else
+    \newpage
+    \global\@topnum=\z@
+    \@maketitle
+  \fi
+  \thispagestyle{plain}%
+  \@thanks
+ \endgroup
+ \setcounter{footnote}{0}%
+ \let\maketitle=\relax
+ \let\@maketitle=\relax
+ \gdef\@thanks{}\gdef\@author{}\gdef\@title{}%
+ \let\thanks=\relax}
+
+\def\@maketitle{%
+ \newpage
+ \null
+ \vskip 0em
+ \hfill\hbox{\normalsize ゼミ資料（\@date）}%
+% \vskip 0.1em
+ \begin{center}
+  {\Large \bf \@title \par}
+  \vskip 1.0em
+  {\large \lineskip .5em
+    \begin{tabular}[t]{c}
+      \@author
+    \end{tabular}\par}
+  \vskip 0.6em
+%    \begin{tabular}[t]{c}
+ \begin{minipage}{160mm}
+  {\normalsize \bf あらまし\hskip 1em}\@abstract\par
+  {\normalsize \bf キーワード\hskip 1em}\@keyword
+ \end{minipage}
+%    \end{tabular}
+%  {\normalsize \bf あらまし\hskip 1em}\@abstract
+%  \vskip 0.6em
+%  {\normalsize \bf キーワード\hskip 1em}\@keyword
+ \end{center}
+ \par
+ \vskip 1.3em}
+
+
+
+%%-----------------------------------------------------------------
+%% from fleqn.sty
+\def\[{\relax\ifmmode\@badmath\else
+\parsep 4pt plus 2pt minus 1pt 
+\topsep 8pt plus 2pt minus 4pt 
+\itemsep 4pt plus 2pt minus 1pt
+\begin{trivlist}\item[]\leavevmode
+ \hbox to\linewidth\bgroup$ \displaystyle
+ \hskip\mathindent\bgroup\fi}
+\def\]{\relax\ifmmode \egroup $\hfil \egroup \end{trivlist}\else \@badmath \fi}
+
+\def\equation{\refstepcounter{equation}
+\parsep 4pt plus 2pt minus 1pt 
+\topsep 8pt plus 2pt minus 4pt 
+\itemsep 4pt plus 2pt minus 1pt
+\trivlist \item[]\leavevmode
+ \hbox to\linewidth\bgroup $ \displaystyle
+\hskip\mathindent}
+\def\endequation{$\hfil \displaywidth\linewidth\@eqnnum\egroup \endtrivlist}
+
+\def\eqnarray{\stepcounter{equation}
+\parsep 4pt plus 2pt minus 1pt 
+\topsep 8pt plus 2pt minus 4pt 
+\itemsep 4pt plus 2pt minus 1pt
+\let\@currentlabel=\theequation
+\global\@eqnswtrue
+\global\@eqcnt\z@\tabskip\mathindent\let\\=\@eqncr
+\abovedisplayskip\topsep\ifvmode\advance\abovedisplayskip\partopsep\fi
+\belowdisplayskip\abovedisplayskip
+\belowdisplayshortskip\abovedisplayskip
+\abovedisplayshortskip\abovedisplayskip
+$$\halign to
+\linewidth\bgroup\@eqnsel\hskip\@centering$\displaystyle\tabskip\z@
+ {##}$&\global\@eqcnt\@ne \hskip .8\arraycolsep \hfil${##}$\hfil 
+ &\global\@eqcnt\tw@ \hskip .8\arraycolsep $\displaystyle{##}$\hfil 
+ \tabskip\@centering&\llap{##}\tabskip\z@\cr}
+\def\endeqnarray{\@@eqncr\egroup
+ \global\advance\c@equation\m@ne$$\global\@ignoretrue }
+\newdimen\mathindent 
+\mathindent = 1zw
+
+\def\@eqnnum{(\theequation)\hspace*{3mm}}
+
+
+
+%% some definitions
+
+\def\onelineskip{\par\vspace{1\baselineskip}\par}
+\def\halflineskip{\par\vspace{.5\baselineskip}\par}
+
+\def\ddash{\hbox to 2zw{---\hss ---}}% \let\doubledash\ddash
+
+\def\FRAC#1#2{\leavevmode\kern-.1em
+  \raise.5ex\hbox{\the\scriptfont0 #1}\kern-.1em
+  /\kern-.15em\lower.25ex\hbox{\the\scriptfont0 #2}}
+\def\RN#1{\uppercase\expandafter{\romannumeral#1}}
+
+\def\MARU#1{\raisebox{0.1zh}{{%
+ \leavevmode\ooalign{\hfil\lower.168ex\hbox{#1}\hfil\crcr\mathhexbox20D}}}}
+
+\def\kintou#1#2{\@ifundefined{jintercharskip}%
+ {\makebox[#1]{\kanjiskip\z@ plus 1fill minus 1fill\xkanjiskip=\kanjiskip #2}}%
+ {\makebox[#1]{\jintercharskip=0pt plus 1fill minus 1fill 
+ \jasciikanjiskip=\jintercharskip #2}}}
+
+\def\ruby#1#2{\leavevmode \setbox0=\hbox{#1}\setbox1=\hbox{\tiny#2}%% <
+\ifdim\wd0>\wd1 \dimen0=\wd0 \else \dimen0=\wd1 \fi
+\hbox{\kanjiskip=\fill
+ \vbox{\hbox to \dimen0{\tiny \hfil#2\hfil}%
+  \nointerlineskip \hbox to \dimen0{\hfil#1\hfil}}}}
+
+\def\QED{{\unskip\nobreak\hfil\penalty50
+ \hskip1zw\hbox{}\nobreak\hfil \hbox{$\Box$\hskip1zw}
+ \parfillskip\z@ \finalhyphendemerits\z@\par}}
+
+\def\Hline{\noalign{\hrule height 0.4mm}}
+
+
+\def\leq{\mathrel{\mathpalette\gl@align<}} \let\le=\leq
+\def\geq{\mathrel{\mathpalette\gl@align>}} \let\ge=\geq
+\def\gl@align#1#2{\lower.6ex\vbox{\baselineskip\z@skip\lineskip\z@
+ \ialign{$\m@th#1\hfil##\hfil$\crcr#2\crcr=\crcr}}}
+\def\subseteq{\rlap{\raisebox{.25ex}{$\subset$}}\raisebox{-1.1ex}{$=$}}
+\def\supseteq{\rlap{\raisebox{.25ex}{$\supset$}}\raisebox{-1.1ex}{$=$}}
+\def\neq{\mathrel{\mathpalette\c@ncelass=}}
+\def\c@ncelass#1#2{\ooalign{$\hfil#1\mkern-.4mu|\hfil$\crcr$#1#2$}}
+\let\ne=\neq
+
+
+\def\thesection{\arabic{section}.}
+\def\thesubsection{\thesection\,{\arabic{subsection}}}
+\def\thesubsubsection{\thesubsection.\,\arabic{subsubsection}}
+\def\theparagraph{\alph{paragraph}\,)}
+\def\thesubparagraph{\roman{subparagraph}\,)}
+
+
+
+\def\thebibliography#1{%
+ \def\subsection{\@startsection{subsection}{2}{\z@}
+  {1em plus 1mm minus 0.5mm}
+  {0.25\@bs plus 1mm}{\centering\bf}}
+ \subsection*{参考文献}
+ \small\baselineskip15\@Q
+ \list{[\arabic{enumi}]}%
+ {\settowidth\labelwidth{亜亜}%
+%% \leftmargin\labelwidth \advance\leftmargin\labelsep
+  \leftmargin=3zw 
+  \labelsep=1zw
+  \usecounter{enumi}
+  \itemsep\z@\parsep\z@\partopsep\z@\topsep\z@
+ }%
+ \def\newblock{\hskip .11em plus .33em minus .07em}
+ \sloppy\clubpenalty-100\widowpenalty-100%% \clubpenalty4000\widowpenalty4000
+ \sfcode`\.=1000\relax}
+
+\let\endthebibliography=\endlist
+
+
+
+%% from "citesort.sty", with a little modified
+\newcount\@minsofar
+\newcount\@min
+\newcount\@cite@temp
+\def\@citex[#1]#2{%
+\if@filesw \immediate \write \@auxout {\string \citation {#2}}\fi
+\@tempcntb\m@ne \let\@h@ld\relax \def\@citea{}%
+\@min\m@ne%
+\@cite{%
+  \@for \@citeb:=#2\do {\@ifundefined {b@\@citeb}%
+    {\@h@ld\@citea\@tempcntb\m@ne{\bf ?}%
+    \@warning {Citation `\@citeb ' on page \thepage \space undefined}}%
+{\@minsofar\z@ \@for \@scan@cites:=#2\do {%
+  \@ifundefined{b@\@scan@cites}%
+    {\@cite@temp\m@ne}
+    {\@cite@temp\number\csname b@\@scan@cites \endcsname \relax}%% <
+\ifnum\@cite@temp > \@min% select the next one to list
+    \ifnum\@minsofar = \z@
+      \@minsofar\number\@cite@temp
+      \edef\@scan@copy{\@scan@cites}\else
+    \ifnum\@cite@temp < \@minsofar %% >
+      \@minsofar\number\@cite@temp
+      \edef\@scan@copy{\@scan@cites}\fi\fi\fi}\@tempcnta\@min %% <
+  \ifnum\@minsofar > \z@ % some more
+    \advance\@tempcnta\@ne
+    \@min\@minsofar
+    \ifnum\@tempcnta=\@minsofar %   Number follows previous--hold on to it
+      \ifx\@h@ld\relax
+        \edef \@h@ld{\@citea\csname b@\@scan@copy\endcsname}%
+      \else
+       \edef\@h@ld{\ifmmode{]〜[}\else]〜[\fi\csname b@\@scan@copy\endcsname}%
+      \fi
+    \else \@h@ld\@citea\csname b@\@scan@copy\endcsname
+          \let\@h@ld\relax
+  \fi % no more
+\fi}%
+\def\@citea{],\penalty\@highpenalty\,[}}\@h@ld}{#1}}
+%% end of citesort.sty
+
+
+%% caption
+
+\long\def\@makecaption#1#2{
+ \vskip 10pt 
+ \setbox\@tempboxa\hbox{#1~#2}
+ \ifdim \wd\@tempboxa >\hsize \unhbox\@tempboxa\par \else \hbox
+to\hsize{\hfil\box\@tempboxa\hfil} 
+ \fi}
+
+
+\def\fnum@figure{図 \thefigure \hskip 1.5ex}
+\def\fnum@table{表 \thetable \hskip 1.5ex}
+
+
+%% bold italic
+
+\def\bi#1{\mbox{\boldmath$#1$}}
+
+\flushbottom

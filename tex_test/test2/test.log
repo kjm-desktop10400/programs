@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.5.26)  25 SEP 2023 11:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.5.26)  26 SEP 2023 00:16
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**c:/Users/LarcH/Desktop/programs/tex_test/test2/test.tex
-(c:/Users/LarcH/Desktop/programs/tex_test/test2/test.tex
+**e:/Desktop/programs/tex_test/test2/test.tex
+(e:/Desktop/programs/tex_test/test2/test.tex
 LaTeX2e <2022-11-01> patch level 1
 L3 programming layer <2023-05-15> (c:/texlive/2023/texmf-dist/tex/platex/jsclasses/jsarticle.cls
 
@@ -641,7 +641,7 @@ are all screwed up? I'm going to assume that you meant ##.
 )
 Runaway definition?
 ->\newpage \null \vskip 0em \hfill \hbox {\normalsize ^^[$B\begin {ce\ETC.
-c:/Users/LarcH/Desktop/programs/tex_test/test2/test.tex:4: File ended while scanning definition of \@maketitle.
+e:/Desktop/programs/tex_test/test2/test.tex:4: File ended while scanning definition of \@maketitle.
 <inserted text> 
                 }
 l.4 \usepackage
@@ -657,25 +657,25 @@ Runaway definition?
 ! File ended while scanning definition of \@maketitle.
 <inserted text> 
                 }
-<*> ...cH/Desktop/programs/tex_test/test2/test.tex
-                                                  
+<*> e:/Desktop/programs/tex_test/test2/test.tex
+                                               
 I suspect you have forgotten a `}', causing me
 to read past where you wanted me to stop.
 I'll try to recover; but if the error is serious,
 you'd better type `E' or `X' now and fix your file.
 
 ! Emergency stop.
-<*> ...cH/Desktop/programs/tex_test/test2/test.tex
-                                                  
+<*> e:/Desktop/programs/tex_test/test2/test.tex
+                                               
 *** (job aborted, no legal \end found)
 
  
 Here is how much of TeX's memory you used:
  640 strings out of 476096
- 9468 string characters out of 5795114
+ 9432 string characters out of 5795114
  1850845 words of memory out of 5000000
  21086 multiletter control sequences out of 15000+600000
  514153 words of font info for 38 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,0n,62p,248b,36s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 57i,0n,62p,455b,36s stack positions out of 10000i,1000n,20000p,200000b,200000s
 !  ==> Fatal error occurred, no output PDF file produced!
