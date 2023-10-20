@@ -6,8 +6,10 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Drawing.Text;
 
 namespace Visual_nimotsh
 {
@@ -21,15 +23,15 @@ namespace Visual_nimotsh
         private Bitmap Obj_Image;
 
         private Map map;                //マップのインスタンス
-        private FlameRate flamerate;    //フレームレート計算用クラスのインスタンス
         private Label dispray_fps;      //fpsインジケーターのラベルコントロール
+
+        private int MaxFPS = 60;        //最大フレームレート
+
+        private ProcessKeyPush keypush = new ProcessKeyPush();
 
         public Form1()
         {
             InitializeComponent();
-
-            //クライアント領域の設定
-            this.ClientSize = new Size((map.MAP_X + 2) * 50, (map.MAP_Y + 2) * 50);
 
             //リソースの読み込み
             Wall_Image = Visual_nimotsh.Properties.Resources.wall;
@@ -40,19 +42,13 @@ namespace Visual_nimotsh
 
             //インスタンスの代入
             map = Map.Instance();
-            flamerate = new FlameRate();
-            dispray_fps = new Label();
-
- 
-            //ラベルの追加
-            dispray_fps.Location = new Point(10, 10);
-            dispray_fps.Text = "fps : ";
-            dispray_fps.AutoSize = true;
-            this.Controls.Add(dispray_fps);
-
-            //Loadイベントに描画開始イベント発出を追加
-
            
+            //クライアント領域の設定
+            this.ClientSize = new Size((map.MAP_X + 2) * 50, (map.MAP_Y + 2) * 50);
+
+            //KeyDownイベントハンドラ
+            this.KeyDown += new KeyEventHandler(keypush.KeyPushed);
+
         }
 
         //描画用のイベントハンドラ
@@ -62,126 +58,43 @@ namespace Visual_nimotsh
 
             Map map = Map.Instance();
 
+            e.Graphics.Clear(Color.White);
+
             for (int i = 0; i < map.MAP_Y; i++)
             {
                 for (int j = 0; j < map.MAP_X; j++)
                 {
 
+                    Bitmap image_buf;
+
                     switch(map.GetAspect(j, i))
                     {
                         case Aspect.Wall:
-                            e.Graphics.DrawImage(Wall_Image, new Point(50 * (j + 1), 50 * (i + 1)));
+                            image_buf = Wall_Image;
                             break;
+                        case Aspect.Player:
+                            image_buf = Player_Image;
+                            break;
+                        case Aspect.Goal:
+                            image_buf = Goal_Image;
+                            break;
+                        case Aspect.Point:
+                            image_buf = Point_Image;
+                            break;
+                        case Aspect.Obj:
+                            image_buf = Obj_Image;
+                            break;
+
+                        default:
+                            continue;
                     }
+
+                    e.Graphics.DrawImage(image_buf, new Point(50 * (j + 1), 50 * (i + 1)));
 
                 }
             }
 
         }
-
-    }
-
-    //描画用クラス。ピクセル単位でマップ上のシグネチャを管理。staticなシングルトン
-    public class Draw
-    {
-
-        static private Map map;
-        static private Draw _Instance;
-
-
-        //コンストラクタ
-        public Draw()
-        {
-            map = Map.Instance();
-            _Instance = null;
-        }
-
-        //シングルトン用。インスタンスを返す
-        public Draw Instance()
-        {
-            if(_Instance == null)
-            {
-                return _Instance = new Draw();
-            }
-            
-            return _Instance;
-        }
-
-
-
-    }
-
-    //フレームレート計算用eventArgs
-    public class FpsEventArgs : EventArgs
-    { 
-        public FpsEventArgs(FlameRate obj) 
-        {
-            flamerate = obj;
-        }
-        public FlameRate flamerate;
-    }
-        
-
-    public class FlameRate
-    {
-        //記録時間の保存
-        private long[] time_array;
-
-        private long time;
-
-        private int index;
-
-        private int index_size = 50;
-
-        private long ave;
-
-        Stopwatch sw = new Stopwatch();
-
-        public FlameRate()
-        {
-            time = 0;
-            index = 0;
-            time_array = new long[index_size];
-            ave = 0;
-            foreach(int i in time_array)
-            {
-                time_array[i] = 0;
-            }
-            sw.Start();
-        }
-
-        public int fps()
-        {
-
-            time = sw.ElapsedMilliseconds;
-            time_array[index] = time;
-
-            if(index == 0)
-            {
-                index++;
-                return 0;
-            }
-
-            ave = 0;
-            for(int i = 0; i < index_size; i++)
-            {
-                ave += time_array[i];
-            }
-
-            if(index == index_size - 1)
-            {
-                index = 0;
-            }
-            else
-            {
-                index++;
-            }
-               
-            return (int)ave / index_size;
-
-        }
-
-        public delegate void CalcFlameHandler(object FlameRate, FpsEventArgs f);
 
     }
 
@@ -279,7 +192,7 @@ namespace Visual_nimotsh
     }
 
     //各シグネチャの列挙、asciiコードで書いてある。文字はそれぞれのコメント
-    enum Aspect
+    public enum Aspect
     {
         Wall = 3,   //'#'
         Player = 80,    //'P'
@@ -584,5 +497,48 @@ namespace Visual_nimotsh
 
     }
 
-}
+    //KeyPushイベント処理するクラス
+    public class ProcessKeyPush
+    {
+        //自己インスタンス
+        private ProcessKeyPush _Instance = null;
 
+
+        //自己のインスタンスを返す関数
+        public ProcessKeyPush Instance()
+        {
+            if(_Instance == null)
+            {
+                return new ProcessKeyPush();
+            }
+            else
+            {
+                return _Instance;
+            }
+        }
+
+        //イベントハンドラの引数を記録しておく
+        private object This_sender;
+        private KeyEventArgs This_e;
+
+        //keypushイベントハンドラの本体
+        private void Start_Draw()
+        {
+
+
+
+
+        }
+
+        //KeyDownイベントハンドラ
+        public void KeyPushed(object sender, KeyEventArgs e)
+        {
+            This_sender= sender;
+            This_e= e;
+            Thread thread = new Thread(new ThreadStart(Start_Draw));
+        }
+
+
+    }
+
+}
