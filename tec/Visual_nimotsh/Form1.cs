@@ -27,7 +27,7 @@ namespace Visual_nimotsh
 
         private int MaxFPS = 60;        //最大フレームレート
 
-        private ProcessKeyPush keypush = new ProcessKeyPush();
+        private ProcessKeyPush keyPush;
 
         public Form1()
         {
@@ -47,7 +47,10 @@ namespace Visual_nimotsh
             this.ClientSize = new Size((map.MAP_X + 2) * 50, (map.MAP_Y + 2) * 50);
 
             //KeyDownイベントハンドラ
-            this.KeyDown += new KeyEventHandler(keypush.KeyPushed);
+            this.KeyDown += new KeyEventHandler(KeyPushed);
+
+            Thread thread = new Thread(new ThreadStart(ProcessKeyPush.Start_Draw));
+
 
         }
 
@@ -94,6 +97,11 @@ namespace Visual_nimotsh
                 }
             }
 
+        }
+
+        static private void KeyPushed(object sender, KeyEventArgs e)
+        {
+            
         }
 
     }
@@ -497,35 +505,41 @@ namespace Visual_nimotsh
 
     }
 
+
     //KeyPushイベント処理するクラス
     public class ProcessKeyPush
     {
-        //自己インスタンス
-        private ProcessKeyPush _Instance = null;
+        //イベントハンドラの引数、threadのインスタンスを記録しておく
+        private object this_sender;
+        private KeyEventArgs this_e;
+        private Thread this_thread;
 
-
-        //自己のインスタンスを返す関数
-        public ProcessKeyPush Instance()
+        //メンバのセッター
+        public object THIS_SENDER
         {
-            if(_Instance == null)
+            set
             {
-                return new ProcessKeyPush();
+                this_sender = value;
             }
-            else
+        }
+        public KeyEventArgs THIS_E
+        {
+            set
             {
-                return _Instance;
+                this_e = value;
+            }
+        }
+        public Thread THIS_THREAD
+        {
+            set
+            {
+                this_thread = value;
             }
         }
 
-        //イベントハンドラの引数を記録しておく
-        private object This_sender;
-        private KeyEventArgs This_e;
-
         //keypushイベントハンドラの本体
-        private void Start_Draw()
+        public static void Start_Draw()
         {
-
-
 
 
         }
@@ -533,9 +547,10 @@ namespace Visual_nimotsh
         //KeyDownイベントハンドラ
         public void KeyPushed(object sender, KeyEventArgs e)
         {
-            This_sender= sender;
-            This_e= e;
-            Thread thread = new Thread(new ThreadStart(Start_Draw));
+            this_sender = sender;
+            this_e = e;
+            this_thread.Start();
+
         }
 
 
