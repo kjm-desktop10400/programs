@@ -10,6 +10,8 @@ using System.Threading;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Drawing.Text;
+using System.Runtime.CompilerServices;
+using System.Runtime.Remoting.Channels;
 
 namespace Visual_nimotsh
 {
@@ -27,7 +29,9 @@ namespace Visual_nimotsh
 
         private int MaxFPS = 60;        //最大フレームレート
 
-        private ProcessKeyPush keyPush;
+        private ProcessKeyPush KeyPush = new ProcessKeyPush();
+
+        Thread thread = new Thread(new ThreadStart(ProcessKeyPush.Start_Draw));
 
         public Form1()
         {
@@ -47,10 +51,7 @@ namespace Visual_nimotsh
             this.ClientSize = new Size((map.MAP_X + 2) * 50, (map.MAP_Y + 2) * 50);
 
             //KeyDownイベントハンドラ
-            this.KeyDown += new KeyEventHandler(KeyPushed);
-
-            Thread thread = new Thread(new ThreadStart(ProcessKeyPush.Start_Draw));
-
+            this.KeyDown += new KeyEventHandler(regist_Process_Key_Pushed_members);
 
         }
 
@@ -98,10 +99,15 @@ namespace Visual_nimotsh
             }
 
         }
-
-        static private void KeyPushed(object sender, KeyEventArgs e)
-        {
             
+        //KeyDownイベントハンドラ。ProcessKeyPushのメンバを渡し、KeyPushedを呼び出す
+        private void regist_Process_Key_Pushed_members(object sender, KeyEventArgs e)
+        {
+            this.KeyPush.THIS_SENDER = sender;
+            this.KeyPush.THIS_E = e;
+            this.KeyPush.THIS_THREAD = thread;
+
+            this.KeyPush.KeyPushed();
         }
 
     }
@@ -541,14 +547,13 @@ namespace Visual_nimotsh
         public static void Start_Draw()
         {
 
+            
 
         }
 
         //KeyDownイベントハンドラ
-        public void KeyPushed(object sender, KeyEventArgs e)
+        public void KeyPushed()
         {
-            this_sender = sender;
-            this_e = e;
             this_thread.Start();
 
         }
