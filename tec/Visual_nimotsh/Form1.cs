@@ -18,11 +18,11 @@ namespace Visual_nimotsh
     public partial class Form1 : Form
     {
         //リソースの読み込み用の変数
-        private Bitmap Wall_Image;
-        private Bitmap Player_Image;
-        private Bitmap Goal_Image;
-        private Bitmap Point_Image;
-        private Bitmap Obj_Image;
+        readonly Bitmap Wall_Image;
+        readonly Bitmap Player_Image;
+        readonly Bitmap Goal_Image;
+        readonly Bitmap Point_Image;
+        readonly Bitmap Obj_Image;
 
         private Map map;                //マップのインスタンス
         private Label dispray_fps;      //fpsインジケーターのラベルコントロール
@@ -36,13 +36,6 @@ namespace Visual_nimotsh
         public Form1()
         {
             InitializeComponent();
-
-            //リソースの読み込み
-            Wall_Image = Visual_nimotsh.Properties.Resources.wall;
-            Player_Image = Visual_nimotsh.Properties.Resources.player;
-            Goal_Image = Visual_nimotsh.Properties.Resources.goal;
-            Point_Image = Visual_nimotsh.Properties.Resources.target;
-            Obj_Image = Visual_nimotsh.Properties.Resources._object;
 
             //インスタンスの代入
             map = Map.Instance();
@@ -60,43 +53,7 @@ namespace Visual_nimotsh
         {
             base.OnPaint(e);
 
-            Map map = Map.Instance();
-
-            e.Graphics.Clear(Color.White);
-
-            for (int i = 0; i < map.MAP_Y; i++)
-            {
-                for (int j = 0; j < map.MAP_X; j++)
-                {
-
-                    Bitmap image_buf;
-
-                    switch(map.GetAspect(j, i))
-                    {
-                        case Aspect.Wall:
-                            image_buf = Wall_Image;
-                            break;
-                        case Aspect.Player:
-                            image_buf = Player_Image;
-                            break;
-                        case Aspect.Goal:
-                            image_buf = Goal_Image;
-                            break;
-                        case Aspect.Point:
-                            image_buf = Point_Image;
-                            break;
-                        case Aspect.Obj:
-                            image_buf = Obj_Image;
-                            break;
-
-                        default:
-                            continue;
-                    }
-
-                    e.Graphics.DrawImage(image_buf, new Point(50 * (j + 1), 50 * (i + 1)));
-
-                }
-            }
+            e.Graphics.DrawImage(KeyPush.OFFSCREEN, 0, 0);
 
         }
             
@@ -520,6 +477,56 @@ namespace Visual_nimotsh
         private KeyEventArgs this_e;
         private Thread this_thread;
 
+        //リソースの読み込み
+        private Bitmap Wall_Image = Properties.Resources.wall;
+        private Bitmap Player_Image = Properties.Resources.player;
+        private Bitmap Goal_Image = Properties.Resources.goal;
+        private Bitmap Point_Image = Properties.Resources.target;
+        private Bitmap Obj_Image = Properties.Resources._object;
+
+
+        private Map map = Map.Instance();
+
+        //描画用バッファ
+        private Image offscreen;
+        private Image offscreen_origin;
+
+        private Graphics g;
+
+        //コンストラクタ
+        public ProcessKeyPush()
+        {
+
+            offscreen = new Bitmap(map.MAP_X * 50, map.MAP_Y * 50);
+
+            g = Graphics.FromImage(offscreen);
+
+            //offscreenに壁のみのマップを書き込み
+            for (int i = 0; i < map.MAP_Y; i++)
+            {
+                for (int j = 0; j < map.MAP_X; j++)
+                {
+
+                    Bitmap image_buf;
+
+                    switch (map.GetAspect(j, i))
+                    {
+                        case Aspect.Wall:
+                            image_buf = Wall_Image;
+                            break;
+                        default:
+                            continue;
+                    }
+
+                    tmp_g.DrawImage(image_buf, new Point(50 * (j + 1), 50 * (i + 1)));
+
+                }
+            }
+
+            //offscreen_originを壁のみのマップとして保存。以降グラフィックオブジェクトはこれで初期化する。
+            offscreen_origin = offscreen;
+        }
+
         //メンバのセッター
         public object THIS_SENDER
         {
@@ -542,6 +549,13 @@ namespace Visual_nimotsh
                 this_thread = value;
             }
         }
+
+        //バッファのゲッタ
+        public Image OFFSCREEN
+        {
+            get { return offscreen; }
+        }
+
 
         //keypushイベントハンドラの本体
         public static void Start_Draw()
