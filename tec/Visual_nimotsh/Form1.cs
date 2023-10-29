@@ -31,7 +31,9 @@ namespace Visual_nimotsh
 
         private ProcessKeyPush KeyPush = new ProcessKeyPush();
 
-        Thread thread = new Thread(new ThreadStart(ProcessKeyPush.Start_Draw));
+        Thread thread;
+
+        Abort abort;
 
         public Form1()
         {
@@ -39,6 +41,7 @@ namespace Visual_nimotsh
 
             //インスタンスの代入
             map = Map.Instance();
+            abort = Abort.Instance();
            
             //クライアント領域の設定
             this.ClientSize = new Size((map.MAP_X + 2) * 50, (map.MAP_Y + 2) * 50);
@@ -46,6 +49,8 @@ namespace Visual_nimotsh
             //KeyDownイベントハンドラ
             this.KeyDown += new KeyEventHandler(regist_Process_Key_Pushed_members);
 
+            //スレッド終了用のデリゲート
+            abort.Abort_Thread += new EventHandler(End_Draw);
         }
 
         //描画用のイベントハンドラ
@@ -53,22 +58,66 @@ namespace Visual_nimotsh
         {
             base.OnPaint(e);
 
-            e.Graphics.DrawImage(KeyPush.OFFSCREEN, 0, 0);
+            e.Graphics.DrawImage(KeyPush.OFFSCREEN, 50, 50);
 
         }
             
         //KeyDownイベントハンドラ。ProcessKeyPushのメンバを渡し、KeyPushedを呼び出す
         private void regist_Process_Key_Pushed_members(object sender, KeyEventArgs e)
         {
-            this.KeyPush.THIS_SENDER = sender;
-            this.KeyPush.THIS_E = e;
-            this.KeyPush.THIS_THREAD = thread;
+            //描画用のスレッドを分ける
+            thread = new Thread(new ThreadStart(KeyPush.Start_Draw));
+
+            this.KeyPush.SENDER = sender;
+            this.KeyPush.E = e;
+            this.KeyPush.THREAD = thread;
+            this.KeyPush.CONTLOR = this;
 
             this.KeyPush.KeyPushed();
         }
 
+        //スレッド終了用イベントハンドラ
+        public void End_Draw(object sender, EventArgs e)
+        {
+            thread.Abort();
+        }
+
+
     }
 
+    //スレッド終了用クラス、シングルトン
+    public class Abort
+    {
+
+        private Abort()
+        {
+
+        }
+
+        private static Abort _Instance = null;
+        public static Abort Instance()
+        {
+            if(_Instance == null)
+            {
+                _Instance = new Abort();
+            }
+            return _Instance;
+        }
+
+        //描画用スレッド"Start_Draw"終了用イベント
+        public event EventHandler Abort_Thread;
+
+        //イベント発生用メソッド
+        public void publish()
+        {
+            if(Abort_Thread != null)
+            {
+                Abort_Thread(this, EventArgs.Empty);
+            }
+        }
+
+
+    }
 
     public class Pos       //座標クラス
     {
@@ -473,9 +522,10 @@ namespace Visual_nimotsh
     public class ProcessKeyPush
     {
         //イベントハンドラの引数、threadのインスタンスを記録しておく
-        private object this_sender;
-        private KeyEventArgs this_e;
-        private Thread this_thread;
+        private object sender;
+        private KeyEventArgs e;
+        private Thread thread;
+        private Control control;
 
         //リソースの読み込み
         private Bitmap Wall_Image = Properties.Resources.wall;
@@ -485,7 +535,9 @@ namespace Visual_nimotsh
         private Bitmap Obj_Image = Properties.Resources._object;
 
 
+        //シングルトンのインスタンス取得
         private Map map = Map.Instance();
+        private Abort abort = Abort.Instance();
 
         //描画用バッファ
         private Image offscreen;
@@ -497,7 +549,7 @@ namespace Visual_nimotsh
         public ProcessKeyPush()
         {
 
-            offscreen = new Bitmap(map.MAP_X * 50, map.MAP_Y * 50);
+            offscreen = new Bitmap((map.MAP_X) * 50, (map.MAP_Y) * 50);
 
             g = Graphics.FromImage(offscreen);
 
@@ -518,35 +570,78 @@ namespace Visual_nimotsh
                             continue;
                     }
 
-                    tmp_g.DrawImage(image_buf, new Point(50 * (j + 1), 50 * (i + 1)));
+                    g.DrawImage(image_buf, new Point(50 * j, 50 * i));
 
                 }
             }
 
             //offscreen_originを壁のみのマップとして保存。以降グラフィックオブジェクトはこれで初期化する。
-            offscreen_origin = offscreen;
+            offscreen_origin = (Image)offscreen.Clone();
+
+            //壁以外の要素の書き込み。
+            for (int i = 0; i < map.MAP_Y; i++)
+            {
+                for (int j = 0; j < map.MAP_X; j++)
+                {
+
+                    Bitmap image_buf;
+
+                    switch (map.GetAspect(j, i))
+                    {
+                        case Aspect.Player:
+                            image_buf = Player_Image;
+                            break;
+                        case Aspect.Goal:
+                            image_buf = Goal_Image;
+                            break;
+                        case Aspect.Point:
+                            image_buf = Point_Image;
+                            break;
+                        case Aspect.Obj:
+                            image_buf = Obj_Image;
+                            break;
+
+                        default:
+                            continue;
+                    }
+
+                    g.DrawImage(image_buf, new Point(50 * j, 50 * i));
+
+                }
+
+
+            }
+
+            g.Dispose();
         }
 
         //メンバのセッター
-        public object THIS_SENDER
+        public object SENDER
         {
             set
             {
-                this_sender = value;
+                sender = value;
             }
         }
-        public KeyEventArgs THIS_E
+        public KeyEventArgs E
         {
             set
             {
-                this_e = value;
+                e = value;
             }
         }
-        public Thread THIS_THREAD
+        public Thread THREAD
         {
             set
             {
-                this_thread = value;
+                thread = value;
+            }
+        }
+        public Control CONTLOR
+        {
+            set
+            {
+                this.control = value;
             }
         }
 
@@ -556,20 +651,41 @@ namespace Visual_nimotsh
             get { return offscreen; }
         }
 
+        //テスト用変数
+        int count = 0;
+
 
         //keypushイベントハンドラの本体
-        public static void Start_Draw()
+        public void Start_Draw()
         {
 
-            
+            Graphics g = Graphics.FromImage(OFFSCREEN);
 
+            switch(e.KeyCode)
+            {
+                case Keys.W:
+                    g.DrawImage(Wall_Image, 100, 100 * count);
+                    break;
+
+                default:
+                    offscreen = (Image)offscreen_origin.Clone();
+                    count = 0;
+                    break;
+            }
+
+            count++;
+
+            //画面の更新
+            control.Invalidate();
+
+            //スレッドの終了
+            abort.publish();
         }
 
         //KeyDownイベントハンドラ
         public void KeyPushed()
         {
-            this_thread.Start();
-
+            thread.Start();
         }
 
 
