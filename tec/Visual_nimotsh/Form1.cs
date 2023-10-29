@@ -196,12 +196,21 @@ namespace Visual_nimotsh
             }
             return this == (Pos)o;
         }
+        public static Pos operator +(Pos lhs, Pos rhs)
+        {
+            return new Pos(lhs.X + rhs.X, lhs.Y + rhs.Y);
+        }
+
 
         //コピーの作成
-        public void copy(Pos o)
+        public object Clone()
         {
-            this.x = o.x;
-            this.y = o.y;
+            return new Pos(X, Y);
+        }
+        public void copy(Pos obj)
+        {
+            this.X = obj.X;
+            this.Y = obj.Y;
         }
 
         //toStringのオーバーライド
@@ -241,8 +250,15 @@ namespace Visual_nimotsh
         }
 
 
-        //プレイヤーの座標
+        //プレイヤーの座標とゲッタ
         Pos player = new Pos(7, 5);
+        public Pos PLAYER
+        {
+            get
+            {
+                return player;
+            }
+        }
 
         //ゴールの座標
         Pos Goal = new Pos(4, 5);
@@ -651,9 +667,6 @@ namespace Visual_nimotsh
             get { return offscreen; }
         }
 
-        //テスト用変数
-        int count = 0;
-
 
         //keypushイベントハンドラの本体
         public void Start_Draw()
@@ -661,19 +674,36 @@ namespace Visual_nimotsh
 
             Graphics g = Graphics.FromImage(OFFSCREEN);
 
+            //座標の移動分
+            Pos delta = new Pos(0, 0);
             switch(e.KeyCode)
             {
                 case Keys.W:
-                    g.DrawImage(Wall_Image, 100, 100 * count);
+                    delta = new Pos(0, -1);
+                    break;
+                case Keys.A:
+                    delta = new Pos(-1, 0);
+                    break;
+                case Keys.S:
+                    delta = new Pos(0, 1);
+                    break;
+                case Keys.D:
+                    delta = new Pos(1, 0);
                     break;
 
                 default:
-                    offscreen = (Image)offscreen_origin.Clone();
-                    count = 0;
                     break;
             }
 
-            count++;
+            //プレイヤーと移動先の座標
+            Pos player = new Pos(map.PLAYER);
+            Pos target = new Pos(player + delta);
+
+            //移動先がマップ外の場合、スレッド終了イベントを発出
+            if(target.X < 0 || map.MAP_X < target.X || target.Y < 0 || map.MAP_Y < target.Y)
+            {
+                abort.publish();
+            }
 
             //画面の更新
             control.Invalidate();
