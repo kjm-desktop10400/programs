@@ -12,6 +12,7 @@ using System.Diagnostics;
 using System.Drawing.Text;
 using System.Runtime.CompilerServices;
 using System.Runtime.Remoting.Channels;
+using static Visual_nimotsh.Exclusive_control;
 
 namespace Visual_nimotsh
 {
@@ -34,6 +35,8 @@ namespace Visual_nimotsh
         Thread thread;
 
         Abort abort;
+        Exclusive_control exc;
+        bool is_drawing = false;
 
         public Form1()
         {
@@ -42,6 +45,7 @@ namespace Visual_nimotsh
             //インスタンスの代入
             map = Map.Instance();
             abort = Abort.Instance();
+            exc = Exclusive_control.Instance();
            
             //クライアント領域の設定
             this.ClientSize = new Size((map.MAP_X + 2) * 50, (map.MAP_Y + 2) * 50);
@@ -49,8 +53,17 @@ namespace Visual_nimotsh
             //KeyDownイベントハンドラ
             this.KeyDown += new KeyEventHandler(regist_Process_Key_Pushed_members);
 
-            //スレッド終了用のデリゲート
+            //スレッド終了用のデリゲートの登録
             abort.Abort_Thread += new EventHandler(End_Draw);
+
+            //排他制御用デリゲートの登録
+            exc.Is_Drawing += new ExclusiveControlEventHandller(Enable_Is_Drawing);
+            exc.Is_Waiting += new ExclusiveControlEventHandller(Desable_Is_Drawing);
+
+            SetStyle(ControlStyles.DoubleBuffer |
+                ControlStyles.UserPaint |
+                ControlStyles.AllPaintingInWmPaint, true
+                );
         }
 
         //描画用のイベントハンドラ
@@ -61,27 +74,49 @@ namespace Visual_nimotsh
             e.Graphics.DrawImage(KeyPush.OFFSCREEN, 50, 50);
 
         }
-            
+
         //KeyDownイベントハンドラ。ProcessKeyPushのメンバを渡し、KeyPushedを呼び出す
         private void regist_Process_Key_Pushed_members(object sender, KeyEventArgs e)
         {
-            //描画用のスレッドを分ける
-            thread = new Thread(new ThreadStart(KeyPush.Start_Draw));
+            //is_drawingフラグがfalseの時のみ描画用スレッドを起動
+            if (is_drawing != true)
+            {
 
-            this.KeyPush.SENDER = sender;
-            this.KeyPush.E = e;
-            this.KeyPush.THREAD = thread;
-            this.KeyPush.CONTLOR = this;
+                exc.drawing();
 
-            this.KeyPush.KeyPushed();
+                //描画用のスレッドを分ける
+                thread = new Thread(new ThreadStart(KeyPush.Start_Draw));
+
+                this.KeyPush.SENDER = sender;
+                this.KeyPush.E = e;
+                this.KeyPush.THREAD = thread;
+                this.KeyPush.CONTLOR = this;
+
+                this.KeyPush.KeyPushed();
+
+            }
+            if(is_drawing == false)
+            {
+
+            }
         }
 
         //スレッド終了用イベントハンドラ
         public void End_Draw(object sender, EventArgs e)
         {
+            exc.waiting();
             thread.Abort();
         }
 
+        //排他制御用イベントハンドラ
+        public void Enable_Is_Drawing(object sender, EventArgs e)
+        {
+            is_drawing = true;
+        }
+        public void Desable_Is_Drawing(object sender, EventArgs e)
+        {
+            is_drawing = false;
+        }
 
     }
 
@@ -117,6 +152,47 @@ namespace Visual_nimotsh
         }
 
 
+    }
+
+    //スレッドの排他制御用クラス、シングルトン
+    public class Exclusive_control        
+    {
+
+        public delegate void ExclusiveControlEventHandller(object sender, EventArgs e);
+        private Exclusive_control()
+        {
+
+        }
+
+        private static Exclusive_control  _Instance = null;
+
+        public static Exclusive_control Instance()
+        {
+            if(_Instance == null)
+            {
+                _Instance = new Exclusive_control();
+            }
+            return _Instance;
+        }
+
+        public event ExclusiveControlEventHandller Is_Drawing;
+        public event ExclusiveControlEventHandller Is_Waiting;
+
+        public void drawing()
+        {
+            if(Is_Drawing != null)
+            {
+                Is_Drawing(this, EventArgs.Empty);
+            }
+        }
+        public void waiting()
+        {
+            if(Is_Waiting !=null)
+            {
+                Is_Waiting(this, EventArgs.Empty);
+            }
+        }
+            
     }
 
     public class Pos       //座標クラス
@@ -571,6 +647,7 @@ namespace Visual_nimotsh
         //シングルトンのインスタンス取得
         private Map map = Map.Instance();
         private Abort abort = Abort.Instance();
+        private Exclusive_control exc = Exclusive_control.Instance();
 
         //描画用バッファ
         private Image offscreen;
@@ -794,11 +871,12 @@ namespace Visual_nimotsh
                 {
 
                     Pos is_moving = new Pos(player * 50 + delta * (50 * flame_count / 60));
+                    Image image_buffer = new Bitmap((map.MAP_X) * 50, (map.MAP_Y) * 50);
 
-                    offscreen = (Image)bitmap.Clone();
+                    image_buffer = (Image)bitmap.Clone();
 
 
-                    Graphics gr = Graphics.FromImage(offscreen);
+                    Graphics gr = Graphics.FromImage(image_buffer);
 
                     gr.DrawImage(Player_Image, is_moving.X, is_moving.Y);
 
@@ -812,6 +890,8 @@ namespace Visual_nimotsh
                     }
 
                     current_time = Environment.TickCount;
+
+                    offscreen = (Image)image_buffer.Clone();
 
                     if(current_time -before_time >= flame_time)
                     {
@@ -832,6 +912,9 @@ namespace Visual_nimotsh
 
             //画面の更新
             control.Invalidate();
+
+            //グラフィックオブジェクトの破棄
+            g.Dispose();
 
             //スレッドの終了
             abort.publish();
