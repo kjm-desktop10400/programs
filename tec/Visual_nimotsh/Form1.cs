@@ -200,6 +200,18 @@ namespace Visual_nimotsh
         {
             return new Pos(lhs.X + rhs.X, lhs.Y + rhs.Y);
         }
+        public static Pos operator *(Pos lhs, Pos rhs)
+        {
+            return new Pos(lhs.X * rhs.X, lhs.Y * rhs.Y);
+        }
+        public static Pos operator *(Pos lhs, int scaler)
+        {
+            return new Pos(lhs.X * scaler, lhs.Y * scaler);
+        }
+        public static Pos operator *(int scaler, Pos rhs)
+        {
+            return new Pos(scaler * rhs.X, scaler * rhs.Y);
+        }
 
 
         //コピーの作成
@@ -305,6 +317,10 @@ namespace Visual_nimotsh
         public Aspect GetAspect(int x, int y)
         {
             return aspect[y, x];
+        }
+        public Aspect GetAspect(Pos pos)
+        {
+            return aspect[pos.Y, pos.X];
         }
         
 
@@ -549,6 +565,7 @@ namespace Visual_nimotsh
         private Bitmap Goal_Image = Properties.Resources.goal;
         private Bitmap Point_Image = Properties.Resources.target;
         private Bitmap Obj_Image = Properties.Resources._object;
+        private Bitmap Space_Image = Properties.Resources.space;
 
 
         //シングルトンのインスタンス取得
@@ -674,21 +691,27 @@ namespace Visual_nimotsh
 
             Graphics g = Graphics.FromImage(OFFSCREEN);
 
+            char move = '\0';
+
             //座標の移動分
             Pos delta = new Pos(0, 0);
             switch(e.KeyCode)
             {
                 case Keys.W:
                     delta = new Pos(0, -1);
+                    move = 'w';
                     break;
                 case Keys.A:
                     delta = new Pos(-1, 0);
+                    move = 'a';
                     break;
                 case Keys.S:
                     delta = new Pos(0, 1);
+                    move = 's';
                     break;
                 case Keys.D:
                     delta = new Pos(1, 0);
+                    move = 'd';
                     break;
 
                 default:
@@ -699,11 +722,113 @@ namespace Visual_nimotsh
             Pos player = new Pos(map.PLAYER);
             Pos target = new Pos(player + delta);
 
-            //移動先がマップ外の場合、スレッド終了イベントを発出
-            if(target.X < 0 || map.MAP_X < target.X || target.Y < 0 || map.MAP_Y < target.Y)
+            //移動先がマップ外、壁の場合、スレッド終了イベントを発出
+            if(target.X <= 0 || map.MAP_X <= target.X || target.Y < 0 || map.MAP_Y < target.Y)
             {
                 abort.publish();
             }
+
+            //移動先に不動オブジェクトがある場合処理を抜ける
+            switch(map.GetAspect(target))
+            {
+                case Aspect.Wall:
+                case Aspect.Goal:
+                    abort.publish();
+                    break;
+            }
+
+            //移動先に何もない場合
+            if(map.GetAspect(target) == Aspect.Space)
+            {
+
+                //描画処理、とりあえず60fps固定。1秒かけて等速で移動させる
+                map.Move(move);
+
+                int before_time;
+                int current_time;
+                int flame_time = 1000 / 60;
+                int flame_count = 1;
+                before_time = Environment.TickCount;
+                current_time = before_time;
+
+                //プレイヤー以外が描画されたビットマップの作製
+                Image bitmap = new Bitmap((map.MAP_X) * 50, (map.MAP_Y) * 50);
+                bitmap = (Image)offscreen_origin.Clone();
+                Graphics origin = Graphics.FromImage(bitmap);
+                for (int i = 0; i < map.MAP_Y; i++)
+                {
+                    for (int j = 0; j < map.MAP_X; j++)
+                    {
+
+                        Bitmap image_buf = null;
+
+                        switch (map.GetAspect(j, i))
+                        {
+                            case Aspect.Point:
+                                image_buf = new Bitmap(Point_Image);
+                                break;
+                            case Aspect.Obj:
+                                image_buf = new Bitmap(Obj_Image);
+                                break;
+                            case Aspect.Goal:
+                                image_buf = new Bitmap(Goal_Image);
+                                break;
+                            case Aspect.Space:
+                                //image_buf = new Bitmap(Space_Image);
+                                break;
+
+                            default:
+                                continue;
+                        }
+
+                        if (image_buf != null)
+                        {
+                            origin.DrawImage(image_buf, new Point(50 * j, 50 * i));
+                        }
+
+                    }
+                }
+
+
+                while (true)
+                {
+
+                    Pos is_moving = new Pos(player * 50 + delta * (50 * flame_count / 60));
+
+                    offscreen = (Image)bitmap.Clone();
+
+
+                    Graphics gr = Graphics.FromImage(offscreen);
+
+                    gr.DrawImage(Player_Image, is_moving.X, is_moving.Y);
+
+                    control.Invalidate();
+
+                    flame_count++;
+
+                    if(flame_count >= 60)
+                    {
+                        break;
+                    }
+
+                    current_time = Environment.TickCount;
+
+                    if(current_time -before_time >= flame_time)
+                    {
+                        flame_count++;
+                        Thread.Sleep((current_time - before_time) % flame_time);
+                    }
+                    else
+                    {
+                        Thread.Sleep((flame_time - (current_time - before_time)));
+                    }
+
+                }
+
+
+            }
+
+            //移動先に荷物がある場合
 
             //画面の更新
             control.Invalidate();
