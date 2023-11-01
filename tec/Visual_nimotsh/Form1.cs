@@ -909,6 +909,235 @@ namespace Visual_nimotsh
             }
 
             //移動先に荷物がある場合
+            if(map.GetAspect(target) == Aspect.Obj)
+            {
+
+                //荷物の移動先が壁か荷物、得点済みのゴールの場合処理を抜ける
+                switch(map.GetAspect(target+delta))
+                {
+                    case Aspect.Obj:
+                    case Aspect.Wall:
+                    case Aspect.Goal:
+                        abort.publish();
+                        break;
+                }
+
+                //荷物の移動先に何もない場合
+                if(map.GetAspect(target+delta) == Aspect.Space)
+                {
+                    //描画処理、とりあえず60fps固定。1秒かけて等速で移動させる
+                    int before_time;
+                    int current_time;
+                    int flame_time = 1000 / 60;
+                    int flame_count = 1;
+                    before_time = Environment.TickCount;
+                    current_time = before_time;
+
+                    //プレイヤー以外が描画されたビットマップの作製
+                    Image bitmap = new Bitmap((map.MAP_X) * 50, (map.MAP_Y) * 50);
+                    bitmap = (Image)offscreen_origin.Clone();
+                    Graphics origin = Graphics.FromImage(bitmap);
+                    for (int i = 0; i < map.MAP_Y; i++)
+                    {
+                        for (int j = 0; j < map.MAP_X; j++)
+                        {
+
+                            Bitmap image_buf = null;
+
+                            switch (map.GetAspect(j, i))
+                            {
+                                case Aspect.Point:
+                                    image_buf = new Bitmap(Point_Image);
+                                    break;
+                                case Aspect.Goal:
+                                    image_buf = new Bitmap(Goal_Image);
+                                    break;
+                                case Aspect.Obj:
+                                    //移動する荷物以外の荷物を描画
+                                    if (new Pos(j, i) == target)
+                                    {
+                                        break;
+                                    }
+                                    else if(new Pos(j, i) == player)
+                                    {
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        image_buf = new Bitmap(Obj_Image);
+                                    }
+
+                                    break;
+                                case Aspect.Space:
+                                    //image_buf = new Bitmap(Space_Image);
+                                    break;
+
+                                default:
+                                    continue;
+                            }
+
+                            if (image_buf != null)
+                            {
+                                origin.DrawImage(image_buf, new Point(50 * j, 50 * i));
+                            }
+
+                        }
+                    }
+
+
+                    while (true)
+                    {
+
+                        Pos is_moving_player = new Pos(player * 50 + delta * (50 * flame_count / 60));
+                        Pos is_moving_obj = new Pos(target * 50 + delta * (50 * flame_count / 60));
+                        Image image_buffer = new Bitmap((map.MAP_X) * 50, (map.MAP_Y) * 50);
+
+                        image_buffer = (Image)bitmap.Clone();
+
+
+                        Graphics gr = Graphics.FromImage(image_buffer);
+
+                        gr.DrawImage(Player_Image, is_moving_player.X, is_moving_player.Y);
+                        gr.DrawImage(Obj_Image, is_moving_obj.X, is_moving_obj.Y);
+
+                        control.Invalidate();
+
+                        flame_count++;
+
+                        if (flame_count >= 60)
+                        {
+                            map.Move(move);
+                            break;
+                        }
+
+                        current_time = Environment.TickCount;
+
+                        offscreen = (Image)image_buffer.Clone();
+
+                        if (current_time - before_time >= flame_time)
+                        {
+                            flame_count++;
+                            Thread.Sleep((current_time - before_time) % flame_time);
+                        }
+                        else
+                        {
+                            Thread.Sleep((flame_time - (current_time - before_time)));
+                        }
+
+                    }
+                }
+
+                //荷物の移動先がゴールの場合
+                if (map.GetAspect(target+delta) == Aspect.Point)
+                {
+
+                    //描画処理、とりあえず60fps固定。1秒かけて等速で移動させる
+                    int before_time;
+                    int current_time;
+                    int flame_time = 1000 / 60;
+                    int flame_count = 1;
+                    before_time = Environment.TickCount;
+                    current_time = before_time;
+
+                    //プレイヤー以外が描画されたビットマップの作製
+                    Image bitmap = new Bitmap((map.MAP_X) * 50, (map.MAP_Y) * 50);
+                    bitmap = (Image)offscreen_origin.Clone();
+                    Graphics origin = Graphics.FromImage(bitmap);
+                    for (int i = 0; i < map.MAP_Y; i++)
+                    {
+                        for (int j = 0; j < map.MAP_X; j++)
+                        {
+
+                            Bitmap image_buf = null;
+
+                            switch (map.GetAspect(j, i))
+                            {
+                                case Aspect.Point:
+                                    image_buf = new Bitmap(Point_Image);
+                                    break;
+                                case Aspect.Goal:
+                                    if (new Pos(j, i) == target + delta)
+                                    {
+                                        image_buf = new Bitmap(Goal_Image);
+                                    }
+                                    break;
+                                case Aspect.Obj:
+                                    //移動する荷物以外の荷物を描画
+                                    if (new Pos(j, i) == target)
+                                    {
+                                        break;
+                                    }
+                                    else if (new Pos(j, i) == player)
+                                    {
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        image_buf = new Bitmap(Obj_Image);
+                                    }
+
+                                    break;
+                                case Aspect.Space:
+                                    //image_buf = new Bitmap(Space_Image);
+                                    break;
+
+                                default:
+                                    continue;
+                            }
+
+                            if (image_buf != null)
+                            {
+                                origin.DrawImage(image_buf, new Point(50 * j, 50 * i));
+                            }
+
+                        }
+                    }
+
+
+                    while (true)
+                    {
+
+                        Pos is_moving_player = new Pos(player * 50 + delta * (50 * flame_count / 60));
+                        Pos is_moving_obj = new Pos(target * 50 + delta * (50 * flame_count / 60));
+                        Image image_buffer = new Bitmap((map.MAP_X) * 50, (map.MAP_Y) * 50);
+
+                        image_buffer = (Image)bitmap.Clone();
+
+
+                        Graphics gr = Graphics.FromImage(image_buffer);
+
+                        gr.DrawImage(Player_Image, is_moving_player.X, is_moving_player.Y);
+                        gr.DrawImage(Obj_Image, is_moving_obj.X, is_moving_obj.Y);
+
+                        control.Invalidate();
+
+                        flame_count++;
+
+                        if (flame_count >= 60)
+                        {
+                            map.Move(move);
+                            break;
+                        }
+
+                        current_time = Environment.TickCount;
+
+                        offscreen = (Image)image_buffer.Clone();
+
+                        if (current_time - before_time >= flame_time)
+                        {
+                            flame_count++;
+                            Thread.Sleep((current_time - before_time) % flame_time);
+                        }
+                        else
+                        {
+                            Thread.Sleep((flame_time - (current_time - before_time)));
+                        }
+
+                    }
+
+                }
+
+            }
 
             //画面の更新
             control.Invalidate();
