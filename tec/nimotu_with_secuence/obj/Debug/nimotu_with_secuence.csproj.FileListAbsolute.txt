@@ -1,0 +1,10 @@
+E:\Desktop\programs\tec\nimotu_with_secuence\obj\Debug\nimotu_with_secuence.csproj.AssemblyReference.cache
+E:\Desktop\programs\tec\nimotu_with_secuence\obj\Debug\nimotu_with_secuence.Form1.resources
+E:\Desktop\programs\tec\nimotu_with_secuence\obj\Debug\nimotu_with_secuence.Properties.Resources.resources
+E:\Desktop\programs\tec\nimotu_with_secuence\obj\Debug\nimotu_with_secuence.csproj.GenerateResource.cache
+E:\Desktop\programs\tec\nimotu_with_secuence\obj\Debug\nimotu_with_secuence.csproj.CoreCompileInputs.cache
+E:\Desktop\programs\tec\nimotu_with_secuence\bin\Debug\nimotu_with_secuence.exe.config
+E:\Desktop\programs\tec\nimotu_with_secuence\bin\Debug\nimotu_with_secuence.exe
+E:\Desktop\programs\tec\nimotu_with_secuence\bin\Debug\nimotu_with_secuence.pdb
+E:\Desktop\programs\tec\nimotu_with_secuence\obj\Debug\nimotu_with_secuence.exe
+E:\Desktop\programs\tec\nimotu_with_secuence\obj\Debug\nimotu_with_secuence.pdb

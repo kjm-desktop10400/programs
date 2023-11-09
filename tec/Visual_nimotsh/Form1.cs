@@ -36,7 +36,9 @@ namespace Visual_nimotsh
 
         Abort abort;
         Exclusive_control exc;
+        End_game end_game;
         bool is_drawing = false;
+        private bool goal = false;
 
         public Form1()
         {
@@ -46,6 +48,7 @@ namespace Visual_nimotsh
             map = Map.Instance();
             abort = Abort.Instance();
             exc = Exclusive_control.Instance();
+            end_game = End_game.Instacne();
            
             //クライアント領域の設定
             this.ClientSize = new Size((map.MAP_X + 2) * 50, (map.MAP_Y + 2) * 50);
@@ -60,10 +63,15 @@ namespace Visual_nimotsh
             exc.Is_Drawing += new ExclusiveControlEventHandller(Enable_Is_Drawing);
             exc.Is_Waiting += new ExclusiveControlEventHandller(Desable_Is_Drawing);
 
+            end_game.Quite_Game += new EventHandler(close_game);
+
+
             SetStyle(ControlStyles.DoubleBuffer |
                 ControlStyles.UserPaint |
                 ControlStyles.AllPaintingInWmPaint, true
                 );
+
+
         }
 
         //描画用のイベントハンドラ
@@ -105,7 +113,13 @@ namespace Visual_nimotsh
         public void End_Draw(object sender, EventArgs e)
         {
             exc.waiting();
+            if (map.check() == true)
+            {
+                end_game.publish();
+            }
+
             thread.Abort();
+
         }
 
         //排他制御用イベントハンドラ
@@ -118,7 +132,57 @@ namespace Visual_nimotsh
             is_drawing = false;
         }
 
+        //クロススレッド回避用デリゲート
+        public delegate void quite();
+
+        public void finish_game()
+        {
+            this.Close();
+        }
+
+        public void close_game(object sender, EventArgs e)
+        {
+
+
+            //クロススレッドを回避するにはinvokeが必要
+            this.Invoke(new quite(finish_game));
+        }
+
     }
+
+
+    //終了判定用クラス、シングルトンでアプリの終了をさせる
+    public class End_game
+    {
+
+        private End_game() 
+        {
+            
+        }
+
+        private static End_game _Instance = null;
+
+        public static End_game Instacne()
+        {
+            if(_Instance == null)
+            {
+                _Instance = new End_game();
+            }
+            return _Instance;
+        }
+
+        public event EventHandler Quite_Game;
+
+        public void publish()
+        {
+            if(Quite_Game != null)
+            {
+                Quite_Game(this, EventArgs.Empty);
+            }
+        }
+
+    }
+    
 
     //スレッド終了用クラス、シングルトン
     public class Abort
@@ -648,6 +712,7 @@ namespace Visual_nimotsh
         private Map map = Map.Instance();
         private Abort abort = Abort.Instance();
         private Exclusive_control exc = Exclusive_control.Instance();
+        private End_game end_game = End_game.Instacne();
 
         //描画用バッファ
         private Image offscreen;
@@ -789,6 +854,10 @@ namespace Visual_nimotsh
                 case Keys.D:
                     delta = new Pos(1, 0);
                     move = 'd';
+                    break;
+
+                case Keys.Q:
+                    end_game.publish();
                     break;
 
                 default:
@@ -1056,10 +1125,7 @@ namespace Visual_nimotsh
                                     image_buf = new Bitmap(Point_Image);
                                     break;
                                 case Aspect.Goal:
-                                    if (new Pos(j, i) == target + delta)
-                                    {
-                                        image_buf = new Bitmap(Goal_Image);
-                                    }
+                                    image_buf = new Bitmap(Goal_Image);
                                     break;
                                 case Aspect.Obj:
                                     //移動する荷物以外の荷物を描画
@@ -1116,6 +1182,52 @@ namespace Visual_nimotsh
                         if (flame_count >= 60)
                         {
                             map.Move(move);
+
+                            gr.Dispose();
+
+                            //ゴール後のマップ描画
+                            Image goal = new Bitmap((map.MAP_X) * 50, (map.MAP_Y) * 50);
+                            Graphics ge = Graphics.FromImage(goal);
+                            for(int i = 0; i < map.MAP_Y; i++)
+                            {
+                                for (int j = 0; j < map.MAP_X; j++)
+                                {
+                                    Bitmap image_buf = null;
+                                    switch(map.GetAspect(j,i))
+                                    {
+                                        case Aspect.Goal:
+                                            image_buf = Goal_Image;
+                                            break;
+                                        case Aspect.Obj:
+                                            image_buf = Obj_Image;
+                                            break;
+                                        case Aspect.Player:
+                                            image_buf = Player_Image;
+                                            break;
+                                        case Aspect.Point:
+                                            image_buf = Point_Image;
+                                            break;
+                                        case Aspect.Wall:
+                                            image_buf = Wall_Image;
+                                            break;
+                                        case Aspect.Space:
+                                            //image_buf = Space_Image;
+                                            break;
+
+                                        default:
+                                            break;
+                                    }
+
+                                    if(image_buf != null)
+                                    {
+                                        ge.DrawImage(image_buf, new Point(50 * j, 50 * i));
+                                    }
+                                }
+
+                            }
+                            offscreen = goal;
+                            control.Invalidate();
+
                             break;
                         }
 
