@@ -36,6 +36,7 @@ namespace nimotu_with_secuence
         readonly int y;
         private char[,] field;
 
+        //コンストラクタ
         public MAP(int x, int y, char[,] data)
         {
             this.x = x;
@@ -43,6 +44,15 @@ namespace nimotu_with_secuence
             field = data;
         }
 
+        //移動用の関数。成功時trueを、失敗時falseを返す
+        public bool Move(Point direction)
+        {
+            
+
+
+        }
+
+        //テスト用。ToString関数のオーバーライド
         public override string ToString()
         {
             string line = null;
@@ -65,6 +75,9 @@ namespace nimotu_with_secuence
     public class MANEGE_MAP
     {
 
+        //ロード中のマップ
+        private static MAP map;
+
         //シングルトン用フィールド
         #region
         private static MANEGE_MAP _Instance = null;
@@ -81,7 +94,7 @@ namespace nimotu_with_secuence
         }
         #endregion
 
-        //マップロード用関数。フォルダが選択されない場合nullを返す
+        //マップロード用関数。フォルダが選択されない場合nullを返す。現状マップの整合性はチェックしない。
         public MAP Load_Map()
         {
             //フォルダー選択用クラスの初期化
@@ -125,6 +138,7 @@ namespace nimotu_with_secuence
             }
             sr.Close();
 
+            //mapクラスに保存するようにデータを作成
             char[,] data = new char[y, x];
             for (int i = 0; i < y; i++)
             {
@@ -150,6 +164,35 @@ namespace nimotu_with_secuence
 
 
         //マップの移動関数
+        public bool MoveMap(Keys key)
+        {
+            //移動方向
+            Point direction;
+
+            //入力を移動方向に変換。不適切な入力を排除
+            switch(key)
+            {
+                case Keys.W:
+                    direction = new Point(0, -1);
+                    break;
+                case Keys.A:
+                    direction = new Point(-1, 0);
+                    break;
+                case Keys.S:
+                    direction = new Point(0, 1);
+                    break;
+                case Keys.D:
+                    direction = new Point(1, 0);
+                    break;
+
+                default:
+                    return false;
+            }
+
+            //移動方向をMAPクラスに渡す
+            return map.Move(direction);
+
+        }
 
     }
 
