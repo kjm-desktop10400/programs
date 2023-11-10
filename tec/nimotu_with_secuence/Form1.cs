@@ -17,16 +17,131 @@ namespace nimotu_with_secuence
         Label test = new Label();
         MANEGE_MAP manege_map = MANEGE_MAP.Instance();
         MAP map;
+        Pos pos = new Pos(0, 0);
 
         public Form1()
         {
             InitializeComponent();
-
+            
 
         }
 
     }
 
+    //座標を表すクラス
+    public class Pos
+    {
+
+        //フィールドはこれだけ
+        private int x;
+        private int y;
+
+        //フィールドのアクセサリ
+        public int X
+        {
+            set
+            {
+                x = value;
+            }
+            get
+            {
+                return x;
+            }
+        }
+        public int Y
+        {
+            set
+            {
+                y = value;
+            }
+            get
+            {
+                return y;
+            }
+        }
+
+        public Pos(int x, int y)
+        {
+            this.x = x;
+            this.y = y;
+        }
+        public Pos(Pos obj)
+        {
+            this.x = obj.X;
+            this.y = obj.Y;
+        }
+
+
+        #region
+        private static Pos Add(Pos lhs, Pos rhs)
+        {
+            return new Pos(lhs.X + rhs.X, lhs.Y + rhs.Y);
+        }//加算用のメソッド
+        private static Pos Mul(Pos obj, double scaler)
+        {
+            return new Pos((int)(obj.X * scaler), (int)(obj.Y * scaler));
+        }//乗算用のメソッド
+        public override bool Equals(object obj)
+        {
+            Pos target = obj as Pos;    //型チェック
+
+            if (target == null) return false;
+
+            return ((this.X == target.X) && (this.Y == target.Y));  //中身の比較
+        }//等価演算用のメソッド
+        public override int GetHashCode()
+        {
+            // TODO: write your implementation of GetHashCode() here
+            throw new NotImplementedException();
+            return x.GetHashCode() ^ y.GetHashCode();
+        }//GetHahsCodeのオーバーライド
+
+        #region
+        public static Pos operator+(Pos lhs, Pos rhs)
+        {
+            return Add(lhs, rhs);
+        }
+        public static Pos operator-(Pos lhs, Pos rhs)
+        {
+            return Add(lhs, new Pos(-1 * rhs.X, -1 * rhs.Y));
+        }
+        public static Pos operator*(Pos obj, double scaler)
+        {
+            return Mul(obj, scaler);
+        }
+        public static Pos operator*(double scaler, Pos obj)
+        {
+            return Mul(obj, scaler);
+        }
+        public static Pos operator/(Pos obj, double scaler)
+        {
+            return Mul(obj, 1 / scaler);
+        }
+        public static Pos operator/(double scaler, Pos obj)
+        {
+            return Mul(obj, 1 / scaler);
+        }
+        public static bool operator==(Pos lhs, Pos rhs)
+        {
+            return lhs.Equals(rhs);
+        }
+        public static bool operator!=(Pos lhs, Pos rhs)
+        {
+            return !(lhs == rhs);
+        }
+        #endregion
+        #endregion      //四則演算、論理演算のオーバーロード
+
+        //ディープコピーはobject.MemberwiseClone()をラップすることでok。このメソッドは値型はビット単位のコピーを、参照型はシャローコピーをobject型で返す。
+        public static Pos Clone(object obj)
+        {
+            Pos target = obj as Pos;
+            if (target == null) return null;
+
+            return (Pos)target.MemberwiseClone();
+            
+        }
+    }
 
     //マップ本体のデータ保存用クラス
     public class MAP
@@ -35,8 +150,9 @@ namespace nimotu_with_secuence
         readonly int x;
         readonly int y;
         private char[,] field;
+        private Point pos_player = new Point(-1, -1);       //未初期化のプレイヤー座標として、デフォルトでは(-1,-1)で初期化
 
-        //コンストラクタ
+        //コンストラク
         public MAP(int x, int y, char[,] data)
         {
             this.x = x;
@@ -47,8 +163,21 @@ namespace nimotu_with_secuence
         //移動用の関数。成功時trueを、失敗時falseを返す
         public bool Move(Point direction)
         {
-            
 
+            //プレイヤー座標が初期値の場合プレイヤー座標をfieldから探す
+            if (pos_player == new Point(-1, -1))
+            {
+                for (int i = 0; i < y; i++)
+                {
+                    for (int j = 0; j < x; j++)
+                    {
+                        if (field[i, j] == 'P') pos_player = new Point(j, i);
+                    }
+                }
+            }
+
+            //移動方向に何もない場合成功
+            
 
         }
 
