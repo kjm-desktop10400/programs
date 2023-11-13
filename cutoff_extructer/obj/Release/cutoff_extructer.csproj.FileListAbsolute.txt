@@ -1,0 +1,10 @@
+C:\Desktop\programs\cutoff_extructer\bin\Release\cutoff_extructer.exe.config
+C:\Desktop\programs\cutoff_extructer\bin\Release\cutoff_extructer.exe
+C:\Desktop\programs\cutoff_extructer\bin\Release\cutoff_extructer.pdb
+C:\Desktop\programs\cutoff_extructer\obj\Release\cutoff_extructer.csproj.AssemblyReference.cache
+C:\Desktop\programs\cutoff_extructer\obj\Release\cutoff_extructer.csproj.SuggestedBindingRedirects.cache
+C:\Desktop\programs\cutoff_extructer\obj\Release\cutoff_extructer.Properties.Resources.resources
+C:\Desktop\programs\cutoff_extructer\obj\Release\cutoff_extructer.csproj.GenerateResource.cache
+C:\Desktop\programs\cutoff_extructer\obj\Release\cutoff_extructer.csproj.CoreCompileInputs.cache
+C:\Desktop\programs\cutoff_extructer\obj\Release\cutoff_extructer.exe
+C:\Desktop\programs\cutoff_extructer\obj\Release\cutoff_extructer.pdb
