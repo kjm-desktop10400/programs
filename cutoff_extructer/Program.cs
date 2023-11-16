@@ -18,6 +18,8 @@ namespace cutoff_extructer
 
         static void Main(string[] args)
         {
+            Global_variable.Instance().ARGS = args;
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
@@ -34,6 +36,30 @@ namespace cutoff_extructer
 
     }
 
+    public class Global_variable
+    {
+        private string[] args;
+
+        public string[] ARGS
+        { get; set; }
+
+        #region
+        private Global_variable()
+        {
+
+        }
+
+        private static Global_variable _Instance = null;
+        public static Global_variable Instance()
+        {
+            if (_Instance == null) _Instance = new Global_variable();
+
+            return _Instance;
+        }
+
+        #endregion//シングルトン用のフィールド
+    }
+
     public class Extructer
     {
 
@@ -48,13 +74,14 @@ namespace cutoff_extructer
         private string[,] cut_off;
 
         //ファイルパスの指定と書き出しファイル名の設定
-        public void SetFilePath(string[] args)
+        public static string SetFilePath(string[] args)
         {
+            string path = "";
 
             //コマンドラインからパスの受け取り
             if (args.Length == 1)
             {
-                path = args[0];
+                return args[0];
             }
             else
             {
@@ -63,8 +90,7 @@ namespace cutoff_extructer
                 ofd.Title = "select data file";
                 if (ofd.ShowDialog() != DialogResult.OK)
                 {
-                    path = null;
-                    return;
+                    return null;
                 }
 
                 path = ofd.FileName;
@@ -72,11 +98,7 @@ namespace cutoff_extructer
             }
 
 
-            outfile = "";
-            outfile = Path.Combine(Path.GetDirectoryName(path), Path.GetFileNameWithoutExtension(path) + "_cutoff.data");
-
-
-            return;
+            return Path.Combine(Path.GetDirectoryName(path), Path.GetFileNameWithoutExtension(path) + "_cutoff.data");
         }
 
         //指定されたパスのデータをdouble型に変換、周波数は[,0]にまとめる

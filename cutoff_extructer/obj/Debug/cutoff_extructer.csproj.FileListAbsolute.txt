@@ -9,3 +9,13 @@ C:\Desktop\programs\cutoff_extructer\obj\Debug\cutoff_extructer.csproj.CoreCompi
 C:\Desktop\programs\cutoff_extructer\obj\Debug\cutoff_extructer.exe
 C:\Desktop\programs\cutoff_extructer\obj\Debug\cutoff_extructer.pdb
 C:\Desktop\programs\cutoff_extructer\obj\Debug\cutoff_extructer.Form1.resources
+C:\Users\LarcH\Desktop\programs\cutoff_extructer\obj\Debug\cutoff_extructer.csproj.AssemblyReference.cache
+C:\Users\LarcH\Desktop\programs\cutoff_extructer\obj\Debug\cutoff_extructer.Form1.resources
+C:\Users\LarcH\Desktop\programs\cutoff_extructer\obj\Debug\cutoff_extructer.Properties.Resources.resources
+C:\Users\LarcH\Desktop\programs\cutoff_extructer\obj\Debug\cutoff_extructer.csproj.GenerateResource.cache
+C:\Users\LarcH\Desktop\programs\cutoff_extructer\obj\Debug\cutoff_extructer.csproj.CoreCompileInputs.cache
+C:\Users\LarcH\Desktop\programs\cutoff_extructer\obj\Debug\cutoff_extructer.exe
+C:\Users\LarcH\Desktop\programs\cutoff_extructer\obj\Debug\cutoff_extructer.pdb
+C:\Users\LarcH\Desktop\programs\cutoff_extructer\bin\Debug\cutoff_extructer.exe.config
+C:\Users\LarcH\Desktop\programs\cutoff_extructer\bin\Debug\cutoff_extructer.exe
+C:\Users\LarcH\Desktop\programs\cutoff_extructer\bin\Debug\cutoff_extructer.pdb
