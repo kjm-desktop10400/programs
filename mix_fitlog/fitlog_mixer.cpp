@@ -11,6 +11,7 @@ int main(int argc, char* argv[]){
 
     if(argc == 1){
         printf("nofile input");
+        getc(stdin);
         return 0;
     }
 
@@ -65,10 +66,11 @@ int main(int argc, char* argv[]){
 
         if(log_file == NULL){
             printf("failed open logfile : %s\n", file_name);
+            getc(stdin);
             return 0;
         }
         else {
-            //printf("open log file : %s\n", file_name);
+            printf("open log file : %s\n", file_name);
         }
 
         for(int j = 0; j < 256; j++){
@@ -125,5 +127,6 @@ int main(int argc, char* argv[]){
 
     fgetc(stdin);
 
+    getc(stdin);
     return 0;
 }
