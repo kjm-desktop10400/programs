@@ -1,0 +1,10 @@
+E:\Desktop\programs\GnuplotWrapper\bin\Debug\GnuplotWrapper.exe.config
+E:\Desktop\programs\GnuplotWrapper\bin\Debug\GnuplotWrapper.exe
+E:\Desktop\programs\GnuplotWrapper\bin\Debug\GnuplotWrapper.pdb
+E:\Desktop\programs\GnuplotWrapper\obj\Debug\GnuplotWrapper.csproj.AssemblyReference.cache
+E:\Desktop\programs\GnuplotWrapper\obj\Debug\GnuplotWrapper.Form1.resources
+E:\Desktop\programs\GnuplotWrapper\obj\Debug\GnuplotWrapper.Properties.Resources.resources
+E:\Desktop\programs\GnuplotWrapper\obj\Debug\GnuplotWrapper.csproj.GenerateResource.cache
+E:\Desktop\programs\GnuplotWrapper\obj\Debug\GnuplotWrapper.csproj.CoreCompileInputs.cache
+E:\Desktop\programs\GnuplotWrapper\obj\Debug\GnuplotWrapper.exe
+E:\Desktop\programs\GnuplotWrapper\obj\Debug\GnuplotWrapper.pdb
