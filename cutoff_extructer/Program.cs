@@ -18,17 +18,17 @@ namespace cutoff_extructer
 
         static void Main(string[] args)
         {
-            /*
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
-            */
 
+            /*
             Extructer ex = new Extructer();
             ex.SetFilePath(args);
             ex.Extruct_Data();
             ex.CulcCutoff();
             ex.WriteFile();
+            */
 
         }
 

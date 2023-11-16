@@ -8,3 +8,4 @@ C:\Desktop\programs\cutoff_extructer\obj\Debug\cutoff_extructer.csproj.GenerateR
 C:\Desktop\programs\cutoff_extructer\obj\Debug\cutoff_extructer.csproj.CoreCompileInputs.cache
 C:\Desktop\programs\cutoff_extructer\obj\Debug\cutoff_extructer.exe
 C:\Desktop\programs\cutoff_extructer\obj\Debug\cutoff_extructer.pdb
+C:\Desktop\programs\cutoff_extructer\obj\Debug\cutoff_extructer.Form1.resources
