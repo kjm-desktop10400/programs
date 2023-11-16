@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Runtime.Remoting.Messaging;
+using System.Drawing.Text;
 
 namespace cutoff_extructer
 {
@@ -40,32 +41,41 @@ namespace cutoff_extructer
         private string path;
         private int data_num;
         private int sample_num;
+        private string outfile;
 
         private string[] label;
 
         private string[,] cut_off;
 
-        //ファイルパスの指定
+        //ファイルパスの指定と書き出しファイル名の設定
         public void SetFilePath(string[] args)
         {
+
             //コマンドラインからパスの受け取り
             if (args.Length == 1)
             {
                 path = args[0];
-                return;
             }
-
-            //ファイル選択ウィンドウからパスの選択
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Title = "select data file";
-            if (ofd.ShowDialog() != DialogResult.OK)
+            else
             {
-                path = null;
-                return;
+                //ファイル選択ウィンドウからパスの選択
+                OpenFileDialog ofd = new OpenFileDialog();
+                ofd.Title = "select data file";
+                if (ofd.ShowDialog() != DialogResult.OK)
+                {
+                    path = null;
+                    return;
+                }
+
+                path = ofd.FileName;
+
             }
 
 
-            path = ofd.FileName;
+            outfile = "";
+            outfile = Path.Combine(Path.GetDirectoryName(path), Path.GetFileNameWithoutExtension(path) + "_cutoff.data");
+
+
             return;
         }
 
@@ -114,6 +124,7 @@ namespace cutoff_extructer
             //データラベルの作成(ラベルに不要な文字を削る)。必要ならばコードを足す。
             label = new string[data_num + 1];
             label = buf[1].Split(';');
+
             for(int i = 1; i < label.Length; i++)
             {
                 string tmp = label[i];
@@ -139,6 +150,7 @@ namespace cutoff_extructer
                     init--;
                 }
 
+                //ラベルの書き込み(1行目のみ)
                 if (i == 1)
                 {
                     label[0] = "";
@@ -146,6 +158,7 @@ namespace cutoff_extructer
                     {
                         label[0] += tmp[j];
                     }
+
                 }
 
                 //末尾の位置の検索
@@ -207,7 +220,7 @@ namespace cutoff_extructer
         public void WriteFile()
         {
 
-            using (StreamWriter sw = new StreamWriter(Path.Combine(Path.GetDirectoryName(path), "cutoff.dat"), false))
+            using (StreamWriter sw = new StreamWriter(outfile, false))
             {
 
                 //sw.WriteLine("sample\tfreq[Hz]\tAmplitude");
