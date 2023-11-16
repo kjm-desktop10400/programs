@@ -114,29 +114,57 @@ namespace cutoff_extructer
             //データラベルの作成(ラベルに不要な文字を削る)。必要ならばコードを足す。
             label = new string[data_num + 1];
             label = buf[1].Split(';');
-            for(int i = 0; i < label.Length; i++)
+            for(int i = 1; i < label.Length; i++)
             {
                 string tmp = label[i];
                 label[i] = "";
 
-                for(int j = 0; j<tmp.Length;j++)
+                int equal = 0;
+                int init = 0;
+                int last = 0;
+
+                //'='の位置の走査
+                while(true)
                 {
-                    switch(tmp[j])
+                    if (tmp[equal] == '=') break;
+
+                    equal++;
+                }
+
+                //先頭の位置の検索
+                init = equal;
+                while(true)
+                {
+                    if (tmp[init - 1] == '(') break;
+                    init--;
+                }
+
+                if (i == 1)
+                {
+                    label[0] = "";
+                    for (int j = init; j < equal; j++)
                     {
-                        case ' ':
-                        case ',':
-
-                            break;
-
-                        default:
-                            label[i] += tmp[j];
-                            break;
+                        label[0] += tmp[j];
                     }
+                }
+
+                //末尾の位置の検索
+                last = equal;
+                while(true)
+                {
+                    if (tmp[last + 1] == ')') break;
+                    last++;
+                }
+
+                //検索した先頭から末尾までの書き込み
+                for (int j = equal + 1; j <= last; j++)
+                {
+                    label[i] += tmp[j];
                 }
 
             }
 
-            //メモリの解法をガベコレに伝える
+            //メモリの解放をガベコレに伝える
             buf = null;
 
         }
@@ -150,7 +178,7 @@ namespace cutoff_extructer
             cut_off = new string[3, data_num + 1];
 
             cut_off[0, 0] = "";
-            for(int i = 1; i < data_num;i++)
+            for(int i = 0; i < data_num;i++)
             {
                 cut_off[0, i] = label[i];
             }
@@ -184,16 +212,11 @@ namespace cutoff_extructer
 
                 //sw.WriteLine("sample\tfreq[Hz]\tAmplitude");
 
-                for (int i = 1; i < data_num + 1; i++)
-                {
-                    sw.Write("L[um]\t" + "freq[Hz]" + "\t");
-                }
-                sw.Write("\n");
+                sw.WriteLine(cut_off[0, 0] + "\t" + "freq[Hz]" + "\t");
 
                 for (int i = 1; i < data_num + 1; i++)
                 {
-                    double tmp = 0.18 + 0.02 * (i - 1);
-                    sw.Write(tmp + "\t" + cut_off[1,i] + "\t");
+                    sw.WriteLine(cut_off[0, i] + "\t" + cut_off[1, i] + "\t");
                 }
             }
 
