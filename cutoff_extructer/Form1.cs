@@ -35,19 +35,22 @@ namespace cutoff_extructer
         {
             textBox2.Text = Extructer.SetFilePath(gv.ARGS);
         }
+        //実行ボタン
         private void button3_Click(object sender, EventArgs e)
         {
-            textBox3.Text = Extructer.SetFilePath(gv.ARGS);
+            
+
+
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            textBox4.Text = Extructer.SetFilePath(gv.ARGS);
+            textBox3.Text = Extructer.SetFilePath(gv.ARGS);
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-
+            textBox4.Text = Extructer.SetFilePath(gv.ARGS);
         }
         #endregion//Buttons
 
@@ -63,15 +66,36 @@ namespace cutoff_extructer
                 button2.Enabled = true;
                 textBox2.Enabled = true;
                 checkBox2.Enabled = true;
+
+                button5.Enabled = true;
+                textBox4.Enabled = true;
             }
             else
             {
                 button2.Enabled = false;
                 textBox2.Enabled = false;
                 checkBox2.Enabled= false;
+
+                button5.Enabled = false;
+                textBox4.Enabled = false;
             }
 
         }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if(checkBox2.Checked)
+            {
+                button5.Enabled= true;
+                textBox4.Enabled= true;
+            }
+            else
+            {
+                button5.Enabled= false;
+                textBox4.Enabled= false;
+            }
+        }
+
 
         #endregion
 
