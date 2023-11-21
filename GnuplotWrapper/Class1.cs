@@ -43,11 +43,11 @@ namespace GnuplotWrapper
             if(sw.BaseStream.CanWrite)
             {
                 sw.WriteLine(@"gnuplot");
-                //sw.WriteLine(@"plot sin(x)");
-                //sw.WriteLine("exit");
+                sw.WriteLine(@"plot sin(x)");
+                sw.WriteLine("exit");
             }
 
-            //pipe.WaitForExit();
+            pipe.WaitForExit();
             pipe.Close();
 
         }

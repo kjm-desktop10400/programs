@@ -8,3 +8,14 @@ E:\Desktop\programs\GnuplotWrapper\obj\Debug\GnuplotWrapper.csproj.GenerateResou
 E:\Desktop\programs\GnuplotWrapper\obj\Debug\GnuplotWrapper.csproj.CoreCompileInputs.cache
 E:\Desktop\programs\GnuplotWrapper\obj\Debug\GnuplotWrapper.exe
 E:\Desktop\programs\GnuplotWrapper\obj\Debug\GnuplotWrapper.pdb
+C:\Desktop\programs\GnuplotWrapper\bin\Debug\GnuplotWrapper.exe.config
+C:\Desktop\programs\GnuplotWrapper\bin\Debug\GnuplotWrapper.exe
+C:\Desktop\programs\GnuplotWrapper\bin\Debug\GnuplotWrapper.pdb
+C:\Desktop\programs\GnuplotWrapper\obj\Debug\GnuplotWrapper.csproj.AssemblyReference.cache
+C:\Desktop\programs\GnuplotWrapper\obj\Debug\GnuplotWrapper.csproj.SuggestedBindingRedirects.cache
+C:\Desktop\programs\GnuplotWrapper\obj\Debug\GnuplotWrapper.Form1.resources
+C:\Desktop\programs\GnuplotWrapper\obj\Debug\GnuplotWrapper.Properties.Resources.resources
+C:\Desktop\programs\GnuplotWrapper\obj\Debug\GnuplotWrapper.csproj.GenerateResource.cache
+C:\Desktop\programs\GnuplotWrapper\obj\Debug\GnuplotWrapper.csproj.CoreCompileInputs.cache
+C:\Desktop\programs\GnuplotWrapper\obj\Debug\GnuplotWrapper.exe
+C:\Desktop\programs\GnuplotWrapper\obj\Debug\GnuplotWrapper.pdb
