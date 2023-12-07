@@ -1,4 +1,4 @@
-# fit [vth : 0.8] f(x) "gm_Vgs_M_10_W_1_10.dat" skip 6 using 1 : (i + 1) via g, i
-# final sum of squares of residuals : 2.03269e-15
-g               = 1.86845883511311e-14  
-i               = 1.99999999999999      
+# fit [-0.01 : 0.01] f1(x) input skip 6 using 1 : 2 via A1, B1 
+# final sum of squares of residuals : 1.87065e-06
+A1              = 1.36147724482159      
+B1              = 6.14302345578309e-13  

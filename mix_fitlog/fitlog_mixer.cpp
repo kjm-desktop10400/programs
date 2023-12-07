@@ -99,14 +99,28 @@ int main(int argc, char* argv[]){
             char_count += 2;
 
             // write numbers
+            bool is_space = false;
             while(1){
 
                 if(buf[char_count] == '\n'){
-                    fputc('\t', out_file);
+                    fputc(',', out_file);
                     fprintf(stdout, "\tline feed\n");
+                    is_space = false;
                     break;
                 }
+                else if(buf[char_count] == ' ' || buf[char_count] == '\t')
+                {
+                    is_space = true;
+                    char_count++;
+                }
                 else{
+                    if(is_space)
+                    {
+                        fputc(',', out_file);
+                        fputc('\t', stdout);
+                        is_space = false;
+                    }
+
                     fputc(buf[char_count], out_file);
                     fputc(buf[char_count], stdout);
                     char_count++;
