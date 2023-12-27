@@ -15,6 +15,7 @@ namespace MyGraph
     {
 
         Draw_graph draw_graph;
+        List<Source_data> Sources = null;
 
         public Form1()
         {
@@ -28,10 +29,15 @@ namespace MyGraph
             source_file_browser sf = new source_file_browser();
             if(sf.Get_Source_File_Path())
             {
+                if(Sources == null)
+                {
+                    Sources = new List<Source_data>();
+                }
 
                 this.textBox3.Text = sf.Source_path;
+                Source_data source_data = new Source_data(sf.Source_path);
 
-                this.textBox8.Text = File.ReadAllText(sf.Source_path);
+                this.textBox8.Text = source_data.Data;
 
             }
 
@@ -40,6 +46,8 @@ namespace MyGraph
         //描画の更新
         private void button2_Click(object sender, EventArgs e)
         {
+            draw_graph.range = new Range(double.Parse(textBox4.Text), double.Parse(textBox6.Text), double.Parse(textBox5.Text), double.Parse(textBox7.Text));
+
             this.pictureBox1.Image = draw_graph.Offscreen;
         }
 

@@ -15,3 +15,13 @@ C:\Desktop\programs\MyGraph\obj\Debug\MyGraph.csproj.GenerateResource.cache
 C:\Desktop\programs\MyGraph\obj\Debug\MyGraph.csproj.CoreCompileInputs.cache
 C:\Desktop\programs\MyGraph\obj\Debug\MyGraph.exe
 C:\Desktop\programs\MyGraph\obj\Debug\MyGraph.pdb
+E:\Desktop\programs\MyGraph\bin\Debug\MyGraph.exe.config
+E:\Desktop\programs\MyGraph\bin\Debug\MyGraph.exe
+E:\Desktop\programs\MyGraph\bin\Debug\MyGraph.pdb
+E:\Desktop\programs\MyGraph\obj\Debug\MyGraph.csproj.AssemblyReference.cache
+E:\Desktop\programs\MyGraph\obj\Debug\MyGraph.Form1.resources
+E:\Desktop\programs\MyGraph\obj\Debug\MyGraph.Properties.Resources.resources
+E:\Desktop\programs\MyGraph\obj\Debug\MyGraph.csproj.GenerateResource.cache
+E:\Desktop\programs\MyGraph\obj\Debug\MyGraph.csproj.CoreCompileInputs.cache
+E:\Desktop\programs\MyGraph\obj\Debug\MyGraph.exe
+E:\Desktop\programs\MyGraph\obj\Debug\MyGraph.pdb
