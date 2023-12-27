@@ -4,3 +4,14 @@ C:\Desktop\reserch\folded_gilbert\seminar\20231205\graphes\data\dc_fitlog\MyGrap
 C:\Desktop\reserch\folded_gilbert\seminar\20231205\graphes\data\dc_fitlog\MyGraph\obj\Debug\MyGraph.Properties.Resources.resources
 C:\Desktop\reserch\folded_gilbert\seminar\20231205\graphes\data\dc_fitlog\MyGraph\obj\Debug\MyGraph.csproj.GenerateResource.cache
 C:\Desktop\reserch\folded_gilbert\seminar\20231205\graphes\data\dc_fitlog\MyGraph\obj\Debug\MyGraph.csproj.CoreCompileInputs.cache
+C:\Desktop\programs\MyGraph\bin\Debug\MyGraph.exe.config
+C:\Desktop\programs\MyGraph\bin\Debug\MyGraph.exe
+C:\Desktop\programs\MyGraph\bin\Debug\MyGraph.pdb
+C:\Desktop\programs\MyGraph\obj\Debug\MyGraph.csproj.AssemblyReference.cache
+C:\Desktop\programs\MyGraph\obj\Debug\MyGraph.csproj.SuggestedBindingRedirects.cache
+C:\Desktop\programs\MyGraph\obj\Debug\MyGraph.Form1.resources
+C:\Desktop\programs\MyGraph\obj\Debug\MyGraph.Properties.Resources.resources
+C:\Desktop\programs\MyGraph\obj\Debug\MyGraph.csproj.GenerateResource.cache
+C:\Desktop\programs\MyGraph\obj\Debug\MyGraph.csproj.CoreCompileInputs.cache
+C:\Desktop\programs\MyGraph\obj\Debug\MyGraph.exe
+C:\Desktop\programs\MyGraph\obj\Debug\MyGraph.pdb
