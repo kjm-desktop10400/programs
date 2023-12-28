@@ -16,6 +16,7 @@ namespace MyGraph
 
         Draw_graph draw_graph;
         List<Source_data> Sources = null;
+        Source_data source_data;
 
         public Form1()
         {
@@ -35,9 +36,9 @@ namespace MyGraph
                 }
 
                 this.textBox3.Text = sf.Source_path;
-                Source_data source_data = new Source_data(sf.Source_path);
+                source_data = new Source_data(sf.Source_path);
 
-                this.textBox8.Text = source_data.Data;
+                
 
             }
 
@@ -48,6 +49,9 @@ namespace MyGraph
         {
             draw_graph.range = new Range(double.Parse(textBox4.Text), double.Parse(textBox6.Text), double.Parse(textBox5.Text), double.Parse(textBox7.Text));
 
+            Trace trace = new Trace(new Pen(Color.Black, 10), "test_graph", source_data, '\t', 0, 1);
+            draw_graph.Draw_trace(trace, draw_graph.range);
+
             this.pictureBox1.Image = draw_graph.Offscreen;
         }
 
@@ -56,10 +60,24 @@ namespace MyGraph
             this.pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             draw_graph = new Draw_graph();
             //this.pictureBox1.Image = draw_graph.Offscreen;
+
+            this.textBox4.Text = "-0.5";
+            this.textBox6.Text = "0.5";
+            this.textBox5.Text = "-0.3";
+            this.textBox7.Text = "0.3";
         }
 
         private void axisToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
+        }
+
+        //DELETE
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+            draw_graph.Delete_screen();
+            this.pictureBox1.Image = draw_graph.Offscreen;
 
         }
     }

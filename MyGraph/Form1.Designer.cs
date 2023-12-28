@@ -62,15 +62,12 @@
             this.addPlaneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.axisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.legendToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.textBox8 = new System.Windows.Forms.TextBox();
             this.data_previw_tab = new System.Windows.Forms.TabControl();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.data_previw_tab.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox1
@@ -234,7 +231,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(425, 455);
+            this.button2.Location = new System.Drawing.Point(416, 432);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(56, 18);
@@ -366,33 +363,9 @@
             this.legendToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
             this.legendToolStripMenuItem.Text = "Legend";
             // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.textBox8);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage1.Size = new System.Drawing.Size(386, 366);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // textBox8
-            // 
-            this.textBox8.Location = new System.Drawing.Point(0, 0);
-            this.textBox8.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox8.Multiline = true;
-            this.textBox8.Name = "textBox8";
-            this.textBox8.ReadOnly = true;
-            this.textBox8.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBox8.Size = new System.Drawing.Size(390, 373);
-            this.textBox8.TabIndex = 0;
-            // 
             // data_previw_tab
             // 
             this.data_previw_tab.AllowDrop = true;
-            this.data_previw_tab.Controls.Add(this.tabPage1);
             this.data_previw_tab.ItemSize = new System.Drawing.Size(98, 18);
             this.data_previw_tab.Location = new System.Drawing.Point(496, 25);
             this.data_previw_tab.Margin = new System.Windows.Forms.Padding(2);
@@ -422,12 +395,23 @@
             this.button4.Text = "add tab";
             this.button4.UseVisualStyleBackColor = true;
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(406, 461);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 10;
+            this.button5.Text = "DELETE";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(918, 496);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.data_previw_tab);
@@ -458,9 +442,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
-            this.data_previw_tab.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -502,11 +483,10 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem addPlaneToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem legendToolStripMenuItem;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TextBox textBox8;
         public System.Windows.Forms.TabControl data_previw_tab;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
     }
 }
 

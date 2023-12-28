@@ -31,6 +31,9 @@ namespace MyGraph
             this.colum_x = x;
             this.colum_y = y;
         }
+        
+
+
 
     }
 }

@@ -37,37 +37,17 @@ namespace MyGraph
             Point befor = Tranceform(t.Source.Fetch(from, t.Colum_x), t.Source.Fetch(from, t.Colum_y));
             Point after = Tranceform(t.Source.Fetch(from + 1, t.Colum_x), t.Source.Fetch(from + 1, t.Colum_y));
 
-            int dash = 1;
-            int count = 0;
-
             for (int i = from + 1; i + 1 < t.Source.Colum; i++)
             {
 
-                if(dash == 1)
-                {
-                    g.DrawLine(t.Pen, befor, after);
-                }
-                else
-                {
-
-                }
-
-                if(count == 10)
-                {
-                    count = 0;
-                    dash *= -1;
-                }
+                g.DrawLine(t.Pen, befor, after);
 
                 befor = after;
                 after = Tranceform(t.Source.Fetch(i + 1, t.Colum_x), t.Source.Fetch(i + 1, t.Colum_y));
 
-                count++;
-
             }
 
-            //flame
             g.DrawRectangle(t.Pen, new Rectangle(0, 0, screen_size_x, screen_size_y));
-            //axis
             g.DrawLine(t.Pen, Tranceform(range.Xrange_start, 0), Tranceform(range.Xrange_stop, 0));
             g.DrawLine(t.Pen, Tranceform(0, range.Yrange_start), Tranceform(0, range.Yrange_stop));
 
@@ -78,7 +58,7 @@ namespace MyGraph
         {
 
             double screen_x_d = (x - range.Xrange_start) * screen_size_x / (range.Xrange_stop - range.Xrange_start);
-            double screen_y_d = (double)screen_size_y - ((y - range.Yrange_start) * (double)screen_size_y / (range.Yrange_stop - range.Yrange_start));
+            double screen_y_d = (1 - (y - range.Yrange_start) / (range.Yrange_stop - range.Yrange_start)) * screen_size_y;
 
             return new Point((int)screen_x_d, (int)screen_y_d);
 
@@ -88,11 +68,6 @@ namespace MyGraph
             return Tranceform(double.Parse(x), double.Parse(y));
         }
 
-        public void Delete_screen()
-        {
-            offscreen = new Bitmap(screen_size_x, screen_size_y);
-            g = Graphics.FromImage(offscreen);
-        }
 
     }
 }

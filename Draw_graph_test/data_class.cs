@@ -10,15 +10,15 @@ namespace MyGraph
 
     class Range
     {
-        private double xrange_start; public double Xrange_start { set { Set_xrange(value, xrange_stop); } get { return xrange_start; } }
-        private double xrange_stop; public double Xrange_stop { set { Set_xrange(value, xrange_start); } get { return xrange_stop; } }
-        private double yrange_start; public double Yrange_start { set { Set_yrange(value, yrange_stop); } get { return yrange_start; } }
-        private double yrange_stop; public double Yrange_stop { set { Set_yrange(value, yrange_start); } get { return yrange_stop; } }
+        private double xrange_start;    public double Xrange_start{ set { Set_xrange(value, xrange_stop); }  get{ return xrange_start;}   }
+        private double xrange_stop;     public double Xrange_stop { set { Set_xrange(value, xrange_start); } get { return xrange_stop; }  }
+        private double yrange_start;    public double Yrange_start{ set { Set_yrange(value, yrange_stop); }  get { return yrange_start; } }
+        private double yrange_stop;     public double Yrange_stop { set { Set_yrange(value, yrange_start); } get { return xrange_stop; }  }
 
         public Range(double x1, double x2, double y1, double y2)
         {
 
-            if (x1 <= x2)
+            if(x1 <= x2)
             {
                 xrange_start = x1;
                 xrange_stop = x2;
@@ -28,7 +28,7 @@ namespace MyGraph
                 xrange_start = x2;
                 xrange_stop = x1;
             }
-            if (y1 <= y2)
+            if(y1 <= y2)
             {
                 yrange_start = y1;
                 yrange_stop = y2;
@@ -79,7 +79,7 @@ namespace MyGraph
 
         public static Control_Charctor Instance()
         {
-            if (_Instance == null)
+            if(_Instance == null)
             {
                 _Instance = new Control_Charctor();
             }
@@ -101,7 +101,7 @@ namespace MyGraph
         {
             set
             {
-                switch (value)
+                switch(value)
                 {
                     //delimiter list
                     case ' ':
@@ -134,7 +134,7 @@ namespace MyGraph
         {
             set
             {
-                switch (value)
+                switch(value)
                 {
                     case ';':
                         comment = ';';
@@ -161,10 +161,10 @@ namespace MyGraph
                 string buf = "";
                 for (int i = 0; i < colum; i++)
                 {
-                    for (int j = 0; j < row; j++)
+                    for(int j = 0; j < row; j++)
                     {
                         buf += data[i, j];
-                        if (j < row - 1)
+                        if(j < row -1)
                         {
                             buf += "\t";
                         }
@@ -174,8 +174,8 @@ namespace MyGraph
                 return buf;
             }
         }
-        private int row; public int Row { get { return row; } }
-        private int colum; public int Colum { get { return colum; } }
+        private int row;    public int Row { get { return row; } }
+        private int colum;  public int Colum { get { return colum; } }
         private string path;
 
         public Source_data(string source_path)
@@ -184,9 +184,9 @@ namespace MyGraph
             buf = File.ReadAllLines(source_path);
 
             int row_ref;
-            for (row_ref = 0; row_ref < buf.Length; row_ref++)
+            for(row_ref = 0; row_ref < buf.Length; row_ref++)
             {
-                if (buf[row_ref].Contains(Control_Charctor.Instance().Comment))
+                if(buf[row_ref].Contains(Control_Charctor.Instance().Comment))
                 {
                     continue;
                 }
@@ -200,10 +200,10 @@ namespace MyGraph
             row = buf[row_ref].Split(Control_Charctor.Instance().Delimiter).Length;
             data = new string[colum, row];
 
-            for (int i = 0; i < buf.Length; i++)
+            for(int i = 0; i < buf.Length; i++)
             {
                 //Control Charactorのcomment文字を含む場合
-                if (buf[i].Contains(Control_Charctor.Instance().Comment))
+                if(buf[i].Contains(Control_Charctor.Instance().Comment))
                 {
                     data[i, 0] = buf[i];
                     continue;
@@ -211,7 +211,7 @@ namespace MyGraph
 
                 //Control Charactorのdelimiterで文字列を分割
                 string[] tmp = buf[i].Split(Control_Charctor.Instance().Delimiter);
-                for (int j = 0; j < tmp.Length; j++)
+                for(int j = 0; j < tmp.Length; j++)
                 {
                     data[i, j] = tmp[j];
                 }
