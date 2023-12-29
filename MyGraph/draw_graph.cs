@@ -37,31 +37,12 @@ namespace MyGraph
             Point befor = Tranceform(t.Source.Fetch(from, t.Colum_x), t.Source.Fetch(from, t.Colum_y));
             Point after = Tranceform(t.Source.Fetch(from + 1, t.Colum_x), t.Source.Fetch(from + 1, t.Colum_y));
 
-            int dash = 1;
-            int count = 0;
-
             for (int i = from + 1; i + 1 < t.Source.Colum; i++)
             {
-
-                if(dash == 1)
-                {
-                    g.DrawLine(t.Pen, befor, after);
-                }
-                else
-                {
-
-                }
-
-                if(count == 10)
-                {
-                    count = 0;
-                    dash *= -1;
-                }
+                g.DrawLine(t.Pen, befor, after);
 
                 befor = after;
                 after = Tranceform(t.Source.Fetch(i + 1, t.Colum_x), t.Source.Fetch(i + 1, t.Colum_y));
-
-                count++;
 
             }
 

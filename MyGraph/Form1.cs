@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Drawing.Drawing2D;
 
 namespace MyGraph
 {
@@ -17,6 +18,7 @@ namespace MyGraph
         Draw_graph draw_graph;
         List<Source_data> Sources = null;
         Source_data source_data;
+        Tab_controler tab_controler;
 
         public Form1()
         {
@@ -38,7 +40,7 @@ namespace MyGraph
                 this.textBox3.Text = sf.Source_path;
                 source_data = new Source_data(sf.Source_path);
 
-                
+                Sources.Add(source_data);
 
             }
 
@@ -48,8 +50,9 @@ namespace MyGraph
         private void button2_Click(object sender, EventArgs e)
         {
             draw_graph.range = new Range(double.Parse(textBox4.Text), double.Parse(textBox6.Text), double.Parse(textBox5.Text), double.Parse(textBox7.Text));
-
-            Trace trace = new Trace(new Pen(Color.Black, 10), "test_graph", source_data, '\t', 0, 1);
+            Pen pen = new Pen(Color.Black, 10);
+            pen.DashStyle = DashStyle.Dash;
+            Trace trace = new Trace(pen, "test_graph", Sources[0], '\t', 0, 1);
             draw_graph.Draw_trace(trace, draw_graph.range);
 
             this.pictureBox1.Image = draw_graph.Offscreen;
@@ -57,7 +60,7 @@ namespace MyGraph
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            tab_controler = Tab_controler.Instance();
             draw_graph = new Draw_graph();
             //this.pictureBox1.Image = draw_graph.Offscreen;
 
@@ -65,11 +68,6 @@ namespace MyGraph
             this.textBox6.Text = "0.5";
             this.textBox5.Text = "-0.3";
             this.textBox7.Text = "0.3";
-        }
-
-        private void axisToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
         }
 
         //DELETE
@@ -80,5 +78,13 @@ namespace MyGraph
             this.pictureBox1.Image = draw_graph.Offscreen;
 
         }
+
+        //ADD tab botton
+        private void button4_Click(object sender, EventArgs e)
+        {
+            tab_controler.Add_data_tab(this, new TabEventArgs("auto added tab" + (tab_controler.Index - 1).ToString()));
+            this.Setting_Tab.Controls.Add(tab_controler.Controls[tab_controler.Index - 2]);
+        }
+
     }
 }
