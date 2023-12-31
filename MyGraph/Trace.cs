@@ -15,7 +15,7 @@ namespace MyGraph
         private string trace_name;
         public string Trace_name { get { return trace_name; } }
         private Source_data source;
-        public Source_data Source { get { return source; } }
+        public Source_data Source { get { return source; }set { source = value; } }
         private int colum_y;
         private int colum_x;
         public int Colum_x { get { return colum_x; } }

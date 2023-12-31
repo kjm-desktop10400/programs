@@ -150,7 +150,7 @@ namespace MyGraph
 
     }
 
-    class Source_data
+    public class Source_data
     {
 
         private string[,] data;
@@ -176,10 +176,15 @@ namespace MyGraph
         }
         private int row; public int Row { get { return row; } }
         private int colum; public int Colum { get { return colum; } }
-        private string path;
+        private string path; public string Path { get { return path; } }
+
+        private string name; public string Name { get { return name; } }
 
         public Source_data(string source_path)
         {
+            path = source_path;
+            name = System.IO.Path.GetFileName(source_path);
+
             string[] buf = new string[File.ReadAllLines(source_path).Length];
             buf = File.ReadAllLines(source_path);
 
