@@ -125,6 +125,7 @@ namespace MyGraph
         }
 
         //ADD tab botton
+        /*
         private void button4_Click(object sender, EventArgs e)
         {
             tab_controler.Add_Data(this, new TabEventArgs("auto added tab" + (tab_controler.Index - 1).ToString()));
@@ -132,6 +133,7 @@ namespace MyGraph
             this.Data_tab_control.Controls.Add(tab_controler.Data_tab[tab_controler.Index - 1]);
             this.Trace_tab_control.Controls.Add(tab_controler.Trace_tab[tab_controler.Trace_index - 1]);
         }
+        */
         #endregion
 
         private void upper_x_checkbox_CheckedChanged(object sender, EventArgs e)
@@ -174,11 +176,8 @@ namespace MyGraph
         private void browsToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Source_file_import_window());
-
-
+            Source_file_import_window Form2 = new Source_file_import_window(this, Sources);
+            Form2.Show(this);
 
         }
 

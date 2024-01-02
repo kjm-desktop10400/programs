@@ -12,7 +12,7 @@ namespace MyGraph
     {
         //Data tab管理用Listとインデックス
         private List<TabPage> data_tab;     public List<TabPage> Data_tab { get { return data_tab; } }
-        private static int index;           public int Index { get { return index; } }
+        private static int data_index;           public int Data_index { get { return data_index; } }
 
 
         //Trace tab管理用Listとインデックス
@@ -28,7 +28,7 @@ namespace MyGraph
         private Tab_controler()
         {
             data_tab = new List<TabPage>();
-            index = 0;
+            data_index = 0;
             trace_tab = new List<TabPage>();
             trace_index = 0;
         }
@@ -54,7 +54,7 @@ namespace MyGraph
             ctrl.Location = new Point(4, 22);
             ctrl.Name = e.Tab_name;
             ctrl.Size = new Size(517, 464);
-            ctrl.TabIndex = index;
+            ctrl.TabIndex = data_index;
             ctrl.Text = e.Tab_name;
             ctrl.UseVisualStyleBackColor = true;
 
@@ -79,7 +79,7 @@ namespace MyGraph
                 ((ComboBox)cont[0]).Items.Add(ctrl.Name);
             }
 
-            index++;
+            data_index++;
         }
 
         public void Add_Trace(object sender, TabEventArgs e)
