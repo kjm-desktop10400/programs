@@ -21,7 +21,6 @@ namespace MyGraph
         Tab_controler tab_controler;
         List<Control> upper_x_group;
         List<Control> left_y_group;
-
         Bitmap screen;
 
         public Form1()
@@ -175,6 +174,11 @@ namespace MyGraph
 
         private void browsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
+            if (Sources == null)
+            {
+                Sources = new List<Source_data>();
+            }
 
             Source_file_import_window Form2 = new Source_file_import_window(this, Sources);
             Form2.Show(this);

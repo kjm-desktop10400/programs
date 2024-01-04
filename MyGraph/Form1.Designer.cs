@@ -258,13 +258,14 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(220, 313);
+            this.button2.BackColor = System.Drawing.SystemColors.Control;
+            this.button2.Location = new System.Drawing.Point(802, 2);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(84, 36);
+            this.button2.Size = new System.Drawing.Size(84, 19);
             this.button2.TabIndex = 5;
             this.button2.Text = "DRAW";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // pictureBox1
@@ -594,7 +595,6 @@
             this.Graph.Controls.Add(this.label4);
             this.Graph.Controls.Add(this.label6);
             this.Graph.Controls.Add(this.checkBox2);
-            this.Graph.Controls.Add(this.button2);
             this.Graph.Controls.Add(this.checkBox1);
             this.Graph.Controls.Add(this.label7);
             this.Graph.Controls.Add(this.label5);
@@ -903,6 +903,7 @@
             this.ClientSize = new System.Drawing.Size(914, 437);
             this.Controls.Add(this.Setting_Tab);
             this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.menuStrip1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";

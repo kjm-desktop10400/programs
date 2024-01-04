@@ -26,3 +26,4 @@ E:\Desktop\programs\MyGraph\obj\Debug\MyGraph.csproj.CoreCompileInputs.cache
 E:\Desktop\programs\MyGraph\obj\Debug\MyGraph.exe
 E:\Desktop\programs\MyGraph\obj\Debug\MyGraph.pdb
 C:\Desktop\programs\MyGraph\obj\Debug\MyGraph.Source_file_import_window.resources
+E:\Desktop\programs\MyGraph\obj\Debug\MyGraph.Source_file_import_window.resources
