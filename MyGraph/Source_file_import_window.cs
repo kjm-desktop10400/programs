@@ -19,7 +19,7 @@ namespace MyGraph
         Tab_controler tab_controler;
         Source_data sd;
         source_file_browser sf;
-
+        string path;
 
 
         public Source_file_import_window(Form f, List<Source_data> s)
@@ -28,7 +28,7 @@ namespace MyGraph
             main_form = f;
             Source = s;
             tab_controler = Tab_controler.Instance();
-
+            path = null;
         }
 
         private void Brows_button_Click(object sender, EventArgs e)
@@ -38,27 +38,24 @@ namespace MyGraph
             sf = new source_file_browser();
             if (sf.Get_Source_File_Path())
             {
-                if (Source == null)
-                {
-                    Source = new List<Source_data>();
-                }
-
+                MessageBox.Show("Some error happend.");
             }
+
+            path = sf.Source_path;
 
             sd = new Source_data(sf.Source_path);
             this.Path_textbox.Text = sd.Path;
-
-        }
-
-        private void Preview_button_Click(object sender, EventArgs e)
-        {
-
             this.Previw_window.Text = sd.Data;
 
         }
 
+
         private void Inport_button_Click(object sender, EventArgs e)
         {
+           if (Source == null)
+           {
+               Source = new List<Source_data>();
+           }
 
             Source.Add(sd);
 
@@ -68,6 +65,11 @@ namespace MyGraph
             cont[0].Controls.Add(tab_controler.Data_tab[tab_controler.Data_tab.Count() - 1]);
 
             this.Close();
+        }
+
+        private void Preview_button_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

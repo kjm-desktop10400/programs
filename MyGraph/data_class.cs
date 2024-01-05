@@ -70,29 +70,25 @@ namespace MyGraph
 
     }
 
-    class Control_Charctor
+    public class Control_Charctor
     {
 
-        #region For singlton field
-
-        private static Control_Charctor _Instance = null;
-
-        public static Control_Charctor Instance()
-        {
-            if (_Instance == null)
-            {
-                _Instance = new Control_Charctor();
-            }
-            return _Instance;
-        }
-
-        private Control_Charctor()
+        public Control_Charctor()
         {
             delimiter = '\t';
             comment = ';';
         }
+        public Control_Charctor(char del)
+        {
+            delimiter = del;
+            comment = ';';
+        }
+        public Control_Charctor(char del, char com)
+        {
+            delimiter = del;
+            comment = com;
+        }
 
-        #endregion
 
         private char delimiter;
         private char comment;
@@ -177,21 +173,35 @@ namespace MyGraph
         private int row; public int Row { get { return row; } }
         private int colum; public int Colum { get { return colum; } }
         private string path; public string Path { get { return path; } }
-
         private string name; public string Name { get { return name; } }
+
+        private Control_Charctor cc;
 
         public Source_data(string source_path)
         {
+            cc = new Control_Charctor();
             path = source_path;
-            name = System.IO.Path.GetFileName(source_path);
+            _Inport_source();
+        }
 
-            string[] buf = new string[File.ReadAllLines(source_path).Length];
-            buf = File.ReadAllLines(source_path);
+        public Source_data(string source_path ,Control_Charctor CC)
+        {
+            cc= CC;
+            path = source_path;
+            _Inport_source();
+        }
+
+        private void _Inport_source()
+        {
+            name = System.IO.Path.GetFileName(path);
+
+            string[] buf = new string[File.ReadAllLines(path).Length];
+            buf = File.ReadAllLines(path);
 
             int row_ref;
             for (row_ref = 0; row_ref < buf.Length; row_ref++)
             {
-                if (buf[row_ref].Contains(Control_Charctor.Instance().Comment))
+                if (buf[row_ref].Contains(cc.Comment))
                 {
                     continue;
                 }
@@ -202,20 +212,20 @@ namespace MyGraph
             }
 
             colum = buf.Length;
-            row = buf[row_ref].Split(Control_Charctor.Instance().Delimiter).Length;
+            row = buf[row_ref].Split(cc.Delimiter).Length;
             data = new string[colum, row];
 
             for (int i = 0; i < buf.Length; i++)
             {
                 //Control Charactorのcomment文字を含む場合
-                if (buf[i].Contains(Control_Charctor.Instance().Comment))
+                if (buf[i].Contains(cc.Comment))
                 {
                     data[i, 0] = buf[i];
                     continue;
                 }
 
                 //Control Charactorのdelimiterで文字列を分割
-                string[] tmp = buf[i].Split(Control_Charctor.Instance().Delimiter);
+                string[] tmp = buf[i].Split(cc.Delimiter);
                 for (int j = 0; j < tmp.Length; j++)
                 {
                     data[i, j] = tmp[j];
