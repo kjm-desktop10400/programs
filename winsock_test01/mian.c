@@ -1,8 +1,11 @@
+#pragma warning(suppress : 4996)
+
 #include<stdio.h>
 #include<WinSock2.h>
 
 
 #define RCVBUFSIZE 32
+
 
 void DieWithError(char* errorMessage);
 
@@ -48,14 +51,36 @@ int main(int argc, char *argv[]) {
 	echoServAddr.sin_port = htons(echoServPort);
 
 	/*エコーサーバへの接続を確立*/
+	if (connect(sock, (struct sockaddr*)&echoServAddr, sizeof(echoServAddr)) < 0);
+	{
+		DieWithError("connect() failed");
+	}
+
+	echoString = strlen(echoString);
 
 
 	/*文字列をサーバに送信*/
+	if (send(sock, echoString, echoStringLen, 0) != echoStringLen)
+		DieWithError("send() sent a different numbeer of bytes than expected");
 
 
 	/*同じ文字列をサーバから受信*/
+	totalBytesRcvd = 0;
+	printf("Received : ");					/*エコーさせた文字列を表示させるための準備*/
+	while (totalBytesRcvd < echoStringLen)
+	{										/*バッファサイズに達するまで(NULL文字用の1バイトを除く)サーバからデータを受信する*/	
+		if ((bytesRcvd = recv(sock, echoBuffer, RCVBUFSIZE - 1, 0)) <= 0)
+		{
+			DieWithError("recv() failed or connection closed prematurely");
+		}
+		totalBytesRcvd += bytesRcvd;		/*総バイト数の集計*/
+		echoBuffer[bytesRcvd] = '\0';		/*文字列の終了*/
+		printf(echoBuffer);					/*エコーバッファの表示*/
+	}
 
+	printf("\n");							/*最後の改行を出力*/
 
-	
+	close(sock);
+	exit(0);	
 	
 }
