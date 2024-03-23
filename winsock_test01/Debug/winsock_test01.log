@@ -1,5 +1,5 @@
 ﻿  mian.c
-C:\GitShareDir\programs\winsock_test01\mian.c(58,33): warning C4047: '=': 間接参照のレベルが 'char *' と 'size_t' で異なっています。
-C:\GitShareDir\programs\winsock_test01\mian.c(69,24): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
-C:\GitShareDir\programs\winsock_test01\mian.c(82,7): warning C4013: 関数 'close' は定義されていません。int 型の値を返す外部関数と見なします。
-C:\GitShareDir\programs\winsock_test01\mian.c(49,33): error C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+C:\GitShareDir\programs\winsock_test01\mian.c(59,33): warning C4047: '=': 間接参照のレベルが 'char *' と 'size_t' で異なっています。
+C:\GitShareDir\programs\winsock_test01\mian.c(70,24): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
+C:\GitShareDir\programs\winsock_test01\mian.c(83,7): warning C4013: 関数 'close' は定義されていません。int 型の値を返す外部関数と見なします。
+C:\GitShareDir\programs\winsock_test01\mian.c(63): error C4700: 初期化されていないローカル変数 'echoStringLen' が使用されます

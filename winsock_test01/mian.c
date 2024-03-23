@@ -1,7 +1,7 @@
 #pragma warning(suppress : 4996)
 
 #include<stdio.h>
-#include<WinSock2.h>
+#include<winsock.h>
 
 
 #define RCVBUFSIZE 32
