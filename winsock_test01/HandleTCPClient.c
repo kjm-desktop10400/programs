@@ -16,7 +16,7 @@ void HandleTCPClient(int clntSocket)
 	/*クライアントからの受信メッセージ*/
 	if ((recvMsgSize = recv(clntSocket, echoBuffer, RCVBUFSIZE, 0)) < 0)
 	{
-		DieWithError("recv() failed");
+		DieWithErrorShowCode("recv() failed", WSAGetLastError);
 	}
 
 	/*受信した文字列を送信し、転送が終了していなければ次を受信する*/
@@ -25,13 +25,13 @@ void HandleTCPClient(int clntSocket)
 		/*メッセージをクライアントにエコーバックする*/
 		if (send(clntSocket, echoBuffer, recvMsgSize, 0) != recvMsgSize)
 		{
-			DieWithError("send() failed");
+			DieWithError("send() failed", WSAGetLastError);
 		}
 
 		/*受信するデータが残っていないか確認する*/
 		if ((recvMsgSize = recv(clntSocket, echoBuffer, RCVBUFSIZE, 0)) < 0)
 		{
-			DieWithError("recv() failed");
+			DieWithError("recv() failed", WSAGetLastError);
 		}
 
 	}

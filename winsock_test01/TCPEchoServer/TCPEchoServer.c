@@ -57,7 +57,7 @@ int main(int argc, char* argv[])
 	/*ローカルアドレスへのバインド*/
 	if (bind(servSock, (struct sockaddr*)&echoServAddr, sizeof(echoServAddr)) < 0)
 	{
-		DieWithErrorShowCode("bind() failed", WSAGetLastError);
+		DieWithErrorShowCode("bind() failed", WSAGetLastError());
 	}
 
 	/*「接続要求をリスン中」というマークをソケットにつける*/
@@ -74,7 +74,7 @@ int main(int argc, char* argv[])
 		/*クライアントからの接続要求を待機*/
 		if ((clntSock = accept(servSock, (struct sockaddr*)&echoClntAddr, &clntLen)) < 0)
 		{
-			DieWithError("accepr() failed");
+			DieWithErrorShowCode("accepr() failed", WSAGetLastError());
 		}
 
 		/*lcntSockはクライアントに接続済み*/
