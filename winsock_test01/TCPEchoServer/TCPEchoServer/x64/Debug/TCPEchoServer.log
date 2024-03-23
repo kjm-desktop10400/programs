@@ -1,4 +1,10 @@
-﻿  TCPEchoServer.c
-E:\GitRepository\programs\winsock_test01\TCPEchoServer.c(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-E:\GitRepository\programs\winsock_test01\TCPEchoServer.c(31,18): warning C4244: '=': 'SOCKET' から 'int' への変換です。データが失われる可能性があります。
+﻿  DieWithError.c
+  HandleTCPClient.c
+  TCPEchoServer.c
+E:\GitRepository\programs\winsock_test01\HandleTCPClient.c(39,2): warning C4013: 関数 'close' は定義されていません。int 型の値を返す外部関数と見なします。
+E:\GitRepository\programs\winsock_test01\TCPEchoServer\TCPEchoServer.c(46,18): warning C4244: '=': 'SOCKET' から 'int' への変換です。データが失われる可能性があります。
+E:\GitRepository\programs\winsock_test01\TCPEchoServer\TCPEchoServer.c(64,18): warning C4477: 'fprintf' : 書式文字列 '%s' には、型 'char *' の引数が必要ですが、可変個引数 1 は型 'int' です
+E:\GitRepository\programs\winsock_test01\TCPEchoServer\TCPEchoServer.c(64,18): warning C4313: 'fprintf': 書式文字列内の '%s' が引数 1 ('int' 型) と競合しています
+E:\GitRepository\programs\winsock_test01\TCPEchoServer\TCPEchoServer.c(78,19): warning C4244: '=': 'SOCKET' から 'int' への変換です。データが失われる可能性があります。
+  コードを生成中...
   TCPEchoServer.vcxproj -> E:\GitRepository\programs\winsock_test01\TCPEchoServer\x64\Debug\TCPEchoServer.exe
