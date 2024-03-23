@@ -1,4 +1,0 @@
-﻿  mian.c
-C:\Desktop\programs\winsock_test01\mian.c(71,24): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
-C:\Desktop\programs\winsock_test01\mian.c(84,2): warning C4013: 関数 'close' は定義されていません。int 型の値を返す外部関数と見なします。
-  winsock_test01.vcxproj -> C:\Desktop\programs\winsock_test01\Debug\winsock_test01.exe

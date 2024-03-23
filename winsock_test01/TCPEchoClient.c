@@ -85,9 +85,3 @@ int main(int argc, char *argv[]) {
 	exit(0);	
 	
 }
-
-void DieWithError(char* errorMessage)
-{
-	fprintf(stderr, errorMessage);
-	exit(1);
-}

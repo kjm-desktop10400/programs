@@ -1,0 +1,4 @@
+﻿  TCPEchoServer.c
+E:\GitRepository\programs\winsock_test01\TCPEchoServer.c(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+E:\GitRepository\programs\winsock_test01\TCPEchoServer.c(31,18): warning C4244: '=': 'SOCKET' から 'int' への変換です。データが失われる可能性があります。
+  TCPEchoServer.vcxproj -> E:\GitRepository\programs\winsock_test01\TCPEchoServer\x64\Debug\TCPEchoServer.exe
