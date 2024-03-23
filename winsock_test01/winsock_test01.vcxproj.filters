@@ -15,7 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="mian.c">
+    <ClCompile Include="TCPEchoClient.c">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="TCPEchoServer.c">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
