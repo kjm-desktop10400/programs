@@ -24,6 +24,8 @@ int main(int argc, char *argv[]) {
 
 	WSADATA wsaData;						/*winsock2用*/
 
+	int tmp = 0;
+
 	if ((argc < 3) || (argc > 4))			/*引数の数が正しいか確認*/
 	{
 		fprintf(stderr, "Usage: %s <Server IP> <Echo Word> [Echo Port>]\n", argv[0]);
@@ -33,7 +35,7 @@ int main(int argc, char *argv[]) {
 	servIP = argv[1];						/*1つ目の引数 : サーバのIPアドレス(ドット10進表記)*/
 	echoString = argv[2];					/*2つ目の引数 : エコー文字列*/
 
-	WSAStartup(2, &wsaData);
+	WSAStartup(MAKEWORD(2, 0), &wsaData);
 
 	if (argc == 4)
 	{
@@ -47,19 +49,20 @@ int main(int argc, char *argv[]) {
 	/*TCPによる信頼性の高いストリームソケットを作成*/
 	if ((sock = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP)) < 0)
 	{
-		DieWithErrorShowCode("socket() failed", WSAGetLastError);
+		DieWithErrorShowCode("socket() failed", WSAGetLastError());
 	}
 
 	/*サーバのアドレス構造体を作成*/
 	memset(&echoServAddr, 0, sizeof(echoServAddr));
 	echoServAddr.sin_family = AF_INET;
-	inet_pton(AF_INET, servIP, &echoServAddr.sin_addr.s_addr);
+	inet_pton(AF_INET, servIP, &(echoServAddr.sin_addr.s_addr));
 	echoServAddr.sin_port = htons(echoServPort);
 
 	/*エコーサーバへの接続を確立*/
-	if (connect(sock, (struct sockaddr*)&echoServAddr, sizeof(echoServAddr)) < 0);
+	if (connect(sock, (struct sockaddr*)&echoServAddr, sizeof(echoServAddr)) != 0);
 	{
-		DieWithErrorShowCode("connect() failed", WSAGetLastError);
+		tmp = WSAGetLastError();
+		DieWithErrorShowCode("connect() failed", tmp);
 	}
 
 	echoStringLen = strlen(echoString);
@@ -67,7 +70,7 @@ int main(int argc, char *argv[]) {
 
 	/*文字列をサーバに送信*/
 	if (send(sock, echoString, echoStringLen, 0) != echoStringLen)
-		DieWithErrorShowCode("send() sent a different numbeer of bytes than expected", WSAGetLastError);
+		DieWithErrorShowCode("send() sent a different numbeer of bytes than expected", WSAGetLastError());
 
 
 	/*同じ文字列をサーバから受信*/
@@ -77,7 +80,8 @@ int main(int argc, char *argv[]) {
 	{										/*バッファサイズに達するまで(NULL文字用の1バイトを除く)サーバからデータを受信する*/	
 		if ((bytesRcvd = recv(sock, echoBuffer, RCVBUFSIZE - 1, 0)) <= 0)
 		{
-			DieWithErrorShowCode("recv() failed or connection closed prematurely", WSAGetLastError);
+
+			DieWithErrorShowCode("recv() failed or connection closed prematurely", WSAGetLastError());
 		}
 		totalBytesRcvd += bytesRcvd;		/*総バイト数の集計*/
 		echoBuffer[bytesRcvd] = '\0';		/*文字列の終了*/
@@ -86,7 +90,9 @@ int main(int argc, char *argv[]) {
 
 	printf("\n");							/*最後の改行を出力*/
 
-	close(sock);
+	closesocket(sock);
+	WSACleanup();
+
 	exit(0);	
 	
 }
