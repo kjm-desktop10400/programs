@@ -1,12 +1,12 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\GitRepository\\programs\\winsock_test01\\TCPEchoClient\\",
+  "WorkspaceRootPath": "C:\\Users\\wada\\programs\\winsock_test01\\TCPEchoClient\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A01DA143-D795-4581-8801-11765CF93910}|TCPEchoClient.vcxproj|E:\\GitRepository\\programs\\winsock_test01\\TCPEchoClient.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{3CA0EB97-4F22-4414-A260-9B93FE2B6BBD}|TCPEchoClient.vcxproj|C:\\Users\\wada\\programs\\winsock_test01\\TCPEchoClient.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A01DA143-D795-4581-8801-11765CF93910}|TCPEchoClient.vcxproj|E:\\GitRepository\\programs\\winsock_test01\\DieWithError.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{3CA0EB97-4F22-4414-A260-9B93FE2B6BBD}|TCPEchoClient.vcxproj|C:\\Users\\wada\\programs\\winsock_test01\\DieWithError.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,26 +22,26 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "TCPEchoClient.c",
-              "DocumentMoniker": "E:\\GitRepository\\programs\\winsock_test01\\TCPEchoClient.c",
+              "DocumentMoniker": "C:\\Users\\wada\\programs\\winsock_test01\\TCPEchoClient.c",
               "RelativeDocumentMoniker": "..\\TCPEchoClient.c",
-              "ToolTip": "E:\\GitRepository\\programs\\winsock_test01\\TCPEchoClient.c",
+              "ToolTip": "C:\\Users\\wada\\programs\\winsock_test01\\TCPEchoClient.c",
               "RelativeToolTip": "..\\TCPEchoClient.c",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAAfAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2024-03-23T13:31:41.082Z",
+              "WhenOpened": "2024-03-25T10:12:26.598Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "DieWithError.c",
-              "DocumentMoniker": "E:\\GitRepository\\programs\\winsock_test01\\DieWithError.c",
+              "DocumentMoniker": "C:\\Users\\wada\\programs\\winsock_test01\\DieWithError.c",
               "RelativeDocumentMoniker": "..\\DieWithError.c",
-              "ToolTip": "E:\\GitRepository\\programs\\winsock_test01\\DieWithError.c",
+              "ToolTip": "C:\\Users\\wada\\programs\\winsock_test01\\DieWithError.c",
               "RelativeToolTip": "..\\DieWithError.c",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2024-03-23T13:31:38.836Z",
+              "WhenOpened": "2024-03-25T10:12:25.832Z",
               "EditorCaption": ""
             }
           ]

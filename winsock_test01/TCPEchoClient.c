@@ -1,4 +1,3 @@
-#pragma warning(suppress : 4996)
 #pragma comment(lib, "Ws2_32.lib")
 
 #include<stdio.h>
@@ -24,8 +23,6 @@ int main(int argc, char *argv[]) {
 
 	WSADATA wsaData;						/*winsock2用*/
 
-	int tmp = 0;
-
 	if ((argc < 3) || (argc > 4))			/*引数の数が正しいか確認*/
 	{
 		fprintf(stderr, "Usage: %s <Server IP> <Echo Word> [Echo Port>]\n", argv[0]);
@@ -39,7 +36,7 @@ int main(int argc, char *argv[]) {
 
 	if (argc == 4)
 	{
-		echoServPort = atoi(argv[3]);		/*指定のポートがあれば使用*/
+		echoServPort = (unsigned short)atoi(argv[3]);		/*指定のポートがあれば使用*/
 	}
 	else
 	{
@@ -54,15 +51,14 @@ int main(int argc, char *argv[]) {
 
 	/*サーバのアドレス構造体を作成*/
 	memset(&echoServAddr, 0, sizeof(echoServAddr));
-	echoServAddr.sin_family = AF_INET;
-	inet_pton(AF_INET, servIP, &(echoServAddr.sin_addr.s_addr));
+	echoServAddr.sin_family = PF_INET;
+	inet_pton(PF_INET, servIP, &(echoServAddr.sin_addr.s_addr));
 	echoServAddr.sin_port = htons(echoServPort);
 
 	/*エコーサーバへの接続を確立*/
 	if (connect(sock, (struct sockaddr*)&echoServAddr, sizeof(echoServAddr)) != 0);
 	{
-		tmp = WSAGetLastError();
-		DieWithErrorShowCode("connect() failed", tmp);
+		DieWithErrorShowCode("connect() failed", WSAGetLastError());
 	}
 
 	echoStringLen = strlen(echoString);

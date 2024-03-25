@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{a01da143-d795-4581-8801-11765cf93910}</ProjectGuid>
+    <ProjectGuid>{3ca0eb97-4f22-4414-a260-9b93fe2b6bbd}</ProjectGuid>
     <RootNamespace>TCPEchoClient</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>

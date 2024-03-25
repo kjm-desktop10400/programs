@@ -1,7 +1,6 @@
 #include<stdio.h>
 #include<winsock.h>
 
-#pragma warning(suppress : 4996)
 #pragma comment(lib, "Ws2_32.lib")
 
 #define RCVBUFSIZE 32

@@ -1,4 +1,6 @@
-﻿  TCPEchoServer.c
-C:\Users\wada\programs\winsock_test01\TCPEchoServer\TCPEchoServer.c(45,18): warning C4244: '=': 'SOCKET' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\wada\programs\winsock_test01\TCPEchoServer\TCPEchoServer.c(75,19): warning C4244: '=': 'SOCKET' から 'int' への変換です。データが失われる可能性があります。
-  TCPEchoServer.vcxproj -> C:\Users\wada\programs\winsock_test01\TCPEchoServer\x64\Debug\TCPEchoServer.exe
+﻿  HandleTCPClient.c
+C:\Users\wada\programs\winsock_test01\HandleTCPClient.c(18,3): warning C4013: 関数 'DieWithErrorShowCode' は定義されていません。int 型の値を返す外部関数と見なします。
+C:\Users\wada\programs\winsock_test01\HandleTCPClient.c(27,34): warning C4020: 'DieWithError': 実引数が多すぎます。
+C:\Users\wada\programs\winsock_test01\HandleTCPClient.c(33,34): warning C4020: 'DieWithError': 実引数が多すぎます。
+C:\Users\wada\programs\winsock_test01\HandleTCPClient.c(38,2): warning C4013: 関数 'close' は定義されていません。int 型の値を返す外部関数と見なします。
+LINK : fatal error LNK1168: ファイル C:\Users\wada\programs\winsock_test01\TCPEchoServer\x64\Debug\TCPEchoServer.exe を開いて書き込むことができません。

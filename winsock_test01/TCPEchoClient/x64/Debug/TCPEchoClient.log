@@ -1,6 +1,0 @@
-﻿  TCPEchoClient.c
-C:\Desktop\programs\winsock_test01\TCPEchoClient.c(50,14): warning C4244: '=': 'SOCKET' から 'int' への変換です。データが失われる可能性があります。
-C:\Desktop\programs\winsock_test01\TCPEchoClient.c(52,3): warning C4013: 関数 'DieWithErrorShowCode' は定義されていません。int 型の値を返す外部関数と見なします。
-C:\Desktop\programs\winsock_test01\TCPEchoClient.c(68,18): warning C4267: '=': 'size_t' から 'unsigned int' に変換しました。データが失われているかもしれません。
-C:\Desktop\programs\winsock_test01\TCPEchoClient.c(79,24): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
-  TCPEchoClient.vcxproj -> C:\Desktop\programs\winsock_test01\TCPEchoClient\x64\Debug\TCPEchoClient.exe
