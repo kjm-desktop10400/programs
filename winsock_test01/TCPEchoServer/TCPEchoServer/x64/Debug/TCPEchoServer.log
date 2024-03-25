@@ -1,10 +1,4 @@
-﻿  HandleTCPClient.c
-E:\GitRepository\programs\winsock_test01\HandleTCPClient.c(19,3): warning C4013: 関数 'DieWithErrorShowCode' は定義されていません。int 型の値を返す外部関数と見なします。
-E:\GitRepository\programs\winsock_test01\HandleTCPClient.c(28,34): warning C4020: 'DieWithError': 実引数が多すぎます。
-E:\GitRepository\programs\winsock_test01\HandleTCPClient.c(34,34): warning C4020: 'DieWithError': 実引数が多すぎます。
-E:\GitRepository\programs\winsock_test01\HandleTCPClient.c(39,2): warning C4013: 関数 'close' は定義されていません。int 型の値を返す外部関数と見なします。
-  TCPEchoServer.c
-E:\GitRepository\programs\winsock_test01\TCPEchoServer\TCPEchoServer.c(45,18): warning C4244: '=': 'SOCKET' から 'int' への変換です。データが失われる可能性があります。
-E:\GitRepository\programs\winsock_test01\TCPEchoServer\TCPEchoServer.c(75,19): warning C4244: '=': 'SOCKET' から 'int' への変換です。データが失われる可能性があります。
-  コードを生成中...
-  TCPEchoServer.vcxproj -> E:\GitRepository\programs\winsock_test01\TCPEchoServer\x64\Debug\TCPEchoServer.exe
+﻿  TCPEchoServer.c
+C:\Users\wada\programs\winsock_test01\TCPEchoServer\TCPEchoServer.c(45,18): warning C4244: '=': 'SOCKET' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\wada\programs\winsock_test01\TCPEchoServer\TCPEchoServer.c(75,19): warning C4244: '=': 'SOCKET' から 'int' への変換です。データが失われる可能性があります。
+  TCPEchoServer.vcxproj -> C:\Users\wada\programs\winsock_test01\TCPEchoServer\x64\Debug\TCPEchoServer.exe
