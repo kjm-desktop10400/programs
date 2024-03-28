@@ -1,0 +1,15 @@
+E:\GitRepository\programs\winsock_test01\CSTCPEchoServer\bin\Debug\net8.0\CSTCPEchoServer.exe
+E:\GitRepository\programs\winsock_test01\CSTCPEchoServer\bin\Debug\net8.0\CSTCPEchoServer.deps.json
+E:\GitRepository\programs\winsock_test01\CSTCPEchoServer\bin\Debug\net8.0\CSTCPEchoServer.runtimeconfig.json
+E:\GitRepository\programs\winsock_test01\CSTCPEchoServer\bin\Debug\net8.0\CSTCPEchoServer.dll
+E:\GitRepository\programs\winsock_test01\CSTCPEchoServer\bin\Debug\net8.0\CSTCPEchoServer.pdb
+E:\GitRepository\programs\winsock_test01\CSTCPEchoServer\obj\Debug\net8.0\CSTCPEchoServer.GeneratedMSBuildEditorConfig.editorconfig
+E:\GitRepository\programs\winsock_test01\CSTCPEchoServer\obj\Debug\net8.0\CSTCPEchoServer.AssemblyInfoInputs.cache
+E:\GitRepository\programs\winsock_test01\CSTCPEchoServer\obj\Debug\net8.0\CSTCPEchoServer.AssemblyInfo.cs
+E:\GitRepository\programs\winsock_test01\CSTCPEchoServer\obj\Debug\net8.0\CSTCPEchoServer.csproj.CoreCompileInputs.cache
+E:\GitRepository\programs\winsock_test01\CSTCPEchoServer\obj\Debug\net8.0\CSTCPEchoServer.sourcelink.json
+E:\GitRepository\programs\winsock_test01\CSTCPEchoServer\obj\Debug\net8.0\CSTCPEchoServer.dll
+E:\GitRepository\programs\winsock_test01\CSTCPEchoServer\obj\Debug\net8.0\refint\CSTCPEchoServer.dll
+E:\GitRepository\programs\winsock_test01\CSTCPEchoServer\obj\Debug\net8.0\CSTCPEchoServer.pdb
+E:\GitRepository\programs\winsock_test01\CSTCPEchoServer\obj\Debug\net8.0\CSTCPEchoServer.genruntimeconfig.cache
+E:\GitRepository\programs\winsock_test01\CSTCPEchoServer\obj\Debug\net8.0\ref\CSTCPEchoServer.dll
