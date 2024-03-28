@@ -20,9 +20,9 @@ namespace socketS
             string hostname = Dns.GetHostName();
             IPAddress[] iPAddresses = Dns.GetHostAddresses(hostname);
 
-            foreach (IPAddress iP in iPAddresses)
+           foreach (IPAddress iP in iPAddresses )
             {
-                if (iP.AddressFamily == AddressFamily.InterNetwork)
+                if(iP.AddressFamily == AddressFamily.InterNetwork)
                 {
                     servIP = iP;
                     break;
