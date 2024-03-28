@@ -1,12 +1,15 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\GitRepository\\programs\\winsock_test01\\TCPEchoClient\\",
+  "WorkspaceRootPath": "C:\\Users\\wada\\Desktop\\programs\\winsock_test01\\TCPEchoClient\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3CA0EB97-4F22-4414-A260-9B93FE2B6BBD}|TCPEchoClient.vcxproj|E:\\GitRepository\\programs\\winsock_test01\\TCPEchoClient.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{3CA0EB97-4F22-4414-A260-9B93FE2B6BBD}|TCPEchoClient.vcxproj|C:\\Users\\wada\\Desktop\\programs\\winsock_test01\\TCPEchoClient.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3CA0EB97-4F22-4414-A260-9B93FE2B6BBD}|TCPEchoClient.vcxproj|E:\\GitRepository\\programs\\winsock_test01\\DieWithError.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{3CA0EB97-4F22-4414-A260-9B93FE2B6BBD}|TCPEchoClient.vcxproj|C:\\PROGRAM FILES (X86)\\WINDOWS KITS\\10\\INCLUDE\\10.0.22621.0\\SHARED\\WS2DEF.H||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3CA0EB97-4F22-4414-A260-9B93FE2B6BBD}|TCPEchoClient.vcxproj|C:\\Users\\wada\\Desktop\\programs\\winsock_test01\\DieWithError.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -16,32 +19,45 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "TCPEchoClient.c",
-              "DocumentMoniker": "E:\\GitRepository\\programs\\winsock_test01\\TCPEchoClient.c",
-              "RelativeDocumentMoniker": "..\\TCPEchoClient.c",
-              "ToolTip": "E:\\GitRepository\\programs\\winsock_test01\\TCPEchoClient.c",
-              "RelativeToolTip": "..\\TCPEchoClient.c",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2024-03-27T06:58:39.4Z",
+              "DocumentIndex": 1,
+              "Title": "ws2def.h",
+              "DocumentMoniker": "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\shared\\ws2def.h",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\shared\\ws2def.h",
+              "ToolTip": "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\shared\\ws2def.h",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\shared\\ws2def.h",
+              "ViewState": "AQIAALgAAAAAAAAAAAAEwO8AAAAPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-03-28T05:57:50.704Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "DieWithError.c",
-              "DocumentMoniker": "E:\\GitRepository\\programs\\winsock_test01\\DieWithError.c",
-              "RelativeDocumentMoniker": "..\\DieWithError.c",
-              "ToolTip": "E:\\GitRepository\\programs\\winsock_test01\\DieWithError.c",
-              "RelativeToolTip": "..\\DieWithError.c",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "DocumentIndex": 0,
+              "Title": "TCPEchoClient.c",
+              "DocumentMoniker": "C:\\Users\\wada\\Desktop\\programs\\winsock_test01\\TCPEchoClient.c",
+              "RelativeDocumentMoniker": "..\\TCPEchoClient.c",
+              "ToolTip": "C:\\Users\\wada\\Desktop\\programs\\winsock_test01\\TCPEchoClient.c",
+              "RelativeToolTip": "..\\TCPEchoClient.c",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAA+AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2024-03-27T06:58:38.24Z",
+              "WhenOpened": "2024-03-28T05:33:25.533Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DieWithError.c",
+              "DocumentMoniker": "C:\\Users\\wada\\Desktop\\programs\\winsock_test01\\DieWithError.c",
+              "RelativeDocumentMoniker": "..\\DieWithError.c",
+              "ToolTip": "C:\\Users\\wada\\Desktop\\programs\\winsock_test01\\DieWithError.c",
+              "RelativeToolTip": "..\\DieWithError.c",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-03-28T05:33:24.541Z",
               "EditorCaption": ""
             }
           ]

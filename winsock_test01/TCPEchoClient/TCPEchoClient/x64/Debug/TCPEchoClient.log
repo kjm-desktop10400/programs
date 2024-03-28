@@ -1,9 +1,5 @@
-﻿  DieWithError.c
-  TCPEchoClient.c
-E:\GitRepository\programs\winsock_test01\TCPEchoClient.c(47,14): warning C4244: '=': 'SOCKET' から 'int' への変換です。データが失われる可能性があります。
-E:\GitRepository\programs\winsock_test01\TCPEchoClient.c(49,3): warning C4013: 関数 'DieWithErrorShowCode' は定義されていません。int 型の値を返す外部関数と見なします。
-E:\GitRepository\programs\winsock_test01\TCPEchoClient.c(64,18): warning C4267: '=': 'size_t' から 'unsigned int' に変換しました。データが失われているかもしれません。
-E:\GitRepository\programs\winsock_test01\TCPEchoClient.c(75,24): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
-  コードを生成中...
-  LINK : 前回のインクリメンタル リンクで E:\GitRepository\programs\winsock_test01\TCPEchoClient\x64\Debug\TCPEchoClient.exe が見つからなかったか、ビルドされませんでした。フル リンクを行います。
-  TCPEchoClient.vcxproj -> E:\GitRepository\programs\winsock_test01\TCPEchoClient\x64\Debug\TCPEchoClient.exe
+﻿  TCPEchoClient.c
+C:\Users\wada\Desktop\programs\winsock_test01\TCPEchoClient.c(47,14): warning C4244: '=': 'SOCKET' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\wada\Desktop\programs\winsock_test01\TCPEchoClient.c(64,18): warning C4267: '=': 'size_t' から 'unsigned int' に変換しました。データが失われているかもしれません。
+C:\Users\wada\Desktop\programs\winsock_test01\TCPEchoClient.c(75,24): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
+  TCPEchoClient.vcxproj -> C:\Users\wada\Desktop\programs\winsock_test01\TCPEchoClient\x64\Debug\TCPEchoClient.exe

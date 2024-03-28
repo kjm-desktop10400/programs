@@ -44,8 +44,7 @@ int main(int argc, char* argv[])
 	/*着信接続用のソケットを作成*/
 	if ((servSock = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP)) < 0)
 	{
-		fprintf(stderr, "WSA last error : %d\n", WSAGetLastError());
-		DieWithError("socket() failed");
+		DieWithErrorShowCode("socket() failed", WSAGetLastError());
 	}
 
 	/*ローカルのアドレス構造体を作成*/

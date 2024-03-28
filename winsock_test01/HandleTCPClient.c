@@ -6,6 +6,7 @@
 #define RCVBUFSIZE 32
 
 void DieWithError(char* errorMessage);
+void DieWithErrorShowCode(char* errorMessage, int WSAErrorCode);
 
 void HandleTCPClient(int clntSocket)
 {
@@ -24,13 +25,13 @@ void HandleTCPClient(int clntSocket)
 		/*メッセージをクライアントにエコーバックする*/
 		if (send(clntSocket, echoBuffer, recvMsgSize, 0) != recvMsgSize)
 		{
-			DieWithError("send() failed", WSAGetLastError());
+			DieWithErrorShowCode("send() failed", WSAGetLastError());
 		}
 
 		/*受信するデータが残っていないか確認する*/
 		if ((recvMsgSize = recv(clntSocket, echoBuffer, RCVBUFSIZE, 0)) < 0)
 		{
-			DieWithError("recv() failed", WSAGetLastError());
+			DieWithErrorShowCode("recv() failed", WSAGetLastError());
 		}
 
 	}

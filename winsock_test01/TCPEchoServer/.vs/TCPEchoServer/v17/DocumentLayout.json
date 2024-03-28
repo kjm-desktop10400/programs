@@ -1,16 +1,16 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\GitRepository\\programs\\winsock_test01\\TCPEchoServer\\",
+  "WorkspaceRootPath": "C:\\Users\\wada\\Desktop\\programs\\winsock_test01\\TCPEchoServer\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{54A45220-71EE-4C35-8381-C87D04348CCC}|TCPEchoServer.vcxproj|E:\\GitRepository\\programs\\winsock_test01\\TCPEchoServer\\TCPEchoServer.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{54A45220-71EE-4C35-8381-C87D04348CCC}|TCPEchoServer.vcxproj|C:\\Users\\wada\\Desktop\\programs\\winsock_test01\\HandleTCPClient.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{54A45220-71EE-4C35-8381-C87D04348CCC}|TCPEchoServer.vcxproj|C:\\Users\\wada\\Desktop\\programs\\winsock_test01\\TCPEchoServer\\TCPEchoServer.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{54A45220-71EE-4C35-8381-C87D04348CCC}|TCPEchoServer.vcxproj|solutionrelative:TCPEchoServer.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{54A45220-71EE-4C35-8381-C87D04348CCC}|TCPEchoServer.vcxproj|E:\\GitRepository\\programs\\winsock_test01\\HandleTCPClient.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{54A45220-71EE-4C35-8381-C87D04348CCC}|TCPEchoServer.vcxproj|E:\\GitRepository\\programs\\winsock_test01\\DieWithError.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{54A45220-71EE-4C35-8381-C87D04348CCC}|TCPEchoServer.vcxproj|C:\\Users\\wada\\Desktop\\programs\\winsock_test01\\DieWithError.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -20,45 +20,45 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "TCPEchoServer.c",
-              "DocumentMoniker": "E:\\GitRepository\\programs\\winsock_test01\\TCPEchoServer\\TCPEchoServer.c",
-              "RelativeDocumentMoniker": "TCPEchoServer.c",
-              "ToolTip": "E:\\GitRepository\\programs\\winsock_test01\\TCPEchoServer\\TCPEchoServer.c",
-              "RelativeToolTip": "TCPEchoServer.c",
-              "ViewState": "AQIAABIAAAAAAAAAAAAAACoAAAAAAAAA",
+              "DocumentIndex": 2,
+              "Title": "DieWithError.c",
+              "DocumentMoniker": "C:\\Users\\wada\\Desktop\\programs\\winsock_test01\\DieWithError.c",
+              "RelativeDocumentMoniker": "..\\DieWithError.c",
+              "ToolTip": "C:\\Users\\wada\\Desktop\\programs\\winsock_test01\\DieWithError.c",
+              "RelativeToolTip": "..\\DieWithError.c",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2024-03-25T07:50:27.123Z",
+              "WhenOpened": "2024-03-28T05:33:35.308Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "HandleTCPClient.c",
+              "DocumentMoniker": "C:\\Users\\wada\\Desktop\\programs\\winsock_test01\\HandleTCPClient.c",
+              "RelativeDocumentMoniker": "..\\HandleTCPClient.c",
+              "ToolTip": "C:\\Users\\wada\\Desktop\\programs\\winsock_test01\\HandleTCPClient.c",
+              "RelativeToolTip": "..\\HandleTCPClient.c",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-03-28T05:33:34.628Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "HandleTCPClient.c",
-              "DocumentMoniker": "E:\\GitRepository\\programs\\winsock_test01\\HandleTCPClient.c",
-              "RelativeDocumentMoniker": "..\\HandleTCPClient.c",
-              "ToolTip": "E:\\GitRepository\\programs\\winsock_test01\\HandleTCPClient.c",
-              "RelativeToolTip": "..\\HandleTCPClient.c",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Title": "TCPEchoServer.c",
+              "DocumentMoniker": "C:\\Users\\wada\\Desktop\\programs\\winsock_test01\\TCPEchoServer\\TCPEchoServer.c",
+              "RelativeDocumentMoniker": "TCPEchoServer.c",
+              "ToolTip": "C:\\Users\\wada\\Desktop\\programs\\winsock_test01\\TCPEchoServer\\TCPEchoServer.c",
+              "RelativeToolTip": "TCPEchoServer.c",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2024-03-27T06:58:33.299Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "DieWithError.c",
-              "DocumentMoniker": "E:\\GitRepository\\programs\\winsock_test01\\DieWithError.c",
-              "RelativeDocumentMoniker": "..\\DieWithError.c",
-              "ToolTip": "E:\\GitRepository\\programs\\winsock_test01\\DieWithError.c",
-              "RelativeToolTip": "..\\DieWithError.c",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2024-03-27T06:58:32.495Z",
+              "WhenOpened": "2024-03-25T07:50:27.123Z",
               "EditorCaption": ""
             }
           ]

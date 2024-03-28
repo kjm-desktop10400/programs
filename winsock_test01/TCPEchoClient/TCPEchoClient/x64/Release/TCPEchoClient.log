@@ -1,0 +1,11 @@
+﻿  DieWithError.c
+  TCPEchoClient.c
+C:\Users\wada\Desktop\programs\winsock_test01\TCPEchoClient.c(47,14): warning C4244: '=': 'SOCKET' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\wada\Desktop\programs\winsock_test01\TCPEchoClient.c(49,3): warning C4013: 関数 'DieWithErrorShowCode' は定義されていません。int 型の値を返す外部関数と見なします。
+C:\Users\wada\Desktop\programs\winsock_test01\TCPEchoClient.c(64,18): warning C4267: '=': 'size_t' から 'unsigned int' に変換しました。データが失われているかもしれません。
+C:\Users\wada\Desktop\programs\winsock_test01\TCPEchoClient.c(75,24): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
+  コード生成しています。
+  Previous IPDB not found, fall back to full compilation.
+  All 6 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  コード生成が終了しました。
+  TCPEchoClient.vcxproj -> C:\Users\wada\Desktop\programs\winsock_test01\TCPEchoClient\x64\Release\TCPEchoClient.exe

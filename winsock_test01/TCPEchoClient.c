@@ -8,7 +8,7 @@
 #define RCVBUFSIZE 32
 
 
-void DieWithError(char* errorMessage);
+void DieWithErrorShowCode(char* errorMessage, int WSAErrorCode);
 
 int main(int argc, char *argv[]) {
 
