@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CSTCPEchoServer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e3eb1eeed78449ee4925215f5676f46ff6488b48")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+362f15b52d54c6d1922f5e2b037ef335015a8d9e")]
 [assembly: System.Reflection.AssemblyProductAttribute("CSTCPEchoServer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CSTCPEchoServer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
