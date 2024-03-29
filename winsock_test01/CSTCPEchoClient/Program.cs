@@ -20,14 +20,14 @@ namespace socketC
 
             IPAddress servIP = new IPAddress(0xFFFFFFFF);
 
-            if(IPAddress.TryParse("127.0.0.1",out servIP))
+            if (IPAddress.TryParse("127.0.0.1", out servIP))
             {
                 Console.WriteLine("servIP was set.");
             }
 
             IPEndPoint endPoint = new IPEndPoint(servIP, 5000);
 
-            TcpClient client = new TcpClient("126.126.156.31", 5000);
+            TcpClient client = new TcpClient("192.168.100.12", 5000);
             Console.WriteLine("connected server ({0}:{1}) by ({2}:{3})",
                 ((IPEndPoint)client.Client.RemoteEndPoint).Address,
                 ((IPEndPoint)client.Client.RemoteEndPoint).Port,
@@ -45,12 +45,14 @@ namespace socketC
 
             byte[] rescieve = new byte[4096];
 
-            ns.Read(rescieve,0, rescieve.Length);
+            ns.Read(rescieve, 0, rescieve.Length);
 
             Console.WriteLine("rescieved message : {0}", Encoding.UTF8.GetString(rescieve));
 
             ns.Close();
             client.Close();
+
+            Console.ReadLine();
 
         }
     }
