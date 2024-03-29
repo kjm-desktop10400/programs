@@ -27,7 +27,7 @@ namespace socketC
 
             IPEndPoint endPoint = new IPEndPoint(servIP, 5000);
 
-            TcpClient client = new TcpClient("127.0.0.1", 5000);
+            TcpClient client = new TcpClient("126.126.156.31", 5000);
             Console.WriteLine("connected server ({0}:{1}) by ({2}:{3})",
                 ((IPEndPoint)client.Client.RemoteEndPoint).Address,
                 ((IPEndPoint)client.Client.RemoteEndPoint).Port,
