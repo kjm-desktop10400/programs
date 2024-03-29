@@ -1,0 +1,7 @@
+C:\Desktop\programs\winsock_test01\CSTCPEchoClient\bin\Debug\CSTCPEchoClient.exe.config
+C:\Desktop\programs\winsock_test01\CSTCPEchoClient\bin\Debug\CSTCPEchoClient.exe
+C:\Desktop\programs\winsock_test01\CSTCPEchoClient\bin\Debug\CSTCPEchoClient.pdb
+C:\Desktop\programs\winsock_test01\CSTCPEchoClient\obj\Debug\CSTCPEchoClient.csproj.AssemblyReference.cache
+C:\Desktop\programs\winsock_test01\CSTCPEchoClient\obj\Debug\CSTCPEchoClient.csproj.CoreCompileInputs.cache
+C:\Desktop\programs\winsock_test01\CSTCPEchoClient\obj\Debug\CSTCPEchoClient.exe
+C:\Desktop\programs\winsock_test01\CSTCPEchoClient\obj\Debug\CSTCPEchoClient.pdb
