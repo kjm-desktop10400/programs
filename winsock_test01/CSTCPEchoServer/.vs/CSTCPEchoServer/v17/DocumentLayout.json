@@ -1,9 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\GitRepository\\programs\\winsock_test01\\CSTCPEchoServer\\",
+  "WorkspaceRootPath": "C:\\Users\\wada\\Desktop\\programs\\winsock_test01\\CSTCPEchoServer\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B182F1C2-66EB-4186-AE1D-170C8317F47B}|CSTCPEchoServer.csproj|e:\\gitrepository\\programs\\winsock_test01\\cstcpechoserver\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B182F1C2-66EB-4186-AE1D-170C8317F47B}|CSTCPEchoServer.csproj|c:\\users\\wada\\desktop\\programs\\winsock_test01\\cstcpechoserver\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B182F1C2-66EB-4186-AE1D-170C8317F47B}|CSTCPEchoServer.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -20,17 +20,13 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Program.cs",
-              "DocumentMoniker": "E:\\GitRepository\\programs\\winsock_test01\\CSTCPEchoServer\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\wada\\Desktop\\programs\\winsock_test01\\CSTCPEchoServer\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "E:\\GitRepository\\programs\\winsock_test01\\CSTCPEchoServer\\Program.cs",
+              "ToolTip": "C:\\Users\\wada\\Desktop\\programs\\winsock_test01\\CSTCPEchoServer\\Program.cs",
               "RelativeToolTip": "Program.cs",
-<<<<<<< HEAD
-              "ViewState": "AQIAAAEAAAAAAAAAAAAcwDcAAAAbAAAA",
-=======
-              "ViewState": "AQIAAAoAAAAAAAAAAAAgwD4AAAAAAAAA",
->>>>>>> 179baa4d95bdb1fc49079da6bb26caf3ae34e5d2
+              "ViewState": "AQIAAAsAAAAAAAAAAAAiwC4AAABIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-28T15:05:42.98Z",
+              "WhenOpened": "2024-03-29T02:53:11.665Z",
               "EditorCaption": ""
             }
           ]
