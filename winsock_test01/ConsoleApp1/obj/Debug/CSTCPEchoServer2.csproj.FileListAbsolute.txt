@@ -1,0 +1,7 @@
+C:\Desktop\programs\winsock_test01\ConsoleApp1\bin\Debug\ConsoleApp1.exe.config
+C:\Desktop\programs\winsock_test01\ConsoleApp1\bin\Debug\ConsoleApp1.exe
+C:\Desktop\programs\winsock_test01\ConsoleApp1\bin\Debug\ConsoleApp1.pdb
+C:\Desktop\programs\winsock_test01\ConsoleApp1\obj\Debug\CSTCPEchoServer2.csproj.AssemblyReference.cache
+C:\Desktop\programs\winsock_test01\ConsoleApp1\obj\Debug\CSTCPEchoServer2.csproj.CoreCompileInputs.cache
+C:\Desktop\programs\winsock_test01\ConsoleApp1\obj\Debug\ConsoleApp1.exe
+C:\Desktop\programs\winsock_test01\ConsoleApp1\obj\Debug\ConsoleApp1.pdb
