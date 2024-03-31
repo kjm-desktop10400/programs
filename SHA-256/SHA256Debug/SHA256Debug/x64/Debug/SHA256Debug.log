@@ -1,1 +1,5 @@
-﻿  SHA256Debug.vcxproj -> E:\GitRepository\programs\SHA-256\SHA256Debug\x64\Debug\SHA256Debug.exe
+﻿  test1.c
+E:\GitRepository\programs\SHA-256\test1.c(16,18): warning C4047: '関数': 間接参照のレベルが 'char *' と 'int' で異なっています。
+E:\GitRepository\programs\SHA-256\test1.c(16,18): warning C4024: 'Pudding': の型が 2 の仮引数および実引数と異なります。
+E:\GitRepository\programs\SHA-256\test1.c(16,21): warning C4020: 'Pudding': 実引数が多すぎます。
+  SHA256Debug.vcxproj -> E:\GitRepository\programs\SHA-256\SHA256Debug\x64\Debug\SHA256Debug.exe

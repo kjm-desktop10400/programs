@@ -1,11 +1,9 @@
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
-#include<math.h>
 
 #define BLOCK_SIZE 64
 
-char ctob(char str);
 void itooct(int num, unsigned char* oct);                                   //与えられた数値をしたから埋めた8byteに変換。octにはchar[8]以上のメモリを渡すこと。
 
 //return required byte size to allocate memory
@@ -14,40 +12,40 @@ int Size_pudding(char* msg)                                                 //Pu
     return ((strlen(msg) * sizeof(char)) / BLOCK_SIZE + 1) * BLOCK_SIZE;
 }
 
-//msg : message, moddified : address of post pudding message. Call this func before allocate memory with Size_pudding()
-void Pudding(char* msg, char* modified)                                     //ブロックサイズが64byteの倍数になるようメッセージをパディングする。modifiedには同プログラムSize_pudding()関数で得られるサイズをmallocにより確保しておくこと。
+//msg : message, msg_size : input message byte size, moddified : address of post pudding message. Call this func before allocate memory with Size_pudding()
+void Pudding(char* msg, int msg_size, char* modified)                                     //ブロックサイズが64byteの倍数になるようメッセージをパディングする。modifiedには同プログラムSize_pudding()関数で得られるサイズをmallocにより確保しておくこと。
 {
 
-    int msg_size = strlen(msg) * sizeof(char);                              //msgのバイト数
     int block_num = msg_size / BLOCK_SIZE + 1;                              //パディング後の合計ブロック数
-    int write_count = 0;                                                    //パディング後のアドレスに書き込んだメッセージのサイズ
-    char* inblock = NULL;                                                   //inblockの文字列表記。16進数
+    char* inblock = (char*)malloc(8 * sizeof(char));                        //inblockの文字列表記。16進数
 
-    //ブロック数分のメモリを確保
-    modified = (char*)malloc(BLOCK_SIZE * block_num);
+    char buf = 0;
 
     //msgのサイズ記録用配列
     itooct(msg_size, inblock);
     
     for(int i = 0; i < BLOCK_SIZE * block_num; i++)
     {
+        buf = 0;
 
-        if(i < msg_size)                                                    //
+        if(i < msg_size)
         {
-            *(modified + i) = *(msg + i);
+            buf = *(msg + i);
         }
         else if(i == msg_size)
         {
-            *(modified + i) = 0x80;
+            buf = 128;
         }
         else if(BLOCK_SIZE * block_num - 8 <= i)
         {
-            *(modified + i) = *(inblock + (i - BLOCK_SIZE * block_num + 8));
+            buf = *(inblock + (i - BLOCK_SIZE * block_num + 8));
         }
         else
         {
-            *(modified + i) = NULL;
+            buf = NULL;
         }
+
+        *(modified + i) = buf;
 
     }
 }
