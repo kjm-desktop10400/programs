@@ -1,15 +1,34 @@
 #include<stdio.h>
 #include<string.h>
+#include<stdlib.h>
 
-char* itooct(int num);
+void itooct(int num, unsigned char* oct);
+int Size_pudding(char* msg);
+void Pudding(char* msg, char* modified);
 
 int main(void)
 {
-    int num = 100000;
+    char msg[] = "100000";
 
-    for(int i = 0; i < 8; i++)
+    printf("msg : %x\n", msg);
+
+    char* buf = (char*)malloc(Size_pudding(msg));
+    Pudding(msg, buf);
+
+    printf("pudding end\n");
+
+    for(int i = 0; i < Size_pudding(msg); i++)
     {
-        printf("[%d] : %d\n", i, *(itooct(num) + i));
+        printf("%x", *(buf + i));
+
+        if(i % 16 == 0)
+        {
+            printf("\n");
+        }
+        else if(i % 4 == 0)
+        {
+            printf(" ");
+        }
     }
 
 }

@@ -1,0 +1,52 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\GitRepository\\programs\\SHA-256\\SHA256Debug\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C1CB5F1A-DDDA-49F0-9B6B-CE969FBFD43B}|SHA256Debug.vcxproj|E:\\GitRepository\\programs\\SHA-256\\pudding.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1CB5F1A-DDDA-49F0-9B6B-CE969FBFD43B}|SHA256Debug.vcxproj|E:\\GitRepository\\programs\\SHA-256\\test1.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "test1.c",
+              "DocumentMoniker": "E:\\GitRepository\\programs\\SHA-256\\test1.c",
+              "RelativeDocumentMoniker": "..\\test1.c",
+              "ToolTip": "E:\\GitRepository\\programs\\SHA-256\\test1.c",
+              "RelativeToolTip": "..\\test1.c",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-03-31T13:01:47.09Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "pudding.c",
+              "DocumentMoniker": "E:\\GitRepository\\programs\\SHA-256\\pudding.c",
+              "RelativeDocumentMoniker": "..\\pudding.c",
+              "ToolTip": "E:\\GitRepository\\programs\\SHA-256\\pudding.c",
+              "RelativeToolTip": "..\\pudding.c",
+              "ViewState": "AQIAAFMAAAAAAAAAAAASwHcAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-03-31T13:01:46.092Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

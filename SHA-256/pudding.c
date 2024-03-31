@@ -6,24 +6,33 @@
 #define BLOCK_SIZE 64
 
 char ctob(char str);
-char* itooct(int num);                                                     //与えられた数値をしたから埋めた8byteに変換
+void itooct(int num, unsigned char* oct);                                   //与えられた数値をしたから埋めた8byteに変換。octにはchar[8]以上のメモリを渡すこと。
 
-//ブロックサイズが64byteの倍数になるようメッセージをパディングする。
-char* Pudding(char* msg, char* modified)
+//return required byte size to allocate memory
+int Size_pudding(char* msg)                                                 //Pudding()で必要となるメモリをあらかじめ計算しておき、Pudding()の呼び出し側でメモリを確保させる。
+{
+    return ((strlen(msg) * sizeof(char)) / BLOCK_SIZE + 1) * BLOCK_SIZE;
+}
+
+//msg : message, moddified : address of post pudding message. Call this func before allocate memory with Size_pudding()
+void Pudding(char* msg, char* modified)                                     //ブロックサイズが64byteの倍数になるようメッセージをパディングする。modifiedには同プログラムSize_pudding()関数で得られるサイズをmallocにより確保しておくこと。
 {
 
     int msg_size = strlen(msg) * sizeof(char);                              //msgのバイト数
     int block_num = msg_size / BLOCK_SIZE + 1;                              //パディング後の合計ブロック数
     int write_count = 0;                                                    //パディング後のアドレスに書き込んだメッセージのサイズ
-    char inblock_c[8];                                                      //inblockの文字列表記。16進数
+    char* inblock = NULL;                                                   //inblockの文字列表記。16進数
 
     //ブロック数分のメモリを確保
     modified = (char*)malloc(BLOCK_SIZE * block_num);
+
+    //msgのサイズ記録用配列
+    itooct(msg_size, inblock);
     
     for(int i = 0; i < BLOCK_SIZE * block_num; i++)
     {
 
-        if(i < msg_size)
+        if(i < msg_size)                                                    //
         {
             *(modified + i) = *(msg + i);
         }
@@ -31,40 +40,83 @@ char* Pudding(char* msg, char* modified)
         {
             *(modified + i) = 0x80;
         }
-        else if(i < BLOCK_SIZE * block_num)
+        else if(BLOCK_SIZE * block_num - 8 <= i)
         {
-
+            *(modified + i) = *(inblock + (i - BLOCK_SIZE * block_num + 8));
+        }
+        else
+        {
+            *(modified + i) = NULL;
         }
 
     }
-
-    return modified;
 }
 
-char* itooct(int num)
+void itooct(int num, unsigned char* oct)
 {
 
-    int byte_size = 0;
-    int num_tmp = num;
-    char* oct[8];
+    //
+    //      基本方針はchar型を16進数2bitと考えてシフト演算を行う。右シフトで下の桁を削り、
+    //      すでに記録した上の桁を引くことでchar型に保存する16進数1bitを切り出す
+    //  
+    //      ex)     100000          ->          0x186a0
+    //                              >>0x100  (256)
+    //              390             ->          0x186
+    //                              >>0x100  (256)
+    //              1               ->          0x1
+    //
+    //                      0x86 = 0x186 - 0x1 * 0x100
+    //                      0xa0 = 0x186a0 - 0x186 * 0x100
+    //
+    //      このようにして16進数1bitづつを切り出す
+    //
 
-    while(num_tmp != 0)
+    int byte_size = 0;
+    int num_buf = num;
+    int upper_cut = 0;
+    unsigned char inv[8];
+
+    while(num_buf != 0)
     {
-        num_tmp /= 256;
+        num_buf /= 0xff;
         byte_size++;
+    }
+
+    for(int i = 0; i < byte_size; i++)
+    {
+        num_buf = num;
+        upper_cut = num;
+
+        for(int j = 0; j < byte_size - i; j++)
+        {
+            upper_cut /= 0x100;
+        }
+
+        for(int j = 0; j < byte_size - i; j++)
+        {
+            upper_cut *= 0x100;
+        }
+
+        num_buf = num - upper_cut;
+
+        for(int j = 0; j < byte_size - 1 - i; j++)
+        {
+            num_buf /= 0x100;
+        }
+
+        inv[i] = num_buf;
+
     }
 
     for(int i = 0; i < 8; i++)
     {
-
-        if(i < byte_size)
+        if(i < 8 - byte_size)
         {
-            oct[i] = 0;
-            continue;
+            *(oct + i) = 0;
         }
-
-        oct[i] = (int)(num / (int)pow(256, (8 - i)) - ( num / (int)pow(256, (8 - i + 1)) * 256 ));
+        else
+        {
+            *(oct + i) = inv[i - (8 - byte_size)];
+        }
     }
-
-    return oct;
 }
