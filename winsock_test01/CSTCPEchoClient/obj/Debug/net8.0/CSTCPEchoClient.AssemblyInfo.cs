@@ -11,12 +11,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("CSTCPEchoServer")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("CSTCPEchoClient")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+15cee9aa8268205469dbb32dcb5c31ff5545147e")]
-[assembly: System.Reflection.AssemblyProductAttribute("CSTCPEchoServer")]
-[assembly: System.Reflection.AssemblyTitleAttribute("CSTCPEchoServer")]
+[assembly: System.Reflection.AssemblyProductAttribute("CSTCPEchoClient")]
+[assembly: System.Reflection.AssemblyTitleAttribute("CSTCPEchoClient")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // MSBuild WriteCodeFragment クラスによって生成されました。

@@ -24,7 +24,11 @@
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Desktop\\programs\\winsock_test01\\CSTCPEchoClient\\Program.cs",
               "RelativeToolTip": "Program.cs",
+<<<<<<< HEAD
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAsAAAAcAAAA",
+=======
               "ViewState": "AQIAABoAAAAAAAAAAADwvzYAAAAfAAAA",
+>>>>>>> 054422661f0a0644450280a199997d2b38fcb950
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-29T04:08:53.937Z",
               "EditorCaption": ""

@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "E:\\GitRepository\\programs\\winsock_test01\\CSTCPEchoServer\\CSTCPEchoServer.csproj": {}
+    "C:\\Users\\wada\\Desktop\\programs\\winsock_test01\\CSTCPEchoServer\\CSTCPEchoServer.csproj": {}
   },
   "projects": {
-    "E:\\GitRepository\\programs\\winsock_test01\\CSTCPEchoServer\\CSTCPEchoServer.csproj": {
+    "C:\\Users\\wada\\Desktop\\programs\\winsock_test01\\CSTCPEchoServer\\CSTCPEchoServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\GitRepository\\programs\\winsock_test01\\CSTCPEchoServer\\CSTCPEchoServer.csproj",
+        "projectUniqueName": "C:\\Users\\wada\\Desktop\\programs\\winsock_test01\\CSTCPEchoServer\\CSTCPEchoServer.csproj",
         "projectName": "CSTCPEchoServer",
-        "projectPath": "E:\\GitRepository\\programs\\winsock_test01\\CSTCPEchoServer\\CSTCPEchoServer.csproj",
-        "packagesPath": "C:\\Users\\小島 光\\.nuget\\packages\\",
-        "outputPath": "E:\\GitRepository\\programs\\winsock_test01\\CSTCPEchoServer\\obj\\",
+        "projectPath": "C:\\Users\\wada\\Desktop\\programs\\winsock_test01\\CSTCPEchoServer\\CSTCPEchoServer.csproj",
+        "packagesPath": "C:\\Users\\wada\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\wada\\Desktop\\programs\\winsock_test01\\CSTCPEchoServer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\小島 光\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\wada\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -64,7 +64,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "c:\\program files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
