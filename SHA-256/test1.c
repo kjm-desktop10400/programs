@@ -5,46 +5,50 @@
 void itooct(int num, unsigned char* oct);
 int Size_pudding(char* msg);
 void Pudding(char* msg, int msg_size, char* modified);
+void RotR(char* obj, int arg);
+void RotWords(char* obj);
+void ShiftR(unsigned char* obj, int arg);
+
+void printb(unsigned char v) {
+  unsigned char mask = 1 << (sizeof(v) * 8 - 1);
+  do putchar(mask & v ? '1' : '0');
+  while (mask >>= 1);
+}
+
+void putb(unsigned int v) {
+  putchar('0'), putchar('b'), printb(v), putchar('\n');
+}
 
 int main(void)
 {
-    char msg[7] = {"abcdef"};
+    char tmp[4] = {170, 0, 170, 0};
+    char tmp2[4] = {1, 2, 4, 8};
+    char test[4];
 
-    printf("msg : %s\n", msg);
-
-    unsigned char* buf = (char*)malloc(Size_pudding(msg));
-    Pudding(msg, 6, buf);
-
-    for(int i = 0; i < Size_pudding(msg); i++)
+    for(int j = 0; j < 32; j++)
     {
-        if (i < 8)
+        for(int i = 0; i < 4; i++)
         {
-            printf("%x ", *(buf + i));
-        }
-        else
-        {
-            printf("%x ", *(buf + i));
+            test[i] = tmp[i];
         }
 
-        if ((i + 1) == 0)
+        for(int k = 0; k < 4; k++)
         {
-            continue;
+            printb(test[k]);
+            printf(" ");
         }
 
-        if((i + 1) % 16 ==0)
+        printf("\t\t-- rot %d -->\t\t", j);
+        RotR(test, j);
+
+        for(int k = 0; k < 4; k++)
         {
-            printf("\n");
+            printb(test[k]);
+            printf(" ");
         }
-        else if((i + 1) % 4 == 0)
-        {
-            printf("  ");
-            if ((i + 1) % 8 == 0)
-            {
-                printf("\t");
-            }
-        }
+
+        printf("\n");
+
     }
-
-    printf("\nmsg[7] : %d\n", *(buf + 6));
 
 }

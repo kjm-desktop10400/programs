@@ -4,7 +4,7 @@
 
 #define BLOCK_SIZE 64
 
-void itooct(int num, unsigned char* oct);                                   //与えられた数値をしたから埋めた8byteに変換。octにはchar[8]以上のメモリを渡すこと。
+void itooct(int num, unsigned char* oct);                                   //与えられた数値をしたから埋めた8byteのcharに変換。octにはchar[8]以上のメモリを渡すこと。
 
 //return required byte size to allocate memory
 int Size_pudding(char* msg)                                                 //Pudding()で必要となるメモリをあらかじめ計算しておき、Pudding()の呼び出し側でメモリを確保させる。
