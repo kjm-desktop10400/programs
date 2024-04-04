@@ -1,4 +1,7 @@
 #include<stdio.h>
+#include<stdlib.h>
+
+#define BLOCKSIZE 64
 
 const unsigned int K[] = {
     0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5,
@@ -11,9 +14,27 @@ const unsigned int K[] = {
     0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208, 0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2
 };
 
+void Pudding(char* msg, int msg_size, char* modified);
+int Size_pudding(char* msg);
+
 int main(int args, char *argv[]){
 
-    
+    int msg_size;
+
+    typedef unsigned char* MessageWord;
+    typedef MessageWord* MessageSchedule;
+    typedef MessageSchedule* MessageScheduleArr;
+
+    unsigned char* message;
+
+    msg_size = Size_pudding(argv[1]);
+    Pudding(argv[1], msg_size, message);
+
+    MessageScheduleArr arr = (MessageSchedule*)malloc(msg_size * 4);
+    for(int i = 1; i <= msg_size; i++)
+    {
+        *(arr + (i / msg_size));
+    }
 
     return 0;
 }
