@@ -127,8 +127,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\bitcal.c" />
     <ClCompile Include="..\pudding.c" />
-    <ClCompile Include="..\test1.c" />
+    <ClCompile Include="..\SHA-256.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

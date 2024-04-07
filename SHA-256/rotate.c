@@ -134,3 +134,19 @@ void ShiftR(unsigned char* obj, int arg)        //与えられた4 bytesのbit�
         *(obj + i) = *(buf + i);
     }
 }
+
+void XOR(unsigned char* res, unsigned char* fs, unsigned char* ss, unsigned char* ts)       //3項のxor演算。4bytesのchar変数を想定。
+{
+    for(int i = 0; i < 4; i++)
+    {
+        *(res + i) = *(fs + i) ^ *(ss + i) ^ *(ts + i);
+    }
+}
+
+void CopyB(unsigned char* obj, unsigned char* source)                                       //4 bytesのchar変数をディープコピー。
+{
+    for(int i = 0; i < 4; i++)
+    {
+        *(obj + i) = *(source + i);
+    }
+}
