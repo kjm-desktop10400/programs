@@ -10,7 +10,7 @@ int main(int argc, char* argv[]){
     char command[256];
 
     if(argc == 1){
-        printf("nofile input");
+        printf("usage : fitlog_mixer [input file] <output file name>");
         getc(stdin);
         return 0;
     }
@@ -44,7 +44,15 @@ int main(int argc, char* argv[]){
     for(int i = 0; i < 256; i++){
         command[i] = '\0';
     }
-    sprintf(command, "%s\\..\\fit_param.dat", argv[1]);
+
+    if(argc == 3)
+    {
+        sprintf(command, "%s\\..\\%s", argv[1], argv[2]);
+    }
+    else
+    {
+        sprintf(command, "%s\\..\\fit_param.dat", argv[1]);
+    }    
     out_file = fopen(command, "w");
     char file_name[256];
 
@@ -103,7 +111,7 @@ int main(int argc, char* argv[]){
             while(1){
 
                 if(buf[char_count] == '\n'){
-                    fputc(',', out_file);
+                    fputs("\t\t", out_file);
                     fprintf(stdout, "\tline feed\n");
                     is_space = false;
                     break;
@@ -116,7 +124,7 @@ int main(int argc, char* argv[]){
                 else{
                     if(is_space)
                     {
-                        fputc(',', out_file);
+                        fputs("\t", out_file);
                         fputc('\t', stdout);
                         is_space = false;
                     }
