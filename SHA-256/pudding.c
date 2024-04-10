@@ -13,7 +13,7 @@ int Size_pudding(char* msg)                                                 //Pu
 }
 
 //msg : message, msg_size : input message byte size, moddified : address of post pudding message. Call this func before allocate memory with Size_pudding()
-void Pudding(char* msg, int msg_size, char* modified)                                     //ブロックサイズが64byteの倍数になるようメッセージをパディングする。modifiedには同プログラムSize_pudding()関数で得られるサイズをmallocにより確保しておくこと。
+void Pudding(char* msg, unsigned msg_size, char* modified)                                     //ブロックサイズが64byteの倍数になるようメッセージをパディングする。modifiedには同プログラムSize_pudding()関数で得られるサイズをmallocにより確保しておくこと。
 {
 
     int block_num = msg_size / BLOCK_SIZE + 1;                              //パディング後の合計ブロック数
@@ -34,11 +34,13 @@ void Pudding(char* msg, int msg_size, char* modified)                           
         }
         else if(i == msg_size)
         {
-            buf = 128;
+            buf = 0x80;
         }
         else if(BLOCK_SIZE * block_num - 8 <= i)
         {
-            buf = *(inblock + (i - BLOCK_SIZE * block_num + 8));
+            //buf = *(inblock + (i - BLOCK_SIZE * block_num + 8));
+            *((unsigned int *)modified + i / 4 + 1) = 2;
+            break;
         }
         else
         {
