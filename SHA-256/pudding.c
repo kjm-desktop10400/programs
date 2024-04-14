@@ -9,17 +9,18 @@ void itooct(int num, unsigned char* oct);                                   //�
 //return required byte size to allocate memory
 int Size_pudding(char* msg)                                                 //Pudding()で必要となるメモリをあらかじめ計算しておき、Pudding()の呼び出し側でメモリを確保させる。
 {
-    return ((strlen(msg) * sizeof(char)) / BLOCK_SIZE + 1) * BLOCK_SIZE;
+    return ((strlen(msg) * sizeof(char) + 8) / BLOCK_SIZE + 1) * BLOCK_SIZE;
 }
 
 //msg : message, msg_size : input message byte size, moddified : address of post pudding message. Call this func before allocate memory with Size_pudding()
-void Pudding(char* msg, unsigned msg_size, char* modified)                                     //ブロックサイズが64byteの倍数になるようメッセージをパディングする。modifiedには同プログラムSize_pudding()関数で得られるサイズをmallocにより確保しておくこと。
+void Pudding(char* msg, int msg_size, char* modified)                                     //ブロックサイズが64byteの倍数になるようメッセージをパディングする。modifiedには同プログラムSize_pudding()関数で得られるサイズをmallocにより確保しておくこと。
 {
 
-    int block_num = msg_size / BLOCK_SIZE + 1;                              //パディング後の合計ブロック数
+    int block_num = ((msg_size * sizeof(char) + 8) / BLOCK_SIZE + 1);                              //パディング後の合計ブロック数
     char* inblock = (char*)malloc(8 * sizeof(char));                        //inblockの文字列表記。16進数
 
-    char buf = 0;
+    unsigned char buf = 0;
+    int count = 0;
 
     //msgのサイズ記録用配列
     itooct(msg_size, inblock);
@@ -28,28 +29,27 @@ void Pudding(char* msg, unsigned msg_size, char* modified)                      
     {
         buf = 0;
 
-        if(i < msg_size)
+        if(i < msg_size)                                                    //messageの内容を書き込み
         {
             buf = *(msg + i);
         }
-        else if(i == msg_size)
+        else if(i == msg_size)                                              //messageとパディングの区切り文字を挿入
         {
             buf = 0x80;
         }
-        else if(BLOCK_SIZE * block_num - 8 <= i)
+        else if(BLOCK_SIZE * block_num - 8 <= i)                            //最後の8bytesにメッセージサイズ(bit)を付加
         {
-            //buf = *(inblock + (i - BLOCK_SIZE * block_num + 8));
-            *((unsigned int *)modified + i / 4 + 1) = 2;
-            break;
+            buf = *(inblock + (i - BLOCK_SIZE * block_num + 8));
         }
         else
         {
-            buf = NULL;
+            buf = 0;
         }
 
         *(modified + i) = buf;
 
     }
+
 }
 
 void itooct(int num, unsigned char* oct)
@@ -68,13 +68,14 @@ void itooct(int num, unsigned char* oct)
     //                      0x86 = 0x186 - 0x1 * 0x100
     //                      0xa0 = 0x186a0 - 0x186 * 0x100
     //
-    //      このようにして16進数1bitづつを切り出す
+    //      このようにして16進数2bitづつを切り出す
     //
 
     int byte_size = 0;
-    int num_buf = num;
+    int num_buf = num * 4;
     int upper_cut = 0;
     unsigned char inv[8];
+    num *= 8;
 
     while(num_buf != 0)
     {

@@ -4,8 +4,9 @@
 
 unsigned int Shift(unsigned int obj, int arg);
 unsigned int Rot(unsigned int obj, int arg);
+void itooct(int num, unsigned char* oct);
 
-void printb(unsigned int v) {
+void printb(unsigned char v) {
   unsigned int mask = 1 << (sizeof(v) * 8 - 1);
   do putchar(mask & v ? '1' : '0');
   while (mask >>= 1);
@@ -18,35 +19,18 @@ void putb(unsigned int v) {
 int main(void)
 {
 
-    unsigned int i1 = 0;
-    unsigned int in = 1;
+    unsigned char out[8];
 
-    for(int i = 0; i < 32; i++)
+    itooct(300, out);
+
+    for(int i = 0; i < 2; i++)
     {
-        i1 <<= 1;
-
-        if((i % 8 == 0) && (i != 0))
+        for(int j = 0; j < 4; j++)
         {
-
-            if (in == 1)
-            {
-                in = 0;
-            }
-            else
-            {
-                in = 1;
-            }
-            
+            printb(out[j + 4 * i]);
+            printf(" ");
         }
-
-        i1 |= in;
-    }
-
-    for(int i = 0; i < 32; i++)
-    {
-        printb(Rot(i1, i));
         putchar('\n');
     }
-
 
 }

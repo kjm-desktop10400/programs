@@ -24,10 +24,33 @@ unsigned int Rot(unsigned int obj, int arg)
 
     obj = Shift(obj, arg);
 
-    buf <<= 31 - arg;
+    buf <<= 32 - arg;
 
     return buf | obj;
     
 }
 
+//
+unsigned int Choice(unsigned int a, unsigned int b, unsigned int c)
+{
+    return ((a & b) ^ ((~a) & c));
+}
+
+//
+unsigned int Majority(unsigned int a, unsigned int b, unsigned int c)
+{
+    return ((a & b) ^ (b & c) ^ (c & a));
+}
+
+//
+unsigned int Sigma0(unsigned int obj)
+{
+    return (Rot(obj, 2) ^ Rot(obj, 13) ^ Rot(obj, 22));
+}
+
+//
+unsigned int Sigma1(unsigned int obj)
+{
+    return (Rot(obj, 6) ^ Rot(obj, 11) ^ Rot(obj, 25));
+}
 
