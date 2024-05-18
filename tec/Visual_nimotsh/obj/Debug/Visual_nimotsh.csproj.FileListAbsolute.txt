@@ -2,7 +2,6 @@ C:\Desktop\programs\tec\Visual_nimotsh\bin\Debug\Visual_nimotsh.exe.config
 C:\Desktop\programs\tec\Visual_nimotsh\bin\Debug\Visual_nimotsh.exe
 C:\Desktop\programs\tec\Visual_nimotsh\bin\Debug\Visual_nimotsh.pdb
 C:\Desktop\programs\tec\Visual_nimotsh\obj\Debug\Visual_nimotsh.csproj.AssemblyReference.cache
-C:\Desktop\programs\tec\Visual_nimotsh\obj\Debug\Visual_nimotsh.csproj.SuggestedBindingRedirects.cache
 C:\Desktop\programs\tec\Visual_nimotsh\obj\Debug\Visual_nimotsh.Form1.resources
 C:\Desktop\programs\tec\Visual_nimotsh\obj\Debug\Visual_nimotsh.Properties.Resources.resources
 C:\Desktop\programs\tec\Visual_nimotsh\obj\Debug\Visual_nimotsh.csproj.GenerateResource.cache
