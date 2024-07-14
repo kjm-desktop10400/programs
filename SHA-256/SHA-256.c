@@ -53,19 +53,75 @@ int main(int argc, char *argv[]){
     unsigned int workingValiable[8];    //結果を計算する配列
     unsigned int Hash[] = { 0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a, 0x510e527f, 0x9b05688c, 0x1f83d9ab, 0x5be0cd19 };      //hash値の初期値と計算結果
 
-    unsigned char* message;             //パディング後のメッセージを入れる配列
+    unsigned char* message = NULL;      //パディング後のメッセージを入れる配列
 
     int msg_count = 0;                  //イテレーション用変数
 
+    FILE* fp = NULL;                    //メッセージがファイルで与えられた時用のファイルポインタ
+    long long int fSize = 0;            //メッセージがファイルで与えられた時用の文字数カウント用変数
+    unsigned char* unmodifiedMessage;   //パディング前のメッセージ用配列のポインタ
+
     if(argc == 1)
     {
-        printf("usage : <message>");
+        printf("usage : -f <file path> | <target message>\n");
         return 0;
     }
+    else if(argc == 3)
+    {
 
-    msg_size_p = Size_pudding(argv[1]);                     //パディング後のメッセージサイズを取得
-    message = (char*)malloc(msg_size_p);                    //パディング後のメッセージ用にメモリを確保
-    Pudding(argv[1],strlen(argv[1]), message);              //メッセージをパディング
+    #pragma region 
+        FILE* fp = fopen(argv[2], "r");
+        long long int fSize = 0;
+
+        if(fp == NULL)
+        {
+            fputs("file couldnt open.", stderr);
+            return 0;
+        }
+
+        while(1)
+        {
+            if (fgetc(fp) == EOF)
+            {
+                if(feof(fp))
+                {
+                    break;
+                }
+            }else if(ferror(fp))
+            {
+                fclose(fp);
+                return -1;
+            }else
+            {
+                //valid message (a char)
+            }
+            fSize++;
+        }
+
+        fclose(fp);
+
+        fp = fopen(argv[2], "r");
+        unmodifiedMessage = (char*)malloc((sizeof(char) + 1) * fSize);
+        for(long long int i = 0; i < fSize; i++)
+        {
+            *(unmodifiedMessage + i) = fgetc(fp);
+        }
+        *(unmodifiedMessage + fSize) = '\0';
+
+    #pragma endregion
+
+    msg_size_p = ((fSize * sizeof(char) + 8) / BLOCKSIZE + 1) * BLOCKSIZE;
+    message = (char*)malloc(msg_size_p);
+    Pudding(unmodifiedMessage, fSize, message);
+
+    }
+    else if(argc == 2)
+    {
+        msg_size_p = Size_pudding(argv[1]);                     //パディング後のメッセージサイズを取得
+        message = (char*)malloc(msg_size_p);                    //パディング後のメッセージ用にメモリを確保
+        Pudding(argv[1],strlen(argv[1]), message);              //メッセージをパディング
+    }
+
 
 
     scheduleNum = msg_size_p / BLOCKSIZE;

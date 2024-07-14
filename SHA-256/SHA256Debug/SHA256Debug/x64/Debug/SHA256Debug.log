@@ -1,1 +1,5 @@
-﻿  SHA256Debug.vcxproj -> C:\Desktop\programs\SHA-256\SHA256Debug\x64\Debug\SHA256Debug.exe
+﻿  SHA-256.c
+C:\Desktop\programs\SHA-256\SHA-256.c(113,63): warning C4267: '=': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+C:\Desktop\programs\SHA-256\SHA-256.c(115,32): warning C4244: '関数': '__int64' から 'int' への変換です。データが失われる可能性があります。
+C:\Desktop\programs\SHA-256\SHA-256.c(122,25): warning C4267: '関数': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
+  SHA256Debug.vcxproj -> C:\Desktop\programs\SHA-256\SHA256Debug\x64\Debug\SHA256Debug.exe
