@@ -1,21 +1,21 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Desktop\\programs\\tec\\Visual_nimotsh\\",
+  "WorkspaceRootPath": "E:\\GitRepository\\programs\\tec\\Visual_nimotsh\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B97451D1-A697-453E-9B84-BA7FF4600003}|Visual_nimotsh.csproj|c:\\desktop\\programs\\tec\\visual_nimotsh\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B97451D1-A697-453E-9B84-BA7FF4600003}|Visual_nimotsh.csproj|e:\\gitrepository\\programs\\tec\\visual_nimotsh\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B97451D1-A697-453E-9B84-BA7FF4600003}|Visual_nimotsh.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B97451D1-A697-453E-9B84-BA7FF4600003}|Visual_nimotsh.csproj|C:\\Desktop\\programs\\tec\\Visual_nimotsh\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B97451D1-A697-453E-9B84-BA7FF4600003}|Visual_nimotsh.csproj|E:\\GitRepository\\programs\\tec\\Visual_nimotsh\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B97451D1-A697-453E-9B84-BA7FF4600003}|Visual_nimotsh.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B97451D1-A697-453E-9B84-BA7FF4600003}|Visual_nimotsh.csproj|C:\\Desktop\\programs\\tec\\Visual_nimotsh\\properties\\resources.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}",
+      "AbsoluteMoniker": "D:0:0:{B97451D1-A697-453E-9B84-BA7FF4600003}|Visual_nimotsh.csproj|E:\\GitRepository\\programs\\tec\\Visual_nimotsh\\properties\\resources.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}",
       "RelativeMoniker": "D:0:0:{B97451D1-A697-453E-9B84-BA7FF4600003}|Visual_nimotsh.csproj|solutionrelative:properties\\resources.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B97451D1-A697-453E-9B84-BA7FF4600003}|Visual_nimotsh.csproj|C:\\Desktop\\programs\\tec\\Visual_nimotsh\\properties\\resources.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B97451D1-A697-453E-9B84-BA7FF4600003}|Visual_nimotsh.csproj|E:\\GitRepository\\programs\\tec\\Visual_nimotsh\\properties\\resources.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B97451D1-A697-453E-9B84-BA7FF4600003}|Visual_nimotsh.csproj|solutionrelative:properties\\resources.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -32,9 +32,9 @@
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "Resources.resx",
-              "DocumentMoniker": "C:\\Desktop\\programs\\tec\\Visual_nimotsh\\Properties\\Resources.resx",
+              "DocumentMoniker": "E:\\GitRepository\\programs\\tec\\Visual_nimotsh\\Properties\\Resources.resx",
               "RelativeDocumentMoniker": "Properties\\Resources.resx",
-              "ToolTip": "C:\\Desktop\\programs\\tec\\Visual_nimotsh\\Properties\\Resources.resx",
+              "ToolTip": "E:\\GitRepository\\programs\\tec\\Visual_nimotsh\\Properties\\Resources.resx",
               "RelativeToolTip": "Properties\\Resources.resx",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
               "WhenOpened": "2023-10-30T03:06:14.811Z"
@@ -43,9 +43,9 @@
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "Resources.Designer.cs",
-              "DocumentMoniker": "C:\\Desktop\\programs\\tec\\Visual_nimotsh\\Properties\\Resources.Designer.cs",
+              "DocumentMoniker": "E:\\GitRepository\\programs\\tec\\Visual_nimotsh\\Properties\\Resources.Designer.cs",
               "RelativeDocumentMoniker": "Properties\\Resources.Designer.cs",
-              "ToolTip": "C:\\Desktop\\programs\\tec\\Visual_nimotsh\\Properties\\Resources.Designer.cs",
+              "ToolTip": "E:\\GitRepository\\programs\\tec\\Visual_nimotsh\\Properties\\Resources.Designer.cs",
               "RelativeToolTip": "Properties\\Resources.Designer.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -55,9 +55,9 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Form1.cs",
-              "DocumentMoniker": "C:\\Desktop\\programs\\tec\\Visual_nimotsh\\Form1.cs",
+              "DocumentMoniker": "E:\\GitRepository\\programs\\tec\\Visual_nimotsh\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "C:\\Desktop\\programs\\tec\\Visual_nimotsh\\Form1.cs",
+              "ToolTip": "E:\\GitRepository\\programs\\tec\\Visual_nimotsh\\Form1.cs",
               "RelativeToolTip": "Form1.cs",
               "ViewState": "AQIAANoDAAAAAAAAAAAiwCYEAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -68,9 +68,9 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Desktop\\programs\\tec\\Visual_nimotsh\\Program.cs",
+              "DocumentMoniker": "E:\\GitRepository\\programs\\tec\\Visual_nimotsh\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Desktop\\programs\\tec\\Visual_nimotsh\\Program.cs",
+              "ToolTip": "E:\\GitRepository\\programs\\tec\\Visual_nimotsh\\Program.cs",
               "RelativeToolTip": "Program.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",

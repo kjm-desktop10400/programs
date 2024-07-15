@@ -8,3 +8,13 @@ E:\Desktop\programs\tec\Visual_nimotsh\obj\Release\Visual_nimotsh.csproj.Generat
 E:\Desktop\programs\tec\Visual_nimotsh\obj\Release\Visual_nimotsh.csproj.CoreCompileInputs.cache
 E:\Desktop\programs\tec\Visual_nimotsh\obj\Release\Visual_nimotsh.exe
 E:\Desktop\programs\tec\Visual_nimotsh\obj\Release\Visual_nimotsh.pdb
+E:\GitRepository\programs\tec\Visual_nimotsh\bin\Release\Visual_nimotsh.exe.config
+E:\GitRepository\programs\tec\Visual_nimotsh\bin\Release\Visual_nimotsh.exe
+E:\GitRepository\programs\tec\Visual_nimotsh\bin\Release\Visual_nimotsh.pdb
+E:\GitRepository\programs\tec\Visual_nimotsh\obj\Release\Visual_nimotsh.csproj.AssemblyReference.cache
+E:\GitRepository\programs\tec\Visual_nimotsh\obj\Release\Visual_nimotsh.Form1.resources
+E:\GitRepository\programs\tec\Visual_nimotsh\obj\Release\Visual_nimotsh.Properties.Resources.resources
+E:\GitRepository\programs\tec\Visual_nimotsh\obj\Release\Visual_nimotsh.csproj.GenerateResource.cache
+E:\GitRepository\programs\tec\Visual_nimotsh\obj\Release\Visual_nimotsh.csproj.CoreCompileInputs.cache
+E:\GitRepository\programs\tec\Visual_nimotsh\obj\Release\Visual_nimotsh.exe
+E:\GitRepository\programs\tec\Visual_nimotsh\obj\Release\Visual_nimotsh.pdb
