@@ -54,7 +54,7 @@ namespace MillerRabin
 
         #region constructor
 
-        public MulitDigitNumber(ushort[] number, bool isBigEndian)      //create multi digit number as big endian
+        public MulitDigitNumber(ushort[] number, bool isBigEndian)      //create multi digit number as little endian
         {
 
             if(isBigEndian)     //if number is big endian, convert to little endian.
@@ -68,7 +68,19 @@ namespace MillerRabin
                 num[i] = number[i];
             }
 
-
+            //counting digits
+            int tmp = 0;
+            for(int i = 0; i < num.Length ; i++)
+            {
+                for(int j = 0; j < sizeof(ushort); j++)
+                {
+                    tmp++;
+                    if (num[i] >> i > 0)
+                    {
+                        digit = tmp;
+                    }
+                }
+            }
 
         }
 
