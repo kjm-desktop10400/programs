@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Numerics;
+using System.Runtime.InteropServices;
 
 namespace MillerRabin
 {
@@ -9,7 +10,16 @@ namespace MillerRabin
         public static void Run()
         {
 
+            BigInt bi1 = null;
+            BigInt bi2 = null;
 
+            BigInt.Sanitizer("100".ToCharArray(), ref bi1);
+            BigInt.Sanitizer("0".ToCharArray(), ref bi2);
+
+
+            Console.WriteLine("first  : " + bi1.ToString());
+            Console.WriteLine("second : " + bi2.ToString());
+            Console.WriteLine("sum    : " + (bi1 + bi2).ToString());
 
         }
         public static void Main() 
@@ -47,63 +57,250 @@ namespace MillerRabin
 
     }
 
-    class MulitDigitNumber
+    class BigInt
     {
-        private ushort[] num;             //multi bit number (little endian)
-        private int digit;
 
-        #region constructor
+        private byte[] digits;          //intrinsick number
+        private bool sign;              //sign of number (true is +, false is -)
 
-        public MulitDigitNumber(ushort[] number, bool isBigEndian)      //create multi digit number as little endian
+        public static bool Sanitizer(char[] digits, ref BigInt obj)
         {
 
-            if(isBigEndian)     //if number is big endian, convert to little endian.
-            {
-                convertEndian(number);
-            }
+            bool sign = true;
+            bool initWithNoSign = true;
+            bool initWithZero = false;
 
-            num = new ushort[number.Length];            //make deep copy
-            for (int i = 0; i < number.Length; i++)
+            for(int i = 0; i < digits.Length; i++)
             {
-                num[i] = number[i];
-            }
 
-            //counting digits
-            int tmp = 0;
-            for(int i = 0; i < num.Length ; i++)
-            {
-                for(int j = 0; j < sizeof(ushort); j++)
+                switch(digits[i])
                 {
-                    tmp++;
-                    if (num[i] >> i > 0)
-                    {
-                        digit = tmp;
-                    }
+                    case '+':
+                        if (i != 0)
+                        {
+                            return false;
+                        }
+                        sign = true;
+                        initWithNoSign = false;
+                        break;
+                    case '-':
+                        if(i != 0)
+                        {
+                            return false;
+                        }
+                        sign = false;
+                        initWithNoSign = false;
+                        break;
+
+                    case '0':
+                        if(i == 0 || (i == 1 && initWithNoSign == false))
+                        {
+                            initWithZero = true;
+                        }
+                        break;
+                    case '1':
+                    case '2':
+                    case '3':
+                    case '4':
+                    case '5':
+                    case '6':
+                    case '7':
+                    case '8':
+                    case '9':
+                        break;
+
+                    default:
+                        return false;
+
                 }
+
             }
+
+            int diff = 0;
+            if (initWithNoSign == false)
+            {
+                diff++;
+            }
+            else
+            {
+                sign = true;
+            }
+            if (initWithZero)
+            {
+                diff++;
+            }
+
+            char[] fixedDigits = new char[digits.Length - diff];
+
+
+            for (int i = 0; i < fixedDigits.Length; i++)
+            {
+                fixedDigits[i] = digits[i + diff];
+            }
+
+            obj = new BigInt(fixedDigits, sign);
+
+
+            return true;
 
         }
 
-
-        #endregion
-
-
-
-        public static void convertEndian(ushort[] obj)      //convert little endian and big endian
+        private static byte CharToByte(char obj)
         {
-            ushort[] tmp = new ushort[obj.Length];
 
-            for(int i = 0; i < tmp.Length; i++)
+            byte buf;
+
+            switch(obj)
             {
-                tmp[i] = obj[i];
+                case '0':
+                    buf = 0;
+                    break;
+                case '1':
+                    buf = 1;
+                    break;
+                case '2':
+                    buf = 2;
+                    break;
+                case '3':
+                    buf = 3;
+                    break;
+                case '4':
+                    buf = 4;
+                    break;
+                case '5':
+                    buf = 5;
+                    break;
+                case '6':
+                    buf = 6;
+                    break;
+                case '7':
+                    buf = 7;
+                    break;
+                case '8':
+                    buf = 8;
+                    break;
+                case '9':
+                    buf = 9;
+                    break;
+                default:
+                    buf = 10;
+                    break;
             }
-            for(int i = 0; i <tmp.Length; i++)
+
+            return buf;
+            
+        }
+
+        private BigInt(char[] digits, bool sign)
+        {
+            string buf;
+            this.digits = new byte[digits.Length];
+            for (int i = 0; i < digits.Length; i++)
             {
-                obj[i] = tmp[tmp.Length - i];
+                this.digits[i] = CharToByte(digits[i]);
             }
+            this.sign = sign;
+        }
+        private BigInt(byte[] digits, bool sign)
+        {
+            this.digits = digits;
+            this.sign = sign;
+        }
+
+
+        private static BigInt add(BigInt lhs, BigInt rhs)
+        {
+
+            byte[] buf;
+
+            BigInt larger;
+            BigInt smaller;
+
+            if (lhs.digits.Length > rhs.digits.Length)
+            {
+                larger = new BigInt(lhs.digits, lhs.sign);
+                smaller = new BigInt(rhs.digits, rhs.sign); 
+            }
+            else
+            {
+                larger = new BigInt(rhs.digits, rhs.sign);
+                smaller = new BigInt(lhs.digits, lhs.sign);
+            }
+
+            buf = new byte[larger.digits.Length];
+
+            for(int i = 0; i < larger.digits.Length; i++)
+            {
+
+                if(i < smaller.digits.Length)
+                {
+                    buf[i] = (byte)(larger.digits[larger.digits.Length - 1 - i] + smaller.digits[smaller.digits.Length - 1 - i]);
+                }
+                else
+                {
+                    buf[i] = larger.digits[larger.digits.Length - 1 - i];
+                }
+
+            }
+
+            byte[] result = new byte[larger.digits.Length + 1];
+            bool carry = false;
+            for(int i = 0; i < buf.Length; i++)
+            {
+                if(carry == true)
+                {
+                    buf[i] += 1;
+                }
+
+                if (buf[i] >= 10)
+                {
+                    carry = true;
+                    result[i] = (byte)(buf[i] - 10);
+                }
+                else
+                {
+                    carry = false;
+                    result[i] = buf[i];
+                }
+            }
+
+            byte[] rev;
+            if (result[result.Length - 1] == 0)
+            {
+                rev = new byte[result.Length - 1];
+            }
+            else
+            {
+                rev = new byte[result.Length];
+            }
+
+            for (int i = 0; i < rev.Length; i++)
+            {
+                rev[rev.Length - 1 - i] = result[i];
+            }
+
+
+            return new BigInt(rev, true);
+        }
+        public static BigInt operator +(BigInt lhs , BigInt rhs)
+        {
+            return BigInt.add(lhs, rhs);
+        }
+
+        public override string ToString()
+        {
+            byte[] buf = new byte[digits.Length];
+            string output = "";
+            
+            for(int i =0; i<digits.Length; i++)
+            {
+                output += digits[i].ToString();
+            }
+
+            return output;
+
         }
 
 
     }
-
 }
