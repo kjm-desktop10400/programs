@@ -19,13 +19,13 @@ namespace Miller_Rabin
             BigInt bi1 = null;
             BigInt bi2 = null;
 
-            BigInt.Sanitizer("100".ToCharArray(), ref bi1);
-            BigInt.Sanitizer("0".ToCharArray(), ref bi2);
+            BigInt.Sanitizer("0".ToCharArray(), ref bi1);
+            BigInt.Sanitizer("999999".ToCharArray(), ref bi2);
 
 
-            Console.WriteLine("first  : " + bi1.ToString());
-            Console.WriteLine("second : " + bi2.ToString());
-            Console.WriteLine("sum    : " + (bi1 + bi2).ToString());
+            Console.WriteLine("lhs   : " + bi1.ToString());
+            Console.WriteLine("rhs   : " + bi2.ToString());
+            Console.WriteLine("sub   : " + (bi1 - bi2).ToString());
 
         }
     }

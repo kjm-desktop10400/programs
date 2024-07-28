@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Desktop\\programs\\Miller-Rabin\\MillerRabin\\MillerRabin.csproj": {}
+    "E:\\GitRepository\\programs\\Miller-Rabin\\MillerRabin\\MillerRabin.csproj": {}
   },
   "projects": {
-    "C:\\Desktop\\programs\\Miller-Rabin\\MillerRabin\\MillerRabin.csproj": {
+    "E:\\GitRepository\\programs\\Miller-Rabin\\MillerRabin\\MillerRabin.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Desktop\\programs\\Miller-Rabin\\MillerRabin\\MillerRabin.csproj",
+        "projectUniqueName": "E:\\GitRepository\\programs\\Miller-Rabin\\MillerRabin\\MillerRabin.csproj",
         "projectName": "MillerRabin",
-        "projectPath": "C:\\Desktop\\programs\\Miller-Rabin\\MillerRabin\\MillerRabin.csproj",
-        "packagesPath": "C:\\Users\\LarcH\\.nuget\\packages\\",
-        "outputPath": "C:\\Desktop\\programs\\Miller-Rabin\\MillerRabin\\obj\\",
+        "projectPath": "E:\\GitRepository\\programs\\Miller-Rabin\\MillerRabin\\MillerRabin.csproj",
+        "packagesPath": "C:\\Users\\小島 光\\.nuget\\packages\\",
+        "outputPath": "E:\\GitRepository\\programs\\Miller-Rabin\\MillerRabin\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\LarcH\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\小島 光\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -64,7 +64,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "c:\\program files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

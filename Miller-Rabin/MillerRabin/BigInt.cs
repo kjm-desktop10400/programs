@@ -1,54 +1,26 @@
 ﻿using System;
+using System.Reflection.Metadata;
 
 namespace MillerRabin
 {
-    public class UndefinedArray
-    {
-        private static UndefinedArray? _Instance = null;
-        private static ushort[]? arrayRef;
-
-        public ushort[] ARRAYREF
-        {
-            get { return arrayRef; }
-        }
-
-        private UndefinedArray()
-        {
-
-        }
-
-        public static UndefinedArray Instance()
-        {
-            if(_Instance == null)
-            {
-                _Instance = new UndefinedArray();
-                arrayRef = new ushort[0];
-            }
-            
-            return _Instance;
-        }
-
-
-    }
-
     class BigInt
     {
 
         private byte[] digits;          //intrinsick number
         private bool sign;              //sign of number (true is +, false is -)
 
-        //To create BigInt obect, use this fuction. Sanitizer(char[] digits, ref BigInt obj). digits : a number you want to create in char array. obj : If this function could create BigInt, return obj as createrd. This function returns boolian could create obj or not.
+
         public static bool Sanitizer(char[] digits, ref BigInt obj)
-        {
+        {//To create BigInt obect, use this fuction. Sanitizer(char[] digits, ref BigInt obj). digits : a number you want to create in char array. obj : If this function could create BigInt, return obj as createrd. This function returns boolian could create obj or not.
 
             bool sign = true;
             bool initWithNoSign = true;
             bool initWithZero = false;
 
-            for(int i = 0; i < digits.Length; i++)
+            for (int i = 0; i < digits.Length; i++)
             {
 
-                switch(digits[i])
+                switch (digits[i])
                 {
                     case '+':
                         if (i != 0)
@@ -59,7 +31,7 @@ namespace MillerRabin
                         initWithNoSign = false;
                         break;
                     case '-':
-                        if(i != 0)
+                        if (i != 0)
                         {
                             return false;
                         }
@@ -68,7 +40,7 @@ namespace MillerRabin
                         break;
 
                     case '0':
-                        if(i == 0 || (i == 1 && initWithNoSign == false))
+                        if (i == 0 || (i == 1 && initWithNoSign == false))
                         {
                             initWithZero = true;
                         }
@@ -105,7 +77,7 @@ namespace MillerRabin
                 diff++;
             }
 
-            if(digits.Length == diff)
+            if (digits.Length == diff)
             {
                 obj = new BigInt("0".ToCharArray(), true);
                 return true;
@@ -131,7 +103,7 @@ namespace MillerRabin
 
             byte buf;
 
-            switch(obj)
+            switch (obj)
             {
                 case '0':
                     buf = 0;
@@ -169,7 +141,7 @@ namespace MillerRabin
             }
 
             return buf;
-            
+
         }
 
         private BigInt(char[] digits, bool sign)
@@ -189,7 +161,7 @@ namespace MillerRabin
         }
 
 
-        private static BigInt add(BigInt lhs, BigInt rhs)
+        private static BigInt Add(BigInt lhs, BigInt rhs)
         {
 
             byte[] buf;
@@ -197,10 +169,25 @@ namespace MillerRabin
             BigInt larger;
             BigInt smaller;
 
+            bool resultSign = true;
+
+            if((lhs.sign == true) && (rhs.sign == false))
+            {
+                return BigInt.Sub(lhs, rhs);
+            }
+            else if((lhs.sign == false) && (rhs.sign == true))
+            {
+                return BigInt.Sub(rhs, lhs);
+            }
+            else if((lhs.sign == false)&&(rhs.sign == false))
+            {
+                resultSign = false;
+            }
+
             if (lhs.digits.Length > rhs.digits.Length)
             {
                 larger = new BigInt(lhs.digits, lhs.sign);
-                smaller = new BigInt(rhs.digits, rhs.sign); 
+                smaller = new BigInt(rhs.digits, rhs.sign);
             }
             else
             {
@@ -210,10 +197,10 @@ namespace MillerRabin
 
             buf = new byte[larger.digits.Length];
 
-            for(int i = 0; i < larger.digits.Length; i++)
+            for (int i = 0; i < larger.digits.Length; i++)
             {
 
-                if(i < smaller.digits.Length)
+                if (i < smaller.digits.Length)
                 {
                     buf[i] = (byte)(larger.digits[larger.digits.Length - 1 - i] + smaller.digits[smaller.digits.Length - 1 - i]);
                 }
@@ -226,9 +213,9 @@ namespace MillerRabin
 
             byte[] result = new byte[larger.digits.Length + 1];
             bool carry = false;
-            for(int i = 0; i < buf.Length; i++)
+            for (int i = 0; i < buf.Length; i++)
             {
-                if(carry == true)
+                if (carry == true)
                 {
                     buf[i] += 1;
                 }
@@ -261,19 +248,146 @@ namespace MillerRabin
             }
 
 
-            return new BigInt(rev, true);
+            return new BigInt(rev, resultSign);
         }
-        public static BigInt operator +(BigInt lhs , BigInt rhs)
+
+        private static BigInt Sub(BigInt lhs, BigInt rhs)
         {
-            return BigInt.add(lhs, rhs);
+
+            int[] buf;
+
+            BigInt larger;
+            BigInt smaller;
+
+            int carry = 0;
+
+            if (lhs > rhs)
+            {
+                larger = new BigInt(lhs.digits, lhs.sign);
+                smaller = new BigInt(rhs.digits, rhs.sign);
+            }
+            else
+            {
+                larger = new BigInt(rhs.digits, rhs.sign);
+                smaller = new BigInt(lhs.digits, lhs.sign);
+            }
+
+            buf = new int[larger.digits.Length];
+
+            for(int i = 0; i < larger.digits.Length; i++)
+            {
+
+                if(i < smaller.digits.Length)
+                {
+                    buf[i] = larger.digits[larger.digits.Length - 1 - i] - smaller.digits[smaller.digits.Length - 1 - i];
+                }
+                else
+                {
+                    buf[i] = larger.digits[larger.digits.Length - 1 - i];
+                }
+
+            }
+
+            for (int i = 0; i < larger.digits.Length; i++)
+            {
+                if (buf[i] + carry < 0)
+                {
+                    buf[i] += 10;
+                    carry = -1;
+                }
+                else
+                {
+                    carry = 0;
+                }
+            }
+
+            int count = 0;
+            for (int i = 0; i < buf.Length; i++)
+            {
+                if (buf[i] == 0)
+                {
+                    count++;
+                }
+                else
+                {
+                    count = 0;
+                }
+            }
+
+            byte[] result = new byte[buf.Length - count];
+            for (int i = 0; i < result.Length; i++)
+            {
+                result[i] = (byte)buf[buf.Length - 1 - i - count];
+            }
+
+            if (lhs > rhs)
+            {
+                return new BigInt(result, true);
+            }
+            else
+            { 
+                return new BigInt(result, false);
+            }
+
+        }
+
+        public override bool Equals(object? obj)
+        {
+            if (obj == null || !(obj is BigInt))
+            {
+                return false;
+            }
+
+            if (this.digits.Length != ((BigInt)obj).digits.Length)
+            {
+                return false;
+            }
+
+            for (int i = 0; i < this.digits.Length; i++)
+            {
+                if (this.digits[i] != ((BigInt)obj).digits[i])
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        public static bool LargerThan(BigInt lhs, BigInt rhs)
+        {
+            if (lhs == rhs) return false;
+
+            if (lhs.digits.Length > rhs.digits.Length)
+            {
+                return true;
+            }
+            else
+            {
+
+                for (int i = 0; i < lhs.digits.Length; i++)
+                {
+                    if (lhs.digits[i] < rhs.digits[i])
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
         }
 
         public override string ToString()
         {
             byte[] buf = new byte[digits.Length];
             string output = "";
-            
-            for(int i =0; i<digits.Length; i++)
+
+            if (sign == false)
+            {
+                output += "-";
+            }
+
+            for (int i = 0; i < digits.Length; i++)
             {
                 output += digits[i].ToString();
             }
@@ -281,7 +395,82 @@ namespace MillerRabin
             return output;
 
         }
+        public static BigInt operator +(BigInt lhs, BigInt rhs)
+        {
+            return BigInt.Add(lhs, rhs);
+        }
+        public static BigInt operator -(BigInt lhs, BigInt rhs)
+        {
+            return BigInt.Sub(lhs, rhs);
+        }
+        public static bool operator ==(BigInt lhs, BigInt rhs)
+        {
+            if (lhs.Equals(rhs))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public static bool operator !=(BigInt lhs, BigInt rhs)
+        {
+            if (lhs.Equals(rhs))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
 
+        public static bool operator >(BigInt lhs, BigInt rhs)
+        {
+            if (BigInt.LargerThan(lhs, rhs))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public static bool operator <(BigInt lhs, BigInt rhs)
+        {
+            if (!(lhs > rhs) && (lhs != rhs))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public static bool operator >=(BigInt lhs, BigInt rhs)
+        {
+            if((lhs > rhs) || (lhs == rhs))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public static bool operator <=(BigInt lhs, BigInt rhs)
+        {
+            if ((lhs < rhs) || (lhs == rhs))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
 
     }
 }
