@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection.Metadata;
+using System.Runtime.CompilerServices;
 
 namespace MillerRabin
 {
@@ -8,6 +9,15 @@ namespace MillerRabin
 
         private byte[] digits;          //intrinsick number
         private bool sign;              //sign of number (true is +, false is -)
+
+        public byte[] Digits
+        {
+            get { return digits; }
+        }   //getter
+        public bool Sign
+        {
+            get { return sign; }
+        }       //getter
 
 
         public static bool Sanitizer(char[] digits, ref BigInt obj)
@@ -146,7 +156,6 @@ namespace MillerRabin
 
         private BigInt(char[] digits, bool sign)
         {
-            string buf;
             this.digits = new byte[digits.Length];
             for (int i = 0; i < digits.Length; i++)
             {
@@ -159,7 +168,39 @@ namespace MillerRabin
             this.digits = digits;
             this.sign = sign;
         }
+        private BigInt(string str, bool sign)
+        {
+            char[] digits = str.ToCharArray();
+            this.digits = new byte[digits.Length];
+            for (int i = 0; i < digits.Length; i++)
+            {
+                this.digits[i] = CharToByte(digits[i]);
+            }
+            this.sign = sign;
+        }
 
+
+        public override string ToString()
+        {
+            byte[] buf = new byte[digits.Length];
+            string output = "";
+
+            if (sign == false)
+            {
+                output += "-";
+            }
+
+            for (int i = 0; i < digits.Length; i++)
+            {
+                output += digits[i].ToString();
+            }
+
+            return output;
+
+        }
+
+
+        #region operator functions
 
         private static BigInt Add(BigInt lhs, BigInt rhs)
         {
@@ -331,6 +372,105 @@ namespace MillerRabin
 
         }
 
+        private static BigInt Mul(BigInt lhs, BigInt rhs)
+        {
+            BigInt larger, smaller;
+            bool sign;
+
+            //determine sign of product
+            if (lhs.sign ^ rhs.sign)
+            {
+                sign = false;
+            }
+            else
+            {
+                sign = true;
+            }
+
+            if(lhs > rhs)
+            {
+                larger = lhs;
+                smaller = rhs;
+            }
+            else
+            {
+                larger = rhs;
+                smaller = lhs;
+            }
+
+            int ld = larger.digits.Length;
+            int sd = smaller.digits.Length;
+
+            int[] buf = new int[ld + sd];
+
+            //initialize buf
+            for(int i = 0; i < buf.Length; i++)
+            {
+                buf[i] = 0;
+            }
+
+            //calcurate multiple
+            for(int i = 0; i < sd; i++)
+            {
+
+                for(int j = 0; j < ld; j++)
+                {
+
+                    buf[j + i] += larger.digits[ld -1 - j] * smaller.digits[sd - 1 - i];
+
+                }
+
+            }
+
+            //carry and fix
+            int carry = 0;
+            for (int i = 0; i < buf.Length; i++)
+            {
+                buf[i] += carry;
+                if (buf[i] >= 10)
+                {
+                    carry = buf[i] / 10;
+                    buf[i] -= carry * 10;
+                }
+                else
+                {
+                    carry = 0;
+                }
+            }
+
+            //count end of zeros
+            int skip = 0;
+            for(int i = 0; i < buf.Length; i++)
+            {
+                if(buf[i] == 0)
+                {
+                    skip++;
+                }
+                else
+                {
+                    skip = 0;
+                }
+            }
+
+
+            byte[] byteArray = new byte[buf.Length - skip];
+            for (int i = 0; i < buf.Length - skip; i++)
+            {
+
+                byteArray[i] = (byte)buf[buf.Length - 1 - i - skip];
+            }
+
+            return new BigInt(byteArray, sign);
+        }
+        private static BigInt Dev(BigInt lhs, BigInt rhs)
+        {
+
+        }
+        private static BigInt Mod(BigInt lhs, BigInt rhs)
+        {
+
+        }
+
         public override bool Equals(object? obj)
         {
             if (obj == null || !(obj is BigInt))
@@ -377,24 +517,10 @@ namespace MillerRabin
             return true;
         }
 
-        public override string ToString()
-        {
-            byte[] buf = new byte[digits.Length];
-            string output = "";
+        #endregion
 
-            if (sign == false)
-            {
-                output += "-";
-            }
+        #region operator overloads
 
-            for (int i = 0; i < digits.Length; i++)
-            {
-                output += digits[i].ToString();
-            }
-
-            return output;
-
-        }
         public static BigInt operator +(BigInt lhs, BigInt rhs)
         {
             return BigInt.Add(lhs, rhs);
@@ -402,6 +528,18 @@ namespace MillerRabin
         public static BigInt operator -(BigInt lhs, BigInt rhs)
         {
             return BigInt.Sub(lhs, rhs);
+        }
+        public static BigInt operator *(BigInt lhs, BigInt rhs)
+        {
+            return BigInt.Mul(lhs, rhs);
+        }
+        public static BigInt operator /(BigInt lhs, BigInt rhs)
+        {
+            return BigInt.Dev(lhs, rhs);
+        }
+        public static BigInt operator %(BigInt lhs, BigInt rhs)
+        {
+            return BigInt.Mod(lhs, rhs);
         }
         public static bool operator ==(BigInt lhs, BigInt rhs)
         {
@@ -471,6 +609,8 @@ namespace MillerRabin
             }
 
         }
+
+        #endregion 
 
     }
 }

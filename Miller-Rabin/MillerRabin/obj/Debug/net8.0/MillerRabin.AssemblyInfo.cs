@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MillerRabin")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2b5ea852272c7bb2e234dfe5ba7fc4a8668bef86")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dfd489c6190b824ae8c8fc28ba93bcbd8afe90d1")]
 [assembly: System.Reflection.AssemblyProductAttribute("MillerRabin")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MillerRabin")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
