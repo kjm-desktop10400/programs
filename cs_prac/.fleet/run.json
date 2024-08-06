@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "type": "command",
+            "name": "Command configuration",
+            "program": "cd E:/GitRepository/programs/cs_prac && csc E:/GitRepository/programs/cs_prac/prac1.cs && ./prac1.exe",
+        },
+        
+    ]
+}
